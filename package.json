@@ -24,6 +24,7 @@
     "helmet": "^5.0.2",
     "jsonwebtoken": "^8.5.1",
     "mailjet": "0.0.1",
+    "node-mailjet": "^3.3.7",
     "tls": "0.0.1"
   }
 }
