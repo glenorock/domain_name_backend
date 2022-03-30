@@ -3,6 +3,7 @@ const config = require('config')
 const session = require("express-session")
 
 const session_conf = require("./middleware/session_middleware")
+const check = require('./app/validator/checkDomain')
 
 const app = express()
 
@@ -19,7 +20,8 @@ app.use(requestTime)
 
 app.get('/', (req, res) => {
 let responseText = 'Hello World!<br>'
-responseText += `<small>Requested at: ${req.requestTime}</small>`
+responseText += '<small>Requested at: ${req.requestTime}</small>'
+check.checkProhibited("test")
 res.send(responseText)
 })
 

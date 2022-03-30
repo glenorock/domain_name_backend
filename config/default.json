@@ -11,5 +11,16 @@
         "cookie" : { 
             "secure": true 
         }
+    },
+
+    "CoCCA" :{
+        "port" : 3000,
+        "host" : "localhost"
+    },
+
+    "path" : {
+        "root" : "E:\\STAGE ANTIC\\code\\backend",
+        "blacklist" : "\\config\\blacklist.txt"
     }
+
 }
