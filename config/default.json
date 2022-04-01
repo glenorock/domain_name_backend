@@ -20,7 +20,15 @@
 
     "path" : {
         "root" : "E:\\STAGE ANTIC\\code\\backend",
-        "blacklist" : "\\config\\blacklist.txt"
+        "blacklist" : "\\config\\blacklist"
+    },
+
+    "email" : {
+        "service": "gmail",
+        "auth": {
+            "user": "glenorock.dev@gmail.com",
+            "pass": "Glen1999"
+        }
     }
 
 }

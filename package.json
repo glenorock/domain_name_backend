@@ -4,7 +4,8 @@
   "description": "The backend of the e-commerce site for the sale of domain names online",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jasmine --config=./spec/support/jasmine.json",
+    "start": "nodemon ./index.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/glenorock/domain_name_backend#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "child_process": "^1.0.2",
     "config": "^3.3.7",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -25,11 +27,15 @@
     "express-session": "^1.17.2",
     "fs": "0.0.1-security",
     "helmet": "^5.0.2",
+    "jasmine-node": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "mailjet": "0.0.1",
     "net": "^1.0.2",
-    "node-mailjet": "^3.3.7",
+    "nodemailer": "^6.7.3",
+    "ping": "^0.4.1",
+    "request": "^2.88.2",
     "safe-regex": "^2.1.1",
-    "tls": "0.0.1"
+    "tls": "0.0.1",
+    "util": "^0.12.4"
   }
 }

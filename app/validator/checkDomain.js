@@ -2,27 +2,27 @@ const fs = require('fs')
 const path = require('path')
 const config = require('config')
 
-
 const checkConstitution = (domain) =>{
-    let reg1 = RegExp("")
-    let reg2 = RegExp("")
-    return reg1.test(String(domain)) & reg2.test(String(domain))
+    let reg = RegExp(/^[a-zA-Z][a-zA-Z0-9_][a-zA-Z0-9_]*[a-zA-Z0-9]$/)
+    return reg.test(String(domain))
 }
 
-const checkProhibited = (domain) => {
-    let filePath = path.join(config.get("path.root"),config.get("path.blacklist"))
-    let data = fs.readFileSync(filePath, 'utf8')
-    try{
-        let arr = String(data).split("\n")
-        for(i=0;i<arr.length;i++){
-            let reg = RegExp(".*" + arr[i] + ".*")
-            if (reg.test(domain)) return false
-        }
-    }catch{
-        console.error(err)
-        return true
+const checkLength = (domain) =>{
+    let reg = RegExp(/^.{2,63}$/)
+    return reg.test(String(domain))
+}
+
+let filePath = path.join(config.get("path.root"),config.get("path.blacklist"))
+let data = fs.readFileSync(filePath, 'utf8')
+const blacklist = String(data).split("\n")
+    
+const checkWhiteListed = (domain) => {
+    for(i=0;i<blacklist.length;i++){
+        let ele = String(blacklist[i]).replace("\r","")
+        let res = String(domain).includes(ele)
+        if (res)  return false
     }
     return true
 }
 
-module.exports = {checkConstitution,checkProhibited}
+module.exports = {checkConstitution,checkWhiteListed,checkLength}
