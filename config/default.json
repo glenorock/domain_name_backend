@@ -24,7 +24,8 @@
     },
 
     "email" : {
-        "service": "gmail",
+        "host": "smtp.gmail.com",
+        "port": 465,
         "auth": {
             "user": "glenorock.dev@gmail.com",
             "pass": "Glen1999"
