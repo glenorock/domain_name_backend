@@ -1,35 +1,31 @@
 {
-    "server" : {
-        "host": "localhost",
-        "port": 3000
-    },
-
-    "session" :{
-        "secret": "keyboard cat",
-        "resave": false,
-        "saveUninitialized": true,
-        "cookie" : { 
-            "secure": true 
-        }
-    },
-
-    "CoCCA" :{
-        "port" : 3000,
-        "host" : "localhost"
-    },
-
-    "path" : {
-        "root" : "E:\\STAGE ANTIC\\code\\backend",
-        "blacklist" : "\\config\\blacklist"
-    },
-
-    "email" : {
-        "host": "smtp.gmail.com",
-        "port": 465,
-        "auth": {
-            "user": "glenorock.dev@gmail.com",
-            "pass": "Glen1999"
-        }
+  "server": {
+    "host": "localhost",
+    "port": 3000
+  },
+  "session": {
+    "secret": "keyboard cat",
+    "resave": false,
+    "saveUninitialized": true,
+    "cookie": {
+      "secure": true
     }
-
+  },
+  "CoCCA": {
+    "port": 3000,
+    "host": "localhost"
+  },
+  "path": {
+    "root": "E:\\STAGE ANTIC\\code\\backend",
+    "blacklist": "\\config\\blacklist",
+    "conf": "\\config\\default.json"
+  },
+  "email": {
+    "host": "smtp.gmail.com",
+    "port": 465,
+    "auth": {
+      "user": "glenorock.dev@gmail.com",
+      "pass": "Glen1999"
+    }
+  }
 }
