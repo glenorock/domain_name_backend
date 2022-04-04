@@ -10,5 +10,3 @@ input = {
 input.receivers.forEach(async (ele) =>{
     transporter.send("subject","message",ele);
 })
-
-transporter.sendBulk("subject","message",input.receivers)
