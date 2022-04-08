@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+    <command>
+        <create>
+            <contact:create xmlns:contact="urn:ietf:params:xml:ns:contact-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:contact-1.0
+contact-1.0.xsd">
+                <contact:id>abcdef0704-00001</contact:id>
+                <contact:postalInfo type="loc">
+                    <contact:name>Erik Svensson</contact:name>
+                    <contact:org>Example AB</contact:org>
+                    <contact:addr>
+                        <contact:street>c/o Anka</contact:street>
+                        <contact:street>Götgatan 100</contact:street>
+                        <contact:city>Stockholm</contact:city>
+                        <contact:pc>11346</contact:pc>
+                        <contact:cc>SE</contact:cc>
+                    </contact:addr>
+                </contact:postalInfo>
+                <contact:voice x="">+46.835555555</contact:voice>
+                <contact:fax x="">+46.835555556</contact:fax>
+                <contact:email>er.sv@nic.se</contact:email>
+                <contact:disclose flag="0">
+                    <contact:voice/>
+                    <contact:email/>
+                </contact:disclose>
+            </contact:create>
+        </create>
+        <extension>
+            <iis:create xmlns:iis="urn:se:iis:xml:epp:iis-1.2" xsi:schemaLocation="urn:se:iis:xml:epp:iis-1.2 iis-1.2.xsd">
+                <iis:orgno>[SE]730602-1234</iis:orgno>
+                <iis:vatno>SE730602123401</iis:vatno>
+            </iis:create>
+        </extension>
+        <clTRID>ABC-12345</clTRID>
+    </command>
+</epp>

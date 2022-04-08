@@ -11,9 +11,14 @@
       "secure": true
     }
   },
-  "CoCCA": {
-    "port": 3000,
-    "host": "localhost"
+  "cocca": {
+    "port": 7070,
+    "host": "127.0.0.1",
+    "clTRID": "ABC-12345",
+    "auth": {
+      "client": "admin",
+      "password": "Admin2022"
+    }
   },
   "path": {
     "root": "E:\\STAGE ANTIC\\code\\backend",
@@ -28,9 +33,9 @@
       "pass": "Glen1999"
     }
   },
-  "bill":{
+  "bill": {
     "cost": 7000,
-    "momo":{},
-    "om":{}
+    "momo": {},
+    "om": {}
   }
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+    <command>
+        <create>
+            <domain:create xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
+domain-1.0.xsd">
+                <domain:name>{example.se}</domain:name>
+                <domain:period unit="y">{5}</domain:period>
+                <domain:ns>
+                    <domain:hostObj>{ns1.example1.se}</domain:hostObj>
+                </domain:ns>
+                <domain:registrant>{cocca.auth.client}</domain:registrant>
+                <domain:contact type="admin">{sh-8013}</domain:contact>
+                <domain:contact type="tech">{sh-8013}</domain:contact>
+                <domain:authInfo>
+                    <domain:pw>{2fooBAR3+}</domain:pw>
+                </domain:authInfo>
+            </domain:create>
+        </create>
+        <extension>
+            <secDNS:create xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:secDNS-1.0
+secDNS-1.0.xsd">
+                <secDNS:dsData>
+                    <secDNS:keyTag>12345</secDNS:keyTag>
+                    <secDNS:alg>3</secDNS:alg>
+                    <secDNS:digestType>1</secDNS:digestType>
+                    <secDNS:digest>49FD46E6C4B45C55D4AC</secDNS:digest>
+                </secDNS:dsData>
+            </secDNS:create>
+        </extension>
+        <clTRID>{cocaa.clTRID}</clTRID>
+    </command>
+</epp>

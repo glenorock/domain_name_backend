@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+    <command>
+        <update>
+            <domain:update xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
+domain-1.0.xsd">
+                <domain:name>{example.se}</domain:name>
+                <domain:add>
+                    <domain:ns>
+                        <domain:hostObj>{ns2.example2.se}</domain:hostObj>
+                    </domain:ns>
+                    <domain:contact type="tech">{mak-21}</domain:contact>
+                    <domain:status s="clientHold" lang="en">{Payment overdue.}</domain:status>
+                </domain:add>
+                <domain:rem>
+                    <domain:ns>
+                        <domain:hostObj>{ns1.example1.se}</domain:hostObj>
+                    </domain:ns>
+                    <domain:contact type="tech">{sh-8013}</domain:contact>
+                </domain:rem>
+                <domain:chg>
+                    <domain:registrant>{sh-8013}</domain:registrant>
+                    <domain:authInfo>
+                        <domain:pw>{2BARfoo%=}</domain:pw>
+                    </domain:authInfo>
+                </domain:chg>
+            </domain:update>
+        </update>
+        <extension>
+            <secDNS:update xmlns:secDNS="urn:ietf:params:xml:ns:secDNS-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:secDNS-1.0
+secDNS-1.0.xsd">
+                <secDNS:add>
+                    <secDNS:dsData>
+                        <secDNS:keyTag>12345</secDNS:keyTag>
+                        <secDNS:alg>3</secDNS:alg>
+                        <secDNS:digestType>1</secDNS:digestType>
+                        <secDNS:digest>49FD46E6C4B45C55D4AC</secDNS:digest>
+                    </secDNS:dsData>
+                </secDNS:add>
+            </secDNS:update>
+            <iis:update xmlns:iis="urn:se:iis:xml:epp:iis-1.2" xsi:schemaLocation="urn:se:iis:xml:epp:iis-1.2 iis-1.2.xsd">
+                <iis:clientDelete>0</iis:clientDelete>
+            </iis:update>
+        </extension>
+        <clTRID>{ABC-12345}</clTRID>
+    </command>
+</epp>
