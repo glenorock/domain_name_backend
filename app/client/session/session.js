@@ -1,14 +1,14 @@
 const Messages = require('./messages')
 const transporter = require('../utils/transporter')
 const Session = {
-    login: async () => {
-        await transporter.send(Messages.loginMessage())
+    login: () => {
+        return transporter.send(Messages.login())
     },
-    logout: async () => {
-        await transporter.send(Messages.logoutMessage())
+    logout: () => {
+        return transporter.send(Messages.logout())
     },
-    hello: async () => {
-        await transporter.send(Messages.helloMessage())
+    hello: () => {
+        return transporter.send(Messages.hello())
     }
 }
 

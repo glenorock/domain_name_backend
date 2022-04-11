@@ -52,10 +52,8 @@ const logout = () => {
     </epp>`
 }
 
-const Messages = {
-    helloMessage: hello,
-    loginMessage: login,
-    logoutMessage: logout,
+module.exports = {
+    hello,
+    login,
+    logout,
 }
-
-module.exports = Messages

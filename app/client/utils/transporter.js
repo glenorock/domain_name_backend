@@ -4,27 +4,26 @@ const Net = require('net')
 const host = config.get("cocca.host")
 const port = config.get("cocca.port")
 
-const send = async (message) => {
+        
+
+
+const send = (message) => {
     const client = new Net.Socket()
-    let response = undefined
-    await client.connect({
-        port: port,
-        host: host
-    }, () => {
-        console.log('TCP connection established with the server.');
-        client.write(message);
+    return new Promise((resolve) => {
+        client.connect({
+            port: port,
+            host: host
+        }, () => {
+            console.log('TCP connection established with the server.');
+            client.write(message)
+            client.on('data', function (chunk) {
+                let result = chunk.toString()
+                client.end()
+                resolve(result)
+            });
+        })
+
     })
-    
-    await client.on('data', function (chunk) {
-        console.log(`Data received from the server: \n ${chunk.toString()}`);
-        response = chunk
-        client.end();
-    });
-    await client.on('end', function () {
-        waiting = false
-        console.log('Requested an end to the TCP connection');
-    });
-    return response
 }
 
 module.exports = {
