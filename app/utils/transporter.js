@@ -4,9 +4,6 @@ const Net = require('net')
 const host = config.get("cocca.host")
 const port = config.get("cocca.port")
 
-        
-
-
 const send = (message) => {
     const client = new Net.Socket()
     return new Promise((resolve) => {

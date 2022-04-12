@@ -3,7 +3,7 @@ const config = require('config')
 let clTRID = config.get("cocca.clTRID")
 
 
-const checkContactById = (id) => {
+const checkById = (id) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -19,28 +19,7 @@ const checkContactById = (id) => {
     </epp>`
 }
 
-const checkContactManyById = (ids) => {
-    let list = Array(ids)
-    let tmp = ''
-    list.forEach((id) => {
-        tmp.concat(`<contact:id>${id}</contact:id>\n`)
-    })
-    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
-        <command>
-            <check>
-                <contact:check xmlns:contact="urn:ietf:params:xml:ns:contact-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:contact-1.0
-    contact-1.0.xsd">
-                    ${tmp}
-                </contact:check>
-            </check>
-            <clTRID>${clTRID}</clTRID>
-        </command>
-    </epp>`
-}
-
-const checkContactByEmail = (email) => {
+const checkByEmail = (email) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -56,28 +35,7 @@ const checkContactByEmail = (email) => {
     </epp>`
 }
 
-const checkContactManyByEmail = (emails) => {
-    let list = Array(emails)
-    let tmp = ''
-    list.forEach((email) => {
-        tmp.concat(`<contact:email>${email}</contact:email>\n`)
-    })
-    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
-        <command>
-            <check>
-                <contact:check xmlns:contact="urn:ietf:params:xml:ns:contact-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:contact-1.0
-    contact-1.0.xsd">
-                    ${tmp}
-                </contact:check>
-            </check>
-            <clTRID>${clTRID}</clTRID>
-        </command>
-    </epp>`
-}
-
-const getContactInfoById = (id) => {
+const getInfoById = (id) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -93,7 +51,7 @@ const getContactInfoById = (id) => {
     </epp>`
 }
 
-const getContactInfoByEmail = (email) =>{
+const getInfoByEmail = (email) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -109,14 +67,18 @@ const getContactInfoByEmail = (email) =>{
     </epp>`
 }
 
-const createOneContact = (contact) =>{
+const create= (contact) =>{
     let streets = Array(contact.street)
     let street = ''
     streets.forEach((ele) =>{
         street.concat(`<contact:street>${ele}</contact:street> \n`)
     })
-    return `<contact:create xmlns:contact="urn:ietf:params:xml:ns:contact-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:contact-1.0
-    contact-1.0.xsd">
+        return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+        <command>
+            <create>
+                <contact:create xmlns:contact="urn:ietf:params:xml:ns:contact-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:contact-1.0 contact-1.0.xsd">
                     <contact:id>${contact.id}</contact:id>
                     <contact:postalInfo type="loc">
                         <contact:name>${contact.name}</contact:name>
@@ -135,15 +97,7 @@ const createOneContact = (contact) =>{
                         <contact:voice/>
                         <contact:email/>
                     </contact:disclose>
-                </contact:create>`
-}
-const createContact = (contact) =>{
-    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
-        <command>
-            <create>
-                ${createOneContact(contact)}
+                </contact:create>
             </create>
             <clTRID>${clTRID}</clTRID>
         </command>
@@ -151,26 +105,8 @@ const createContact = (contact) =>{
 
 }
 
-const createManyContacts = (contacts) =>{
-    const list = Array(contacts)
-    let tmp = ''
-    list.forEach((ele)=>{
-        tmp.concat(createOneContact(contact)).concat("\n")
-    })
-    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
-        <command>
-            <create>
-                ${tmp}
-            </create>
-            <clTRID>${clTRID}</clTRID>
-        </command>
-    </epp>`
 
-}
-
-const updateContact = (contact) =>{
+const update = (contact) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -184,13 +120,10 @@ const updateContact = (contact) =>{
 }
 
 module.exports = {
-    checkContactById,
-    checkContactByEmail,
-    checkContactManyByEmail,
-    checkContactManyById,
-    getContactInfoByEmail,
-    getContactInfoById,
-    createContact,
-    createManyContacts,
-    updateContact
+    checkByEmail,
+    checkById,
+    getInfoByEmail,
+    getInfoById,
+    create,
+    update
 }

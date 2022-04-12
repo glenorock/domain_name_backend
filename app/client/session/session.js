@@ -1,5 +1,5 @@
 const Messages = require('./messages')
-const transporter = require('../utils/transporter')
+const transporter = require('../../utils/transporter')
 const Session = {
     login: () => {
         return transporter.send(Messages.login())
