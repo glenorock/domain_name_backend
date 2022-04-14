@@ -3,4 +3,5 @@ module.exports = {
     createUser : require('./user').createUser,
     getUser: require('./user').getUserInfo,
     createAPIKey: require('./user').createAPIKey,
+    generateAuthentificationToken: require('./authorisationToken').authorisationToken,
 }

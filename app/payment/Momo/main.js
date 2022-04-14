@@ -1,5 +1,6 @@
 const api = require('./API/app')
 const constants = require('./API/constants')
+const json = require('../../utils/json')
 
 const createSandboxUser = () => {
   let user = {}
@@ -12,7 +13,11 @@ const createSandboxUser = () => {
           user.target_environment = value.targetEnvironment
           api.createAPIKey(user.reference_id).then((value) => {
             user.api_key = value
-            resolve(user)
+            json.saveToFile(user,"./app/payment/Momo/API/user.json").then(() =>{
+              resolve(user)
+            }).catch((err) =>{
+              reject(err)
+            })
           }).catch(
             (err) => reject(err)
           )
@@ -28,11 +33,24 @@ const createSandboxUser = () => {
   })
 }
 
-const pay = (number, amount, user) => {
+const generateAutorisationToken = () =>{
+  return new Promise((resolve,reject) =>{
+    let token = {}
+    api.generateAuthentificationToken().then((value) =>{
+      token = value
+      json.saveToFile(token,'./app/payment/Momo/API/token.json').then(() =>{
+        resolve(token)
+      }).catch(err => reject(err))
+    }).catch((err) => reject(err))
+  })
+}
 
+const pay = (number, amount, user) => {
+  
 }
 
 module.exports = {
   createSandboxUser,
-  pay
+  pay,
+  generateAutorisationToken
 }
