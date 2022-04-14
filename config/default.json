@@ -33,9 +33,18 @@
       "pass": "Glen1999"
     }
   },
-  "bill": {
+  "payment": {
     "cost": 7000,
-    "momo": {},
-    "om": {}
+    "momo": {
+      "primary-key": "cf4b92034b7141a5b0eb554f13584296",
+      "uuid": "98cb8514-85eb-449c-bf16-20bec699e1a0",
+      "apiKey": "2a5ef594ea5545239770d6288aa25dc7",
+      "targetEnvironment": "sandbox",
+      "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSMjU2In0.eyJjbGllbnRJZCI6Ijk4Y2I4NTE0LTg1ZWItNDQ5Yy1iZjE2LTIwYmVjNjk5ZTFhMCIsImV4cGlyZXMiOiIyMDIyLTA0LTEzVDEzOjU0OjQwLjQxMyIsInNlc3Npb25JZCI6IjNmYmQ2OGYzLWFiYmUtNDQ2YS1hYTRjLWVkZTFjZGM2MjBjYyJ9.af4S43nM9xa6WKAbNz3aynM8-qgUsZrMJsvpk-3whm7fzHnwHpzq0lq9kPJZhYyy5_DQ2m7j978qP31pGsOYZ3g3VN8lRGYgkAwavILSf_ki2hOf9qqz9aWLUdZJjUu56q8x8yoBU0Scf8TxOYzA7JOcfSf-wT-AjSSvtXmjf5QIaw-fG72lIXpaEPbABSVl733M82kb0aWD3kgi7s9qv15vbWi3CB9fvytPJKy8SNOAOoMGa5gMB6rMVtVm53ytTGeirzgtYdu8QijOeKyLjeMOtZTVAUpwgOtJ7-FKQeTcHoPtu1wk544RICWvrN-vZ0xfa2Xk678uvxBiE4UJ2w",
+      "token_type": "access_token",
+      "expires_in": 3600
+    },
+    "om": {
+    }
   }
 }

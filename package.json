@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/glenorock/domain_name_backend#readme",
   "dependencies": {
+    "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "child_process": "^1.0.2",
     "config": "^3.3.7",
@@ -32,6 +33,7 @@
     "jsonwebtoken": "^8.5.1",
     "mailjet": "0.0.1",
     "net": "^1.0.2",
+    "node-fetch": "^3.2.3",
     "nodemailer": "^6.7.3",
     "ping": "^0.4.1",
     "request": "^2.88.2",
@@ -39,6 +41,7 @@
     "smtp": "^0.1.4",
     "tls": "0.0.1",
     "util": "^0.12.4",
+    "uuid": "^8.3.2",
     "xml-js": "^1.6.11"
   }
 }
