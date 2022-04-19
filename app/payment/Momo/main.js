@@ -76,8 +76,10 @@ const requestToPay = (number) => {
   })
 }
 
-const pay = (number, amount, user) => {
-
+const pay = (number, amount) => {
+  return new Promise((resolve,reject) =>{
+    resolve()
+  })
 }
 
 module.exports = {
