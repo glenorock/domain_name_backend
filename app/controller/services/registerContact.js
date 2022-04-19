@@ -14,7 +14,7 @@ const createContactIfNotExists = (contact) => {
                     if (res.exists) {
                         eppContact.create(contact).then((res) => {
                             eppSession.logout().then(() => {
-                                mailer.sendMail("create:contact", contact.emaiil)
+                                mailer.sendMail("create:contact", contact.email)
                                 resolve(res)
                             }).catch((err) => {
                                 reject(err)
