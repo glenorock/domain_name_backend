@@ -1,3 +1,6 @@
+const eppSession = require('../../client/session/session')
+const eppContact = require("../../client/object/contact/contact")
+
 const getContacts = (contacts) => {
     return new Promise((resolve, reject) => {
         let data = Array(contacts)

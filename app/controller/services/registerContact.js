@@ -1,6 +1,8 @@
 const mailer = require('../../mail/mailer')
 const eppSession = require('../../client/session/session')
 const eppContact = require("../../client/object/contact/contact")
+const eppHost = require('../../client/object/host/host')
+const eppDomain = require('../../client/object/domain/domain')
 
 const createContactIfNotExists = (contact) => {
     return new Promise((resolve, reject) => {
