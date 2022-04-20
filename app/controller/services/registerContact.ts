@@ -1,7 +1,7 @@
 const mailer = require('../../mail/mailer')
 const eppSession = require('../../client/session/session')
 const eppContact = require("../../client/object/contact/contact")
-import { Contact } from "../../Models/models"
+import { Contact } from "../../models/models"
 
 const createContactIfNotExists = (contact: Contact) => {
     return new Promise((resolve, reject) => {

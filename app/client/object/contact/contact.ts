@@ -1,6 +1,6 @@
 const Messages = require('./messages')
 const transporter = require('../../../utils/transporter')
-import { Contact } from "../../../Models/models"
+import { Contact } from "../../../models/models"
 
 const contact = {
     checkById: (id:String) => {

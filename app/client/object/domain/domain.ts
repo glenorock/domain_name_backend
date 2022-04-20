@@ -1,4 +1,4 @@
-import {Domain} from "../../../Models/models"
+import {Domain} from "../../../models/models"
 const transporter = require('../../../utils/transporter')
 const Messages = require('./messages')
 

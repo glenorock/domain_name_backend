@@ -1,4 +1,4 @@
-import { Host } from "../../../Models/models"
+import { Host } from "../../../models/models"
 
 const Messages = require('./messages')
 const transporter = require('../../../utils/transporter')

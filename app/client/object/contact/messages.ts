@@ -1,6 +1,6 @@
 const config = require('config')
 let clTRID = config.get("cocca.clTRID")
-import { Contact } from "../../../Models/models"
+import { Contact } from "../../../models/models"
 
 
 const checkById = (id:String) => {
@@ -93,10 +93,6 @@ const create = (contact:Contact) => {
                     <contact:voice x="">${contact.voice}</contact:voice>
                     <contact:fax x="">${contact.fax}</contact:fax>
                     <contact:email>${contact.email}</contact:email>
-                    <contact:disclose flag="0">
-                        <contact:voice/>
-                        <contact:email/>
-                    </contact:disclose>
                 </contact:create>
             </create>
             <clTRID>${clTRID}</clTRID>

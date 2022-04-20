@@ -1,4 +1,4 @@
-import { Host } from "../../Models/models"
+import { Host } from "../../models/models"
 const config = require('config')
 let clientId = config.get("cocca.auth.client")
 let password = config.get("cocca.auth.password")

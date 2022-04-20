@@ -1,4 +1,4 @@
-import { Host } from "../../../Models/models"
+import { Host } from "../../../models/models"
 const config = require('config')
 
 let clTRID = config.get("cocca.clTRID")

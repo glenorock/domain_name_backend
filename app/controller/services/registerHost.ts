@@ -1,6 +1,6 @@
 const eppSession = require('../../client/session/session')
 const eppHost = require('../../client/object/host/host')
-import { Host } from "../../Models/models"
+import { Host } from "../../models/models"
 
 const registerOne = (host:Host) => {
     return new Promise((resolve, reject) => {
