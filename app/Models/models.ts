@@ -21,12 +21,14 @@ enum IpAddresseType {
     IPV6="v6"
 }
 
+type IpAddresse = {
+    type: IpAddresseType,
+    addresse: string
+}
+
 type Host = {
     name: string,
-    addr: {
-        type: IpAddresseType,
-        addresse: string
-    }[],
+    addr: IpAddresse[],
 }
 
 enum DomainPeriodUnits{
@@ -56,4 +58,4 @@ type Domain = {
     curExpDate?: string
 }
 
-export { Contact, Host, Domain,IpAddresseType}
+export { Contact, Host, Domain,IpAddresse,IpAddresseType,DomainContactType,DomainPeriodUnits}

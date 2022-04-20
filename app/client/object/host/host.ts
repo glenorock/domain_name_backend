@@ -1,13 +1,13 @@
-import { Host } from "../../../models/models"
-
-const Messages = require('./messages')
-const transporter = require('../../../utils/transporter')
+import { Host, IpAddresse } from "../../../models/models"
+import Messages from './messages'
+import transporter from "../../../utils/transporter"
 
 const host = {
-    check: (name:String) =>{return transporter.send(Messages.check(name))},
-    info: (name:String) =>{return transporter.send(Messages.check(name))},
-    update: (host:String) =>{return transporter.send(Messages.update(host))},
-    create: (host:String) =>{return transporter.send(Messages.create(host))},
+    check: (names:String[]) =>{return transporter.send(Messages.check(names))},
+    info: (names:String[]) =>{return transporter.send(Messages.check(names))},
+    create: (host:Host) =>{return transporter.send(Messages.create(host))},
+    addAddr:(host:Host,addrs:IpAddresse[]) =>{return transporter.send(Messages.addAddr(host,addrs))},
+    remAddr:(host:Host,addrs:IpAddresse[]) => {return transporter.send(Messages.remAddr(host,addrs))}
 }
 
 module.exports = host

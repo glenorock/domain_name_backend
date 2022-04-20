@@ -1,9 +1,9 @@
-import { Host } from "../../../models/models"
+import { Host, IpAddresse } from "../../../models/models"
 const config = require('config')
 
 let clTRID = config.get("cocca.clTRID")
 
-const check = (name:String) =>{
+const check = (names:String[]) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -11,9 +11,33 @@ const check = (name:String) =>{
             <check>
                 <host:check xmlns:host="urn:ietf:params:xml:ns:host-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:host-1.0
     host-1.0.xsd">
-                    <host:name>${name}</host:name>
+                    ${
+                        names.forEach((name) =>{
+                            return `<host:name>${name}</host:name>`
+                        })
+                    }
                 </host:check>
             </check>
+            <clTRID>${clTRID}</clTRID>
+        </command>
+    </epp>`
+}
+
+const info = (names:String[]) =>{
+    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+        <command>
+            <info>
+                <host:info xmlns:host="urn:ietf:params:xml:ns:host-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:host-1.0
+    host-1.0.xsd">
+                    ${
+                        names.forEach((name) =>{
+                            return `<host:name>${name}</host:name>`
+                        })
+                    }
+                </host:info>
+            </info>
             <clTRID>${clTRID}</clTRID>
         </command>
     </epp>`
@@ -40,23 +64,7 @@ const create = (host:Host) =>{
     </epp>`
 }
 
-const info = (name:String) =>{
-    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
-        <command>
-            <info>
-                <host:info xmlns:host="urn:ietf:params:xml:ns:host-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:host-1.0
-    host-1.0.xsd">
-                    <host:name>${name}</host:name>
-                </host:info>
-            </info>
-            <clTRID>${clTRID}</clTRID>
-        </command>
-    </epp>`
-}
-
-const update = (host:Host) =>{
+const addAddr = (host:Host,addrs:IpAddresse[]) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -66,16 +74,31 @@ const update = (host:Host) =>{
                     <host:name>${host.name}</host:name>
                     <host:add>
                     ${
-                        host.addr.forEach((add) =>{
-                            return `<host:addr ip=${add.type}> ${add.addresse} </host:addr>`
-                        })    
+                        addrs.forEach((addr) =>{
+                            return `<host:addr ip=${addr.type}> ${addr.addresse} </host:addr>`
+                        })
                     }
                     </host:add>
+                </host:update>
+            </update>
+            <clTRID>${clTRID}</clTRID>
+        </command>
+    </epp>`
+}
+
+const remAddr = (host:Host,addrs:IpAddresse[]) =>{
+    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+        <command>
+            <update>
+                <host:update xmlns:host="urn:ietf:params:xml:ns:host-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:host-1.0 host-1.0.xsd">
+                    <host:name>${host.name}</host:name>
                     <host:rem>
                     ${
-                        host.addr.forEach((add) =>{
-                            return `<host:addr ip=${add.type}> ${add.addresse} </host:addr>`
-                        })    
+                        addrs.forEach((addr) =>{
+                            return `<host:addr ip=${addr.type}> ${addr.addresse} </host:addr>`
+                        })
                     }
                     </host:rem>
                 </host:update>
@@ -85,9 +108,11 @@ const update = (host:Host) =>{
     </epp>`
 }
 
-module.exports = {
+
+export default {
     check,
     create,
     info,
-    update
+    addAddr,
+    remAddr
 }
