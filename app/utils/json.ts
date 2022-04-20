@@ -1,4 +1,5 @@
-const fs = require('fs')
+import * as fs from "fs"
+
 const saveToFile = (data: any,file: any) =>{
     return new Promise((resolve,reject) =>{
         try{
@@ -11,4 +12,4 @@ const saveToFile = (data: any,file: any) =>{
     })
 }
 
-module.exports = {saveToFile}
+export default {saveToFile}

@@ -1,9 +1,8 @@
-const axios = require('axios')
-const constants = require('./constants')
-import { Logger } from "../../../utils/logger"
+import axios from 'axios'
+import constants from './constants'
 
 const createUser = (referenceId:String) => {
-    let options = {
+    let options:any = {
         "headers": {
             "X-Reference-Id": referenceId,
             "Ocp-Apim-Subscription-Key": constants.OCP_APIM_SUBSCRIPTION_KEY,
@@ -14,6 +13,7 @@ const createUser = (referenceId:String) => {
         "providerCallbackHost": constants.PROVIDER_CALL_BACK_HOST
     }
     return new Promise(async (resolve, reject) => {
+        
         try {
             let res = await axios.post(constants.URLS.CREATE_USER, body, options)
             resolve(res)
@@ -64,7 +64,7 @@ const createAPIKey = (referenceId:String) =>{
     })
 }
 
-module.exports = {
+export default {
     createUser,
     getUserInfo,
     createAPIKey

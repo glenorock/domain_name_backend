@@ -1,6 +1,6 @@
 import { Logger } from "../../utils/logger"
-const pay =  (number:String,cost:Number) =>{
+const pay =  (number:string,cost:number) =>{
 
 }
 
-module.exports = {pay}
+export {pay}

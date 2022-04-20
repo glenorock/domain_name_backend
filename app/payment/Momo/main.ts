@@ -1,13 +1,12 @@
-const api = require('./API/app')
-const constants = require('./API/constants')
-const json = require('../../utils/json')
-const config = require('config')
-import { Logger } from "../../utils/logger"
+import api from './API/app'
+import constants from './API/constants'
+import json from '../../utils/json'
+import config from 'config'
 
 const createSandboxUser = () => {
   let user:any = {}
   return new Promise((resolve, reject) => {
-    api.getReferenceId(constants.URLS.GENERATE_UUID).then((value:any) => {
+    api.getReferenceId().then((value:any) => {
       user.reference_id = value
       api.createUser(constants.URLS.CREATE_USER, value).then(() => {
         api.getUser(user.reference_id).then((value:any) => {
@@ -83,7 +82,7 @@ const pay = (number:String, amount:Number) => {
   })
 }
 
-module.exports = {
+export {
   createSandboxUser,
   pay,
   generateAutorisationToken,

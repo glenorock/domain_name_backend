@@ -1,4 +1,4 @@
-module.exports = {
+export default {
     getReferenceId : require('./referenceId').generateReferenceId,
     createUser : require('./user').createUser,
     getUser: require('./user').getUserInfo,

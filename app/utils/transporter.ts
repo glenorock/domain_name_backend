@@ -1,26 +1,21 @@
-import { Logger } from "./logger"
-const config = require('config')
-const Net = require('net')
+import config from 'config'
+import * as Net from 'net'
 
-const host = config.get("cocca.host")
-const port = config.get("cocca.port")
+const host = String(config.get("cocca.host"))
+const port = Number(config.get("cocca.port"))
 
-const send = (message:string) => {
+const send = (message: string) => {
     const client = new Net.Socket()
     return new Promise((resolve) => {
-        client.connect({
-            port: port,
-            host: host
-        }, () => {
+        client.connect(port, host, () => {
             console.log('TCP connection established with the server.');
             client.write(message)
-            client.on('data', function (chunk:any) {
+            client.on('data', function (chunk: any) {
                 let result = chunk.toString()
                 client.end()
                 resolve(result)
             });
         })
-
     })
 }
 

@@ -1,8 +1,6 @@
-import { Logger } from "../utils/logger"
-
 import fs from 'fs-extra'
 import config from 'config'
-
+import * as path from 'path'
 
 const checkConstitution = (domain:string) =>{
     let reg = RegExp(/^[a-zA-Z][a-zA-Z0-9_][a-zA-Z0-9_]*[a-zA-Z0-9]$/)
@@ -14,7 +12,7 @@ const checkLength = (domain:string) =>{
     return reg.test(String(domain))
 }
 
-let filePath = String(config.get("path.root")).concat("\\").concat(config.get("path.root"))
+let filePath = path.join(config.get("path.root"),config.get("path.blacklist"))
 let data = fs.readFileSync(filePath, 'utf8')
 const blacklist = String(data).split("\n")
     

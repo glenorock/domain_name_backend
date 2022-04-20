@@ -1,5 +1,6 @@
+import * as generator from 'generate-password'
+
 const generatePassword = () => {
-    const generator = require('generate-password');
     let password = generator.generate({
         length: 10,
         numbers: true,
@@ -28,7 +29,7 @@ const generateContactIdentifier = (name:string) => {
 
 }
 
-module.exports = {
+export default {
     generateContactIdentifier,
     generatePassword
 }

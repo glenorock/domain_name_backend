@@ -1,6 +1,6 @@
-import { Logger } from "./logger"
-const fs = require('fs')
-const path = require('path')
+import * as fs from 'fs'
+import * as path from 'path'
+
 const config = require('config')
 const file = require('../config/default.json')
 
@@ -36,4 +36,4 @@ const update = (property:String,value:String)=>{
     });
 }
 
-module.exports = {update}
+export default {update}

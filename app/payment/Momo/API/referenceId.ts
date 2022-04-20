@@ -1,4 +1,4 @@
-const uuid = require('uuid')
+import * as uuid from 'uuid'
 
 const generateReferenceId = () => {
   return new Promise(async (resolve, reject) => {
@@ -10,6 +10,6 @@ const generateReferenceId = () => {
   })
 }
 
-module.exports = {
+export default {
   generateReferenceId
 }

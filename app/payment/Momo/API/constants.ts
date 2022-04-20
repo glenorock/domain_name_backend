@@ -1,6 +1,6 @@
 const host  = "https://sandbox.momodeveloper.mtn.com"
 
-module.exports = {
+export default {
     HOST: host,
     OCP_APIM_SUBSCRIPTION_KEY:"cf4b92034b7141a5b0eb554f13584296",
     PROVIDER_CALL_BACK_HOST: "localhost",

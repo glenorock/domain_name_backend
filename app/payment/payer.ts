@@ -1,12 +1,12 @@
-const momo = require('./Momo/main')
-const om = require('./OM/main')
+import * as momo from './Momo/main'
+import * as om from './OM/main'
 
 const options = {
-    PayWithMomo: (number:String,cost:Number) => momo.pay(number,cost),
-    PayWithOM : (number:String,cost:Number) => om.pay(number,cost)
+    PayWithMomo: (number:string,cost:number) => momo.pay(number,cost),
+    PayWithOM : (number:string,cost:number) => om.pay(number,cost)
 }
 
-const pay = (number:String,cost:Number) =>{
+const pay = (number:string,cost:number) =>{
     return options.PayWithMomo(number,cost)
 }
 

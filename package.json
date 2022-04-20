@@ -24,6 +24,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/node": "^17.0.25",
     "@types/ping": "^0.4.1",
+    "@types/uuid": "^8.3.4",
     "@types/xml-js": "^1.0.0",
     "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
