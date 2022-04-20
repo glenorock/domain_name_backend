@@ -89,7 +89,7 @@ const update = (domain:Domain) =>{
     return `update messages for ${domain}`
 }
 
-module.exports = {
+export default {
     check,
     info,
     create,

@@ -1,5 +1,5 @@
-import { Host } from "../../models/hosts"
-const config = require('config')
+import config from "config"
+
 let clientId = config.get("cocca.auth.client")
 let password = config.get("cocca.auth.password")
 let clTRID = config.get("cocca.clTRID")
@@ -52,7 +52,7 @@ const logout = () => {
     </epp>`
 }
 
-module.exports = {
+export default {
     hello,
     login,
     logout,

@@ -1,6 +1,7 @@
-const config = require('config')
-let clTRID = config.get("cocca.clTRID")
+import config from 'config'
 import { Contact } from "../../../models/contact"
+
+let clTRID = config.get("cocca.clTRID")
 
 
 const checkById = (id:String) => {
@@ -115,7 +116,7 @@ const update = (contact:Contact) => {
     </epp>`
 }
 
-module.exports = {
+export default {
     checkByEmail,
     checkById,
     getInfoByEmail,

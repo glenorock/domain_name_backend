@@ -1,6 +1,7 @@
 const eppSession = require('../../client/session/session')
 const eppContact = require("../../client/object/contact/contact")
 import { Contact } from "../../models/contact"
+
 const getContacts = (contacts:Contact[]) => {
     return new Promise((resolve, reject) => {
         

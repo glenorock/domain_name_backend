@@ -1,5 +1,3 @@
-const controller = {
+export const controller = {
     
 }
-
-module.exports = controller

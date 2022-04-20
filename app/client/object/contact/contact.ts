@@ -1,8 +1,8 @@
-const Messages = require('./messages')
-const transporter = require('../../../utils/transporter')
+import Messages from './messages'
 import { Contact } from "../../../models/contact"
+import transporter from '../../../utils/transporter'
 
-const contact = {
+export default {
     checkById: (id:String) => {
         return transporter.send(Messages.checkById(id))
     },
@@ -22,5 +22,3 @@ const contact = {
         return transporter.send(Messages.update(contact))
     }
 }
-
-module.exports = contact

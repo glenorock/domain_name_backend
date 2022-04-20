@@ -1,8 +1,7 @@
-const Messages = require('./messages')
-const transporter = require('../../utils/transporter')
-import { Logger } from "../../utils/logger"
+import Messages from './messages'
+import transporter from "../../utils/transporter"
 
-const Session = {
+export default {
     login: () => {
         return transporter.send(Messages.login())
     },
@@ -14,4 +13,3 @@ const Session = {
     }
 }
 
-module.exports = Session
