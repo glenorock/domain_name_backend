@@ -1,10 +1,11 @@
-const mailer = require('../../mail/mailer')
-const eppSession = require('../../client/session/session')
-const eppContact = require("../../client/object/contact/contact")
+import mailer from '../../mail/mailer'
+import eppSession from '../../client/session/session'
+import eppContact  from "../../client/object/contact/contact"
 import { Contact } from "../../models/contact"
+import { EventTypes, Event } from '../../models/event'
+
 const createContactIfNotExists = (contact: Contact) => {
     return new Promise((resolve, reject) => {
-
         eppSession.hello().then(() => {
             console.log("Connected to epp server: ")
             eppSession.login().then(() => {
@@ -12,7 +13,7 @@ const createContactIfNotExists = (contact: Contact) => {
                     if (res.exists) {
                         eppContact.create(contact).then((res: any) => {
                             eppSession.logout().then(() => {
-                                mailer.sendMail("create:contact", contact.email)
+                                mailer.sendMail({type:EventTypes.ContactCreation,data:""}, [contact.email])
                                 resolve(res)
                             }).catch((err: any) => {
                                 reject(err)
@@ -50,6 +51,6 @@ const createContacts = (contacts: Contact[]) => {
     })
 }
 
-module.exports = {
+export default {
     createContacts
 }

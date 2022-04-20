@@ -1,5 +1,5 @@
-const eppSession = require('../../client/session/session')
-const eppDomain = require('../../client/object/domain/domain')
+import eppSession from '../../client/session/session'
+import eppDomain from '../../client/object/domain/domain'
 
 const whois = (name:string) => {
     return new Promise((resolve, reject) => {
