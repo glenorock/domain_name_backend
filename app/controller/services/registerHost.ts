@@ -1,5 +1,5 @@
-import eppSession from '../../client/session/session'
-import eppHost from '../../client/object/host/host'
+const eppSession = require('../../client/session/session')
+const eppHost = require('../../client/object/host/host')
 import { Host } from "../../models/hosts"
 
 const registerOne = (host:Host) => {
@@ -36,6 +36,6 @@ const register = (hosts:Host[]) => {
     })
 }
 
-export default {
+module.exports = {
     register
 }

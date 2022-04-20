@@ -10,4 +10,4 @@ const pay = (number:string,cost:number) =>{
     return options.PayWithMomo(number,cost)
 }
 
-export default {pay}
+module.exports = {pay}

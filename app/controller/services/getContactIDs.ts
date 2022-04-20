@@ -1,6 +1,5 @@
-import eppSession from '../../client/session/session'
-import eppContact  from "../../client/object/contact/contact"
-
+const eppSession = require('../../client/session/session')
+const eppContact = require("../../client/object/contact/contact")
 import { Contact } from "../../models/contact"
 
 const getContacts = (contacts:Contact[]) => {
@@ -11,7 +10,7 @@ const getContacts = (contacts:Contact[]) => {
             console.log("Connected to epp server: ")
             eppSession.login().then(() => {
                 contacts.forEach((contact) => {
-                    promisses.push(eppContact.getInfoByEmail(contact.email))
+                    promisses.push(eppContact.getInfoByEmail(contact))
                 })
                 Promise.all(promisses).then((res) => {
                     eppSession.logout().then(() => {
@@ -31,6 +30,6 @@ const getContacts = (contacts:Contact[]) => {
     })
 }
 
-export default {
+module.exports = {
     getContacts
 }
