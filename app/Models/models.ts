@@ -1,4 +1,3 @@
-
 type Contact = {
     id: string,
     postalInfo: {
@@ -7,6 +6,7 @@ type Contact = {
         addr: {
             street: string[],
             city: string,
+            sp: string,
             pc: string,
             cc: string,
         }
@@ -16,21 +16,19 @@ type Contact = {
     email: string,
 }
 
+enum IpAddresseType {
+    "v4",
+    "v6"
+}
+
 type Host = {
     name: string,
-    ipv4: String[],
-    ipv6: string
+    addr: {
+        type: IpAddresseType,
+        addresse: string
+    }[],
 }
 
-type Domain = {
-    name: string,
-    period: number,
-    client: string,
-    hosts: Host[]
-    contactAdmin: Contact,
-    contactTech: Contact,
-    password: string,
-    expDate?: Date
-}
 
-export { Contact, Host, Domain}
+
+export { Contact, Host, Domain,IpAddresseType}

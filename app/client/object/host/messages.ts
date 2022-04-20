@@ -28,10 +28,11 @@ const create = (host:Host) =>{
                 <host:create xmlns:host="urn:ietf:params:xml:ns:host-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:host-1.0
     host-1.0.xsd">
                     <host:name> ${host.name} </host:name>
-                    ${host.ipv4.forEach((ip) =>{
-                        return `<host:addr ip="v4"> ${ip} </host:addr>`
-                    })}
-                    <host:addr ip="v6">${host.ipv6}</host:addr>
+                    ${
+                        host.addr.forEach((add) =>{
+                            return `<host:addr ip=${add.type}> ${add.addresse} </host:addr>`
+                        })    
+                    }
                 </host:create>
             </create>
             <clTRID>${clTRID}</clTRID>
@@ -64,10 +65,18 @@ const update = (host:Host) =>{
                 <host:update xmlns:host="urn:ietf:params:xml:ns:host-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:host-1.0 host-1.0.xsd">
                     <host:name>${host.name}</host:name>
                     <host:add>
-                        <host:addr ip="v4">${host.ipv4}</host:addr>
+                    ${
+                        host.addr.forEach((add) =>{
+                            return `<host:addr ip=${add.type}> ${add.addresse} </host:addr>`
+                        })    
+                    }
                     </host:add>
                     <host:rem>
-                        <host:addr ip="v6">${host.ipv6}</host:addr>
+                    ${
+                        host.addr.forEach((add) =>{
+                            return `<host:addr ip=${add.type}> ${add.addresse} </host:addr>`
+                        })    
+                    }
                     </host:rem>
                 </host:update>
             </update>
