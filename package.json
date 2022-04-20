@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine --config=./spec/support/jasmine.json",
-    "start": "nodemon ./index.js",
+    "start": "nodemon ./index.ts",
     "build": "tsc --project ./"
   },
   "repository": {
@@ -48,5 +48,9 @@
     "util": "^0.12.4",
     "uuid": "^8.3.2",
     "xml-js": "^1.6.11"
+  },
+  "devDependencies": {
+    "@types/jasmine": "^4.0.3",
+    "jasmine": "^4.1.0"
   }
 }

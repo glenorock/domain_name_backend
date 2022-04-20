@@ -1,30 +1,30 @@
 type Contact = {
-    id: String,
-    name: String,
-    org: String,
-    street: Array<String>,
-    city: String,
-    pc: String,
-    cc: String,
-    voice: String,
-    fax: String,
-    email: String,
+    id: string,
+    name: string,
+    org: string,
+    street: string[],
+    city: string,
+    pc: string,
+    cc: string,
+    voice: string,
+    fax: string,
+    email: string,
 }
 
 type Host = {
-    name: String,
-    ipv4: Array<String>,
-    ipv6: String
+    name: string,
+    ipv4: String[],
+    ipv6: string
 }
 
 type Domain = {
-    name: String,
-    period: Number,
-    client: String,
-    hosts: Array<Host>
+    name: string,
+    period: number,
+    client: string,
+    hosts: Host[]
     contactAdmin: Contact,
     contactTech: Contact,
-    password: String,
+    password: string,
     expDate?: Date
 }
 
