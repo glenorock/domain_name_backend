@@ -45,13 +45,20 @@ const create = (domain: Domain) =>{
                     <domain:name>${domain.name}</domain:name>
                     <domain:period unit="y">${domain.period}</domain:period>
                     <domain:ns>
-                        <domain:hostObj>${domain.hosts[0].name}</domain:hostObj>
+                        ${
+                            domain.ns.forEach((host) =>{
+                                return `<domain:hostObj>${host.name}</domain:hostObj>`
+                            })
+                        }
                     </domain:ns>
-                    <domain:registrant>${domain.client}</domain:registrant>
-                    <domain:contact type="admin">${domain.contactAdmin.id}</domain:contact>
-                    <domain:contact type="tech">${domain.contactTech.id}</domain:contact>
+                    <domain:registrant>${domain.registrant}</domain:registrant>
+                    ${
+                        domain.contact.forEach((contact) =>{
+                            return `<domain:contact type="${contact.type}">${contact.value}</domain:contact>`
+                        })
+                    }
                     <domain:authInfo>
-                        <domain:pw>${domain.password}</domain:pw>
+                        <domain:pw>${domain.authInfo.pw}</domain:pw>
                     </domain:authInfo>
                 </domain:create>
             </create>
@@ -69,7 +76,7 @@ const renew = (domain:Domain,period:Number) =>{
                 <domain:renew xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
     domain-1.0.xsd">
                     <domain:name>${domain.name}</domain:name>
-                    <domain:curExpDate>${domain.expDate}</domain:curExpDate>
+                    <domain:curExpDate>${domain.curExpDate}</domain:curExpDate>
                     <domain:period unit="y">${period}</domain:period>
                 </domain:renew>
             </renew>
