@@ -24,7 +24,7 @@ const checkOperator = (phone:string) =>{
     }
 }
 
-module.exports = {
+export default {
     checkLength,
     checkNumber,
     checkOperator

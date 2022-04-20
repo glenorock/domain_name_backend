@@ -1,5 +1,5 @@
 import { Host, IpAddresse } from "../../../models/models"
-const config = require('config')
+import config from 'config'
 
 let clTRID = config.get("cocca.clTRID")
 

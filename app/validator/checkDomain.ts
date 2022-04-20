@@ -1,7 +1,8 @@
 import { Logger } from "../utils/logger"
-const fs = require('fs')
-const path = require('path')
-const config = require('config')
+
+import fs from 'fs-extra'
+import config from 'config'
+
 
 const checkConstitution = (domain:string) =>{
     let reg = RegExp(/^[a-zA-Z][a-zA-Z0-9_][a-zA-Z0-9_]*[a-zA-Z0-9]$/)
@@ -13,7 +14,7 @@ const checkLength = (domain:string) =>{
     return reg.test(String(domain))
 }
 
-let filePath = path.join(config.get("path.root"),config.get("path.blacklist"))
+let filePath = String(config.get("path.root")).concat("\\").concat(config.get("path.root"))
 let data = fs.readFileSync(filePath, 'utf8')
 const blacklist = String(data).split("\n")
     
@@ -26,4 +27,4 @@ const checkWhiteListed = (domain:string) => {
     return true
 }
 
-module.exports = {checkConstitution,checkWhiteListed,checkLength}
+export default {checkConstitution,checkWhiteListed,checkLength}

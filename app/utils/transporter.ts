@@ -24,6 +24,6 @@ const send = (message:string) => {
     })
 }
 
-module.exports = {
+export default {
     send
 }
