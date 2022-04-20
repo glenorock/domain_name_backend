@@ -1,13 +1,9 @@
-const Genrator = require('./generator')
-const mailTransporter = require('./transporter')
-import { Event } from "./event"
+import Generator from './generator'
+import mailTransporter from './transporter'
+import { Event } from '../models/event'
 
-const sendMail = (_event:Event, _receiver:String) => {
-    let generator = Genrator[_event]
-    let subject = generator.message
-    let message = generator.parse()
-    let receiver = _receiver
-    return mailTransporter.send(subject, message, receiver)
+const sendMail = (_event:Event, _receivers:string[]) => {
+    return mailTransporter.send(Generator.generator(_event,_receivers))
 }
 
 module.exports = {sendMail}
