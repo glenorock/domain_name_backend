@@ -1,7 +1,8 @@
 enum EventTypes {
-    AccountCreation = "AccountCreation",
-    DomainCreation = "DomainCreation",
-    DomainUpdate =  "DomainUpdate",
+    AccountCreation,
+    DomainCreation,
+    DomainUpdate,
+    ContactCreation
 }
 
 type Event = {

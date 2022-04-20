@@ -6,4 +6,4 @@ const sendMail = (_event:Event, _receivers:string[]) => {
     return mailTransporter.send(Generator.generator(_event,_receivers))
 }
 
-module.exports = {sendMail}
+export default {sendMail}
