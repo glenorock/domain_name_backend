@@ -68,7 +68,7 @@ const getInfoByEmail = (email:String) => {
 }
 
 const create = (contact:Contact) => {
-    let streets = Array(contact.street)
+    let streets = contact.postalInfo.addr.street
     let street = ''
     streets.forEach((ele) => {
         street.concat(`<contact:street>${ele}</contact:street> \n`)
@@ -81,13 +81,13 @@ const create = (contact:Contact) => {
                 <contact:create xmlns:contact="urn:ietf:params:xml:ns:contact-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:contact-1.0 contact-1.0.xsd">
                     <contact:id>${contact.id}</contact:id>
                     <contact:postalInfo type="loc">
-                        <contact:name>${contact.name}</contact:name>
-                        <contact:org>${contact.org}</contact:org>
+                        <contact:name>${contact.postalInfo.name}</contact:name>
+                        <contact:org>${contact.postalInfo.org}</contact:org>
                         <contact:addr>
                             ${street}
-                            <contact:city>${contact.city}</contact:city>
-                            <contact:pc>${contact.pc}</contact:pc>
-                            <contact:cc>${contact.cc}</contact:cc>
+                            <contact:city>${contact.postalInfo.addr.city}</contact:city>
+                            <contact:pc>${contact.postalInfo.addr.pc}</contact:pc>
+                            <contact:cc>${contact.postalInfo.addr.cc}</contact:cc>
                         </contact:addr>
                     </contact:postalInfo>
                     <contact:voice x="">${contact.voice}</contact:voice>

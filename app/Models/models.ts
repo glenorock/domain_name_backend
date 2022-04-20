@@ -1,11 +1,16 @@
+
 type Contact = {
     id: string,
-    name: string,
-    org: string,
-    street: string[],
-    city: string,
-    pc: string,
-    cc: string,
+    postalInfo: {
+        name: string,
+        org: string,
+        addr: {
+            street: string[],
+            city: string,
+            pc: string,
+            cc: string,
+        }
+    }
     voice: string,
     fax: string,
     email: string,
@@ -28,4 +33,4 @@ type Domain = {
     expDate?: Date
 }
 
-export {Contact,Host,Domain}
+export { Contact, Host, Domain}
