@@ -1,6 +1,6 @@
 const config = require('config')
 let clTRID = config.get("cocca.clTRID")
-import { Contact } from "../../../models/models"
+import { Contact } from "../../../models/contact"
 
 
 const checkById = (id:String) => {

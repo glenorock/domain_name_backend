@@ -1,4 +1,4 @@
-import { Host, IpAddresse } from "../../../models/models"
+import { Host, IpAddresse, } from "../../../models/hosts"
 import Messages from './messages'
 import transporter from "../../../utils/transporter"
 
