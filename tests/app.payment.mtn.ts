@@ -1,4 +1,4 @@
-const mtn = require('../app/payment/Momo/main')
+import *  as mtn from '../app/payment/Momo/main'
 
 // mtn.createSandboxUser().then((out) =>{console.log(out)})
 
@@ -6,6 +6,6 @@ const mtn = require('../app/payment/Momo/main')
 //     console.log(out)
 // })
 
-mtn.requestToPay("+237683293295").then((out) =>{
+mtn.requestToPay("+237683293295").then((out:any) =>{
     console.log(out)
 })

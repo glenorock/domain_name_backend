@@ -1,4 +1,4 @@
-const generator = require('../app/utils/generator')
+import generator from '../app/utils/generator'
 
 console.log(generator.generateContactIdentifier("Otang Glen Orock"))
 

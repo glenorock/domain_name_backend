@@ -1,4 +1,4 @@
-const epp_session = require('../app/client/session/session')
+import epp_session from '../app/client/session/session'
 
 epp_session.hello().then((res) =>{
     console.log(res)
