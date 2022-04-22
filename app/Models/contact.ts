@@ -1,6 +1,12 @@
+enum PostalInfoType {
+    INT = "int",
+    LOC = "loc"
+}
+
 type Contact = {
     id: string,
     postalInfo: {
+        type: PostalInfoType
         name: string,
         org: string,
         addr: {
@@ -16,4 +22,4 @@ type Contact = {
     email: string,
 }
 
-export {Contact}
+export {Contact,PostalInfoType}

@@ -3,23 +3,27 @@ const config = require('config')
 
 let clTRID = config.get("cocca.clTRID")
 
-const check = (name:String) =>{
+const check = (names:String[]) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
-        <command>
-            <check>
-                <domain:check xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
-    domain-1.0.xsd">
-                    <domain:name>${name}</domain:name>
-                </domain:check>
-            </check>
-            <clTRID>${clTRID}</clTRID>
-        </command>
-    </epp>`
+        <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+            <command>
+                <check>
+                    <domain:check xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
+        domain-1.0.xsd">
+                        ${
+                            names.forEach((name) =>{
+                                return `<domain:name>${name}</domain:name>`
+                            })
+                        }
+                    </domain:check>
+                </check>
+                <clTRID>${clTRID}</clTRID>
+            </command>
+        </epp>`
 }
 
-const info = (name:String) =>{
+const info = (names:String[]) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -27,7 +31,11 @@ const info = (name:String) =>{
             <info>
                 <domain:info xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
     domain-1.0.xsd">
-                    <domain:name hosts="all">${name}</domain:name>
+                    ${
+                        names.forEach((name) =>{
+                            return `<domain:name hosts="all">${name}</domain:name>`
+                        })
+                    }
                 </domain:info>
             </info>
             <clTRID>${clTRID}</clTRID>
@@ -89,10 +97,24 @@ const update = (domain:Domain) =>{
     return `update messages for ${domain}`
 }
 
+const addProperty  = (domain:Domain) =>{
+    return `message`
+}
+
+
+const removeProperty  = (domain:Domain) =>{
+    return `message`
+}
+
+const transfer = (domain:Domain) =>{
+    return `transfer message for ${domain}`
+}
+
 export default {
     check,
     info,
     create,
     renew,
-    update
+    update,
+    transfer
 }
