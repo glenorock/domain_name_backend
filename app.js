@@ -9,19 +9,15 @@ const hosts_1 = require("./app/models/hosts");
 const contact_1 = require("./app/models/contact");
 const generator_1 = __importDefault(require("./app/utils/generator"));
 const controller_1 = __importDefault(require("./app/controller/controller"));
+const controller_2 = __importDefault(require("./app/controller/controller"));
 const whois = (req, res) => {
-    try {
-        let body = req.body;
-        let names = body.names;
-        controller_1.default.whois(names).then((out) => {
-            res.status(200).send(out);
-        }).catch((err) => {
-            res.status(400).send(err);
-        });
-    }
-    catch (err) {
+    let body = req.body;
+    let names = body.names;
+    controller_1.default.whois(names).then((out) => {
+        res.status(200).send(out);
+    }).catch((err) => {
         res.status(400).send(err);
-    }
+    });
 };
 const registerDomain = (req, res) => {
     let body = req.body;
@@ -76,9 +72,16 @@ const registerDomain = (req, res) => {
             pw: body.authInfo.pw,
         }
     };
-    res.status(200).json(domain);
+    controller_2.default.registerDomain(domain, body.payer).then((result) => {
+        res.status(200).json({ domain: domain, body: body.payer });
+    }).catch((err) => {
+        res.send(err);
+    });
+};
+const renewDomain = (req, res) => {
 };
 exports.default = {
     whois,
-    registerDomain
+    registerDomain,
+    renewDomain
 };

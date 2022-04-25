@@ -7,19 +7,16 @@ import { Contact, PostalInfoType } from './app/models/contact'
 
 import Generator from './app/utils/generator'
 import Controller from './app/controller/controller'
+import controller from './app/controller/controller'
 
 const whois = (req: Express.Request, res: Express.Response) => {
-    try {
-        let body = req.body
-        let names = body.names
-        Controller.whois(names).then((out) => {
-            res.status(200).send(out)
-        }).catch((err) => {
-            res.status(400).send(err)
-        })
-    } catch (err) {
+    let body = req.body
+    let names = body.names
+    Controller.whois(names).then((out) => {
+        res.status(200).send(out)
+    }).catch((err) => {
         res.status(400).send(err)
-    }
+    })
 }
 
 const registerDomain = (req: Express.Request, res: Express.Response) => {
@@ -77,11 +74,20 @@ const registerDomain = (req: Express.Request, res: Express.Response) => {
             pw: body.authInfo.pw,
         }
     }
-    res.status(200).json(domain)
+    controller.registerDomain(domain,body.payer).then((result) =>{
+        res.status(200).json({domain:domain,payer:body.payer})
+    }).catch((err) =>{
+        res.send(err)
+    })
     
+}
+
+const renewDomain = (req:Express.Request, res: Express.Response)  =>{
+       
 }
 
 export default {
     whois,
-    registerDomain
+    registerDomain,
+    renewDomain
 }
