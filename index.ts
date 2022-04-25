@@ -6,14 +6,7 @@ import * as session from 'express-session'
 
 const app = express()
 
-
-const requestTime = function (req:express.Request, res:express.Response, next:any) {
-    req.body.requestTime = Date.now()
-    next()
-}
-
-
-app.use(requestTime)
+app.use(express.json())
 
 
 app.get('/', (req:any, res:any) => {
@@ -22,6 +15,8 @@ responseText += `<small>Requested at: ${req.requestTime}</small>`
 res.send(responseText)
 })
 
-app.post('\whois',api.whois)
+// app.post('/whois',api.whois)
+
+app.post('/register',api.registerDomain)
 
 app.listen(config.get("server.port"))

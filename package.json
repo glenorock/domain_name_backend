@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine --config=./spec/support/jasmine.json",
-    "start": "nodemon ./index.ts",
+    "start": "nodemon ./index.js",
     "build": "tsc --project ./"
   },
   "repository": {
