@@ -1,5 +1,5 @@
-import eppSession from '../../client/session/session'
-import eppDomain from '../../client/object/domain/domain'
+import * as eppSession from '../../client/session/session'
+import * as eppDomain from '../../client/object/domain/domain'
 
 import { Domain, DomainPeriodUnits } from '../../models/domain'
 
@@ -31,4 +31,4 @@ const renew = (domain: Domain, period:{unit:DomainPeriodUnits,value:number}) => 
     })
 }
 
-export default {renew}
+export {renew}

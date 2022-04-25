@@ -1,10 +1,10 @@
-import  mailer from '../../mail/mailer'
-import payer from '../../payment/payer'
-import eppSession from '../../client/session/session'
-import eppContact  from "../../client/object/contact/contact"
+import  * as mailer from '../../mail/mailer'
+import * as payer from '../../payment/payer'
+import * as eppSession from '../../client/session/session'
+import * as eppContact  from "../../client/object/contact/contact"
 
-import eppHost from '../../client/object/host/host'
-import  eppDomain from '../../client/object/domain/domain'
+import * as eppHost from '../../client/object/host/host'
+import  * as eppDomain from '../../client/object/domain/domain'
 import { Domain } from "../../models/domain"
 
 const register = (data:Domain,payerNumber:string) => {
@@ -17,6 +17,6 @@ const register = (data:Domain,payerNumber:string) => {
     })
 }
 
-export default {
+export {
     register
 }

@@ -1,6 +1,6 @@
-import mailer from '../../mail/mailer'
-import eppSession from '../../client/session/session'
-import eppContact  from "../../client/object/contact/contact"
+import * as mailer from '../../mail/mailer'
+import * as eppSession from '../../client/session/session'
+import * as eppContact  from "../../client/object/contact/contact"
 import { Contact } from "../../models/contact"
 import { EventTypes, Event } from '../../models/event'
 
@@ -51,6 +51,6 @@ const createContacts = (contacts: Contact[]) => {
     })
 }
 
-export default {
+export {
     createContacts
 }

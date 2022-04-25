@@ -1,4 +1,4 @@
-import Messages from './messages'
+import * as Messages from './messages'
 import { Contact } from "../../../models/contact"
 import * as transporter from '../../../utils/transporter'
 

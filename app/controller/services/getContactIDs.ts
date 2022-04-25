@@ -1,5 +1,5 @@
-import eppSession from '../../client/session/session'
-import eppContact  from "../../client/object/contact/contact"
+import * as eppSession from '../../client/session/session'
+import * as eppContact  from "../../client/object/contact/contact"
 
 import { Contact } from "../../models/contact"
 
@@ -31,6 +31,6 @@ const getContacts = (contacts:Contact[]) => {
     })
 }
 
-export default {
+export {
     getContacts
 }
