@@ -3,16 +3,16 @@ import { Contact } from "../../../models/contact"
 import transporter from '../../../utils/transporter'
 
 export default {
-    checkById: (id:String) => {
+    checkById: (id:string) => {
         return transporter.send(Messages.checkById(id))
     },
-    checkByEmail: (email:String) => {
+    checkByEmail: (email:string) => {
         return transporter.send(Messages.checkByEmail(email))
     },
-    getInfoByEmail: (email:String) => {
+    getInfoByEmail: (email:string) => {
         return transporter.send(Messages.getInfoByEmail(email))
     },
-    getInfoById: (id:String) => {
+    getInfoById: (id:string) => {
         return transporter.send(Messages.getInfoById(id))
     },
     create: (contact:Contact) => {
@@ -20,5 +20,8 @@ export default {
     },
     update: (contact:Contact) => {
         return transporter.send(Messages.update(contact))
+    },
+    getDomains: (contactId:string) =>{
+        return transporter.send(Messages.getDomains(contactId))
     }
 }

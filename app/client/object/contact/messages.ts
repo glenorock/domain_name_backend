@@ -50,7 +50,7 @@ const getInfoById = (id:String) => {
     </epp>`
 }
 
-const getInfoByEmail = (email:String) => {
+const getInfoByEmail = (email:string) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -64,6 +64,22 @@ const getInfoByEmail = (email:String) => {
             <clTRID>${clTRID}</clTRID>
         </command>
     </epp>`
+}
+
+const getDomains = (id:string) => {
+    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+        <command>
+            <info>
+                <domain:info xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
+    domain-1.0.xsd">
+                    <domain:contact ">${id}</domain:contact>
+                </domain:info>
+            </info>
+            <clTRID>${clTRID}</clTRID>
+        </command>
+    </epp>`;
 }
 
 const create = (contact:Contact) => {
@@ -145,5 +161,6 @@ export default {
     getInfoByEmail,
     getInfoById,
     create,
-    update
+    update,
+    getDomains
 }
