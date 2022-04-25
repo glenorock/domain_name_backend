@@ -63,6 +63,21 @@ const getInfoByEmail = (email) => {
         </command>
     </epp>`;
 };
+const getDomains = (id) => {
+    return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+    <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
+        <command>
+            <info>
+                <domain:info xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
+    domain-1.0.xsd">
+                    <domain:contact ">${id}</domain:contact>
+                </domain:info>
+            </info>
+            <clTRID>${clTRID}</clTRID>
+        </command>
+    </epp>`;
+};
 const create = (contact) => {
     let streets = contact.postalInfo.addr.street;
     let street = '';
@@ -138,5 +153,6 @@ exports.default = {
     getInfoByEmail,
     getInfoById,
     create,
-    update
+    update,
+    getDomains
 };

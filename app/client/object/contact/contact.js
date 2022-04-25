@@ -23,5 +23,8 @@ exports.default = {
     },
     update: (contact) => {
         return transporter_1.default.send(messages_1.default.update(contact));
+    },
+    getDomains: (contactId) => {
+        return transporter_1.default.send(messages_1.default.getDomains(contactId));
     }
 };

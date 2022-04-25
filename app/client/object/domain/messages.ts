@@ -1,4 +1,4 @@
-import { Domain } from "../../../models/domain"
+import { Domain, DomainPeriodUnits } from "../../../models/domain"
 const config = require('config')
 
 let clTRID = config.get("cocca.clTRID")
@@ -75,7 +75,7 @@ const create = (domain: Domain) =>{
     </epp>`
 }
 
-const renew = (domain:Domain,period:Number) =>{
+const renew = (domain:Domain,period:{unit:DomainPeriodUnits,value:number}) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -85,7 +85,7 @@ const renew = (domain:Domain,period:Number) =>{
     domain-1.0.xsd">
                     <domain:name>${domain.name}</domain:name>
                     <domain:curExpDate>${domain.curExpDate}</domain:curExpDate>
-                    <domain:period unit="y">${period}</domain:period>
+                    <domain:period unit="${period.unit}">${period.value}</domain:period>
                 </domain:renew>
             </renew>
             <clTRID>${clTRID}</clTRID>

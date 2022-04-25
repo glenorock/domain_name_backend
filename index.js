@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
     responseText += `<small>Requested at: ${req.requestTime}</small>`;
     res.send(responseText);
 });
-// app.post('/whois',api.whois)
+app.post('/whois', app_1.default.whois);
 app.post('/register', app_1.default.registerDomain);
+app.post('/renew', app_1.default.renewDomain);
 app.listen(config_1.default.get("server.port"));

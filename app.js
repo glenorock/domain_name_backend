@@ -10,17 +10,17 @@ const contact_1 = require("./app/models/contact");
 const generator_1 = __importDefault(require("./app/utils/generator"));
 const controller_1 = __importDefault(require("./app/controller/controller"));
 const controller_2 = __importDefault(require("./app/controller/controller"));
-const whois = (req, res) => {
-    let body = req.body;
+const whois = (request, response) => {
+    let body = request.body;
     let names = body.names;
     controller_1.default.whois(names).then((out) => {
-        res.status(200).send(out);
+        response.status(200).send(out);
     }).catch((err) => {
-        res.status(400).send(err);
+        response.status(400).send(err);
     });
 };
-const registerDomain = (req, res) => {
-    let body = req.body;
+const registerDomain = (request, response) => {
+    let body = request.body;
     let hosts = [];
     body.ns.forEach((ns) => {
         let addr = [];
@@ -73,12 +73,36 @@ const registerDomain = (req, res) => {
         }
     };
     controller_2.default.registerDomain(domain, body.payer).then((result) => {
-        res.status(200).json({ domain: domain, body: body.payer });
+        response.status(200).json({ domain: domain, payer: body.payer });
     }).catch((err) => {
-        res.send(err);
+        response.send(err);
     });
 };
-const renewDomain = (req, res) => {
+const renewDomain = (request, response) => {
+    let body = request.body;
+    let domain = {
+        name: body.domain.name,
+        period: {
+            unit: domain_1.DomainPeriodUnits.YEARS,
+            value: 0
+        },
+        ns: [],
+        registrant: config_1.default.get("cocca.auth.client"),
+        contact: [],
+        authInfo: {
+            pw: "",
+        },
+        curExpDate: body.domain.curExpDate
+    };
+    let period = {
+        unit: (body.period.unit === 'y' || body.period.unit === "Y") ? domain_1.DomainPeriodUnits.YEARS : domain_1.DomainPeriodUnits.MONTHS,
+        value: body.period.value
+    };
+    controller_2.default.renewDomain(domain, period).then((res) => {
+        response.send({ domain: domain, period: period });
+    }).catch(err => {
+        response.send(err);
+    });
 };
 exports.default = {
     whois,

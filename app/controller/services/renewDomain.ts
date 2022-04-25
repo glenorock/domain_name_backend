@@ -1,9 +1,9 @@
 import eppSession from '../../client/session/session'
 import eppDomain from '../../client/object/domain/domain'
 
-import { Domain } from '../../models/domain'
+import { Domain, DomainPeriodUnits } from '../../models/domain'
 
-const renew = (domain: Domain, period: number) => {
+const renew = (domain: Domain, period:{unit:DomainPeriodUnits,value:number}) => {
     return new Promise((resolve, reject) => {
         eppSession.hello().then(() => {
             eppSession.login().then(() => {

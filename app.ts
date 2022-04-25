@@ -9,18 +9,18 @@ import Generator from './app/utils/generator'
 import Controller from './app/controller/controller'
 import controller from './app/controller/controller'
 
-const whois = (req: Express.Request, res: Express.Response) => {
-    let body = req.body
+const whois = (request: Express.Request, response: Express.Response) => {
+    let body = request.body
     let names = body.names
     Controller.whois(names).then((out) => {
-        res.status(200).send(out)
+        response.status(200).send(out)
     }).catch((err) => {
-        res.status(400).send(err)
+        response.status(400).send(err)
     })
 }
 
-const registerDomain = (req: Express.Request, res: Express.Response) => {
-    let body = req.body
+const registerDomain = (request: Express.Request, response: Express.Response) => {
+    let body = request.body
     let hosts: Host[] = []
     body.ns.forEach((ns: any) => {
         let addr: IpAddresse[] = []
@@ -75,15 +75,41 @@ const registerDomain = (req: Express.Request, res: Express.Response) => {
         }
     }
     controller.registerDomain(domain,body.payer).then((result) =>{
-        res.status(200).json({domain:domain,payer:body.payer})
+        response.status(200).json({domain:domain,payer:body.payer})
     }).catch((err) =>{
-        res.send(err)
+        response.send(err)
     })
     
 }
 
-const renewDomain = (req:Express.Request, res: Express.Response)  =>{
-       
+const renewDomain = (request:Express.Request, response: Express.Response)  =>{
+    let body = request.body
+    let domain: Domain = {
+        name: body.domain.name,
+        period: {
+            unit: DomainPeriodUnits.YEARS,
+            value: 0
+        },
+        ns: [],
+        registrant: Config.get("cocca.auth.client"),
+        contact: [],
+        authInfo:{
+            pw: "",
+        },
+        curExpDate: body.domain.curExpDate
+    }
+
+    let period = {
+        unit: (body.period.unit === 'y' || body.period.unit === "Y" ) ? DomainPeriodUnits.YEARS : DomainPeriodUnits.MONTHS,
+        value: body.period.value
+    }
+    
+    controller.renewDomain(domain,period).then((res) =>{
+        response.send({domain:domain,period:period})
+    }).catch(err =>{
+        response.send(err)
+    })
+    
 }
 
 export default {

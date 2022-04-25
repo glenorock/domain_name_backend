@@ -73,7 +73,7 @@ const renew = (domain, period) => {
     domain-1.0.xsd">
                     <domain:name>${domain.name}</domain:name>
                     <domain:curExpDate>${domain.curExpDate}</domain:curExpDate>
-                    <domain:period unit="y">${period}</domain:period>
+                    <domain:period unit="${period.unit}">${period.value}</domain:period>
                 </domain:renew>
             </renew>
             <clTRID>${clTRID}</clTRID>
