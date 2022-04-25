@@ -110,7 +110,7 @@ const transfer = (domain:Domain) =>{
     return `transfer message for ${domain}`
 }
 
-export default {
+export {
     check,
     info,
     create,

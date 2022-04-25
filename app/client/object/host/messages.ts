@@ -109,7 +109,7 @@ const remAddr = (host:Host,addrs:IpAddresse[]) =>{
 }
 
 
-export default {
+export {
     check,
     create,
     info,

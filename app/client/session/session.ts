@@ -1,15 +1,20 @@
 import * as Messages from './messages'
-import transporter from "../../utils/transporter"
+import * as  transporter from "../../utils/transporter"
 
-export default {
-    login: () => {
-        return transporter.send(Messages.login())
-    },
-    logout: () => {
-        return transporter.send(Messages.logout())
-    },
-    hello: () => {
-        return transporter.send(Messages.hello())
-    }
+let login =  () => {
+    return transporter.send(Messages.login())
+}
+
+let logout = () => {
+    return transporter.send(Messages.logout())
+}
+
+let hello =  () => {
+    return transporter.send(Messages.hello())
+}
+export {
+    login,
+    logout,
+    hello
 }
 

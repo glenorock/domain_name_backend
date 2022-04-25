@@ -155,7 +155,7 @@ const update = (contact:Contact) => {
     </epp>`
 }
 
-export default {
+export {
     checkByEmail,
     checkById,
     getInfoByEmail,
