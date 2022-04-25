@@ -52,7 +52,7 @@ const logout = () => {
     </epp>`
 }
 
-export default {
+export {
     hello,
     login,
     logout,

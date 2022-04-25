@@ -80,10 +80,14 @@ const renew = (domain, period) => {
         </command>
     </epp>`;
 };
+
 const update = (domain) => {
+    /**
+     *  This functionality is used solely for the  
+     */
     return `update messages for ${domain}`;
 };
-const addProperty = (domain) => {
+const modifyContact = (domain) => {
     return `message`;
 };
 const removeProperty = (domain) => {

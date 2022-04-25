@@ -1,4 +1,4 @@
-import Messages from './messages'
+import * as Messages from './messages'
 import transporter from "../../utils/transporter"
 
 export default {
