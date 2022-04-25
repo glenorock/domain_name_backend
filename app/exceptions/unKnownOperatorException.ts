@@ -5,4 +5,4 @@ const UnknownOperatorException = () => {
 
 UnknownOperatorException.prototype = Object.create(Error.prototype)
 
-module.exports = UnknownOperatorException
+export { UnknownOperatorException }

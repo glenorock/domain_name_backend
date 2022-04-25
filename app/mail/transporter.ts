@@ -25,4 +25,4 @@ const send = (mail:Mail) => {
   })
 }
 
-export default { send}
+export { send}

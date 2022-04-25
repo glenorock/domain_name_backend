@@ -17,4 +17,4 @@ const generator = (_event:Event,_receivers:string[]) =>{
     }
     return mail
 }
-export default {generator}
+export {generator}
