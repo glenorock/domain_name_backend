@@ -23,11 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.update = void 0;
+exports.addBlacklist = exports.update = void 0;
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const config = require('config');
 const file = require('../config/default.json');
+const backlist = "blacklist";
 let fileName = path.join(config.get("path.root"), config.get("path.conf"));
 const update = (property, value) => {
     let props = String(property).split(".");
@@ -59,3 +60,22 @@ const update = (property, value) => {
     });
 };
 exports.update = update;
+const addBlacklist = (words) => {
+    if (Array.isArray(words)) {
+        words.forEach((word) => {
+            fs.writeFile(backlist, (word + "/n"), { flag: "a+" }, (err) => {
+                if (err)
+                    throw err;
+                console.log(err);
+            });
+        });
+    }
+    else {
+        fs.writeFile(backlist, (words + "/n"), { flag: "a+" }, (err) => {
+            if (err)
+                throw err;
+            console.log('The file is created if not existing!!');
+        });
+    }
+};
+exports.addBlacklist = addBlacklist;

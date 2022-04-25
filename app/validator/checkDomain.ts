@@ -1,8 +1,6 @@
 /**
  * @module Validator.Domain
  * @description This module has as goal to validate the format of the domain name
- * @param domain a string representing the name of the domain
- * 
  */
 
 import fs from 'fs-extra'

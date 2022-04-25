@@ -8,5 +8,11 @@
  * @description Interface for the input validators
  */
 export interface Validator{
+    /**
+     * 
+     * @param input The value you wish to validate
+     * @description checks if the input respects a given criterion
+     * @returns a boolean indicating if the criterion is satisfied 
+     */
     validate(input:string):boolean;
 }
