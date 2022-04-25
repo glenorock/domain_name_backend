@@ -3,6 +3,7 @@ import * as path from 'path'
 
 const config = require('config')
 const file = require('../config/default.json')
+const backlist = "blacklist"
 
 let fileName = path.join(config.get("path.root"),config.get("path.conf"))
 
@@ -36,4 +37,20 @@ const update = (property:String,value:String)=>{
     });
 }
 
-export {update}
+const addBlacklist = (words:(string|string[])) =>{
+    if(Array.isArray(words)){
+        words.forEach((word) =>{
+            fs.writeFile(backlist, (word + "/n"), { flag: "a+" }, (err) => {
+                if (err) throw err;
+                console.log(err);
+            });    
+        })
+    }else{
+        fs.writeFile(backlist, (words + "/n"), { flag: "a+" }, (err) => {
+            if (err) throw err;
+            console.log('The file is created if not existing!!');
+        }); 
+    }
+}
+
+export {update,addBlacklist}
