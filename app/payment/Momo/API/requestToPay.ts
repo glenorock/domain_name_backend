@@ -1,4 +1,4 @@
-import constants from './constants'
+import * as constants from './constants'
 import axios from 'axios'
 
 const requestToPay = (reference_id: String, data: any) => {
@@ -80,7 +80,7 @@ const requestToPayDeliveryNotification = (reference_id: String, message: String)
     })
 }
 
-export default {
+export {
     requestToPay,
     getRequestToPayStatus,
     requestToPayDeliveryNotification

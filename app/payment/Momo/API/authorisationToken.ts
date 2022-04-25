@@ -1,4 +1,4 @@
-import constants from "./constants";
+import * as constants from "./constants";
 import axios from "axios";
 
 const authorisationToken = () => {
@@ -27,4 +27,4 @@ const authorisationToken = () => {
     })
 }
 
-export default { authorisationToken }
+export  { authorisationToken }

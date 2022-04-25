@@ -1,6 +1,6 @@
-import api from './API/app'
-import constants from './API/constants'
-import json from '../../utils/json'
+import * as api from './API/app'
+import * as constants from './API/constants'
+import * as json from '../../utils/json'
 import config from 'config'
 
 const createSandboxUser = () => {

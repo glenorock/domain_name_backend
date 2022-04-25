@@ -10,6 +10,6 @@ const generateReferenceId = () => {
   })
 }
 
-export default {
+export {
   generateReferenceId
 }

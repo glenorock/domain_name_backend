@@ -1,5 +1,5 @@
 import axios from 'axios'
-import constants from './constants'
+import * as constants from './constants'
 
 const createUser = (referenceId:String) => {
     let options:any = {
@@ -64,7 +64,7 @@ const createAPIKey = (referenceId:String) =>{
     })
 }
 
-export default {
+export {
     createUser,
     getUserInfo,
     createAPIKey
