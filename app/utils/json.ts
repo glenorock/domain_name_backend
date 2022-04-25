@@ -12,4 +12,4 @@ const saveToFile = (data: any,file: any) =>{
     })
 }
 
-export default {saveToFile}
+export {saveToFile}

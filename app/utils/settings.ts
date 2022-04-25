@@ -36,4 +36,4 @@ const update = (property:String,value:String)=>{
     });
 }
 
-export default {update}
+export {update}

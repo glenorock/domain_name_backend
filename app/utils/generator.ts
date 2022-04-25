@@ -31,7 +31,7 @@ const generateContactIdentifier = (name:string) => {
 
 }
 
-export default {
+export {
     generateContactIdentifier,
     generatePassword
 }

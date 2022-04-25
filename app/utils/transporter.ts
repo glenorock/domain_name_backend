@@ -53,7 +53,7 @@ const send = (message: string) => {
     })
 }
 
-export default {
+export {
     send,
     connect,
     close
