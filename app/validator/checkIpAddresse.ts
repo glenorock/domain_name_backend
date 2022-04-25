@@ -16,7 +16,7 @@ const isAlive = function (ip: string) {
     })
 }
 
-export default {
+export {
     checkFormat,
     isAlive
 }

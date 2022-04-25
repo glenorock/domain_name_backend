@@ -25,4 +25,4 @@ const checkWhiteListed = (domain:string) => {
     return true
 }
 
-export default {checkConstitution,checkWhiteListed,checkLength}
+export {checkConstitution,checkWhiteListed,checkLength}
