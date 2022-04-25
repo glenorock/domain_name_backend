@@ -112,8 +112,18 @@ const renewDomain = (request:Express.Request, response: Express.Response)  =>{
     
 }
 
+const getContactDomains = (request:Express.Request,response:Express.Response) =>{
+    let id  = request.params.id
+    controller.getContactDomains(id).then((res) =>{
+        response.send({input:id,res:res})
+    }).catch((err) =>{
+        response.send(err)
+    })
+}
+
 export default {
     whois,
     registerDomain,
-    renewDomain
+    renewDomain,
+    getContactDomains
 }

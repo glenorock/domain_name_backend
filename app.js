@@ -104,8 +104,17 @@ const renewDomain = (request, response) => {
         response.send(err);
     });
 };
+const getContactDomains = (request, response) => {
+    let id = request.params.id;
+    controller_2.default.getContactDomains(id).then((res) => {
+        response.send({ input: id, res: res });
+    }).catch((err) => {
+        response.send(err);
+    });
+};
 exports.default = {
     whois,
     registerDomain,
-    renewDomain
+    renewDomain,
+    getContactDomains
 };

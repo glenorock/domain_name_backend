@@ -11,7 +11,11 @@ const renew = (domain: Domain, period:{unit:DomainPeriodUnits,value:number}) => 
 
                 }).then(() =>{
                     eppDomain.renew(domain,period).then((res) =>{
-                        resolve(res)
+                        eppSession.logout().then(() =>{
+                            resolve(res)
+                        }).catch(err =>{
+                            reject(err)
+                        })
                     }).catch(err =>{
                         reject(err)
                     })

@@ -12,7 +12,11 @@ const renew = (domain, period) => {
                 session_1.default.hello().then(() => {
                 }).then(() => {
                     domain_1.default.renew(domain, period).then((res) => {
-                        resolve(res);
+                        session_1.default.logout().then(() => {
+                            resolve(res);
+                        }).catch(err => {
+                            reject(err);
+                        });
                     }).catch(err => {
                         reject(err);
                     });

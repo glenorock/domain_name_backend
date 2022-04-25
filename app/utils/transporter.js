@@ -30,20 +30,50 @@ const config_1 = __importDefault(require("config"));
 const Net = __importStar(require("net"));
 const host = String(config_1.default.get("cocca.host"));
 const port = Number(config_1.default.get("cocca.port"));
-const send = (message) => {
-    const client = new Net.Socket();
-    return new Promise((resolve) => {
+// const send = (message: string) => {
+//     const client = new Net.Socket()
+//     return new Promise((resolve) => {
+//         client.connect(port, host, () => {
+//             console.log('TCP connection established with the server.');
+//             client.write(message)
+//             client.on('data', function (chunk: any) {
+//                 let result = chunk.toString()
+//                 client.end()
+//                 resolve(result)
+//             });
+//         })
+//     })
+// }
+const client = new Net.Socket();
+const connect = () => {
+    return new Promise((resolve, reject) => {
         client.connect(port, host, () => {
             console.log('TCP connection established with the server.');
-            client.write(message);
-            client.on('data', function (chunk) {
-                let result = chunk.toString();
-                client.end();
-                resolve(result);
+            resolve('TCP connection established with the server.');
+            client.on('close', (data) => {
+                console.log(data);
             });
         });
     });
 };
+const close = () => {
+    return new Promise((resolve, reject) => {
+        client.end();
+        console.log("connection ended");
+        resolve("connection ended");
+    });
+};
+const send = (message) => {
+    return new Promise((resolve) => {
+        client.write(message);
+        client.on('data', function (chunk) {
+            let result = chunk.toString();
+            resolve(result);
+        });
+    });
+};
 exports.default = {
-    send
+    send,
+    connect,
+    close
 };

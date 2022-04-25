@@ -21,6 +21,6 @@ app.post('/register',api.registerDomain)
 
 app.post('/renew',api.renewDomain)
 
-
+app.get('/domain/contact/:id',api.getContactDomains)
 
 app.listen(config.get("server.port"))

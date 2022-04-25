@@ -16,4 +16,5 @@ app.get('/', (req, res) => {
 app.post('/whois', app_1.default.whois);
 app.post('/register', app_1.default.registerDomain);
 app.post('/renew', app_1.default.renewDomain);
+app.get('/domain/contact/:id', app_1.default.getContactDomains);
 app.listen(config_1.default.get("server.port"));
