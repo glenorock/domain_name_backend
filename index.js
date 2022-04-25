@@ -1,28 +1,43 @@
-const express = require("express")
-const config = require('config')
-const session = require("express-session")
-
-const session_conf = require("./middleware/session_middleware")
-const check = require('./app/validator/checkDomain')
-
-const app = express()
-
-app.use(session(session_conf.getConfig()))
-
-const requestTime = function (req, res, next) {
-    req.requestTime = Date.now()
-    next()
-}
-
-
-app.use(requestTime)
-
-
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const api = __importStar(require("./app"));
+const config_1 = __importDefault(require("config"));
+const app = (0, express_1.default)();
+app.use(express_1.default.json());
 app.get('/', (req, res) => {
-let responseText = 'Hello World!<br>'
-responseText += '<small>Requested at: ${req.requestTime}</small>'
-check.checkProhibited("test")
-res.send(responseText)
-})
-
-app.listen(config.get("server.port"))
+    let responseText = `Hello World!<br>`;
+    responseText += `<small>Requested at: ${req.requestTime}</small>`;
+    res.send(responseText);
+});
+app.post('/whois', api.whois);
+app.post('/register', api.registerDomain);
+app.post('/renew', api.renewDomain);
+app.get('/domain/contact/:id', api.getContactDomains);
+app.listen(config_1.default.get("server.port"));

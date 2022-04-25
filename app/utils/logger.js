@@ -1,7 +1,6 @@
-const fs = require("fs")
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Logger = void 0;
 class Logger {
-
 }
-
-module.exports = Logger
+exports.Logger = Logger;

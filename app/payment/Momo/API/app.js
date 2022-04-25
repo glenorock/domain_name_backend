@@ -1,10 +1,19 @@
-module.exports = {
-    getReferenceId : require('./referenceId').generateReferenceId,
-    createUser : require('./user').createUser,
-    getUser: require('./user').getUserInfo,
-    createAPIKey: require('./user').createAPIKey,
-    generateAuthentificationToken: require('./authorisationToken').authorisationToken,
-    requestToPay: require('./requestToPay').requestToPay,
-    getrequestToPayStatus: require('./requestToPay').getRequestToPayStatus,
-    requestToPayDeliveryNotification: require('./requestToPay').requestToPayDeliveryNotification
-}
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.requestToPayDeliveryNotification = exports.getrequestToPayStatus = exports.requestToPay = exports.generateAuthentificationToken = exports.createAPIKey = exports.getUser = exports.createUser = exports.getReferenceId = void 0;
+const getReferenceId = require('./referenceId').generateReferenceId;
+exports.getReferenceId = getReferenceId;
+const createUser = require('./user').createUser;
+exports.createUser = createUser;
+const getUser = require('./user').getUserInfo;
+exports.getUser = getUser;
+const createAPIKey = require('./user').createAPIKey;
+exports.createAPIKey = createAPIKey;
+const generateAuthentificationToken = require('./authorisationToken').authorisationToken;
+exports.generateAuthentificationToken = generateAuthentificationToken;
+const requestToPay = require('./requestToPay').requestToPay;
+exports.requestToPay = requestToPay;
+const getrequestToPayStatus = require('./requestToPay').getRequestToPayStatus;
+exports.getrequestToPayStatus = getrequestToPayStatus;
+const requestToPayDeliveryNotification = require('./requestToPay').requestToPayDeliveryNotification;
+exports.requestToPayDeliveryNotification = requestToPayDeliveryNotification;
