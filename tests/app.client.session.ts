@@ -1,5 +1,5 @@
-import epp_session from '../app/client/session/session'
-import transporter from '../app/utils/transporter'
+import  * as epp_session from '../app/client/session/session'
+import  * as transporter from '../app/utils/transporter'
 
 transporter.connect().then(() =>{
     epp_session.hello().then((res) =>{

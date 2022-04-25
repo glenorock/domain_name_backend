@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getDomains = void 0;
 const getDomains = (id) => {
     return new Promise((resolve, reject) => {
         // eppSession.hello().then(() =>{
@@ -29,6 +30,4 @@ const getDomains = (id) => {
         resolve("Get Domain");
     });
 };
-exports.default = {
-    getDomains
-};
+exports.getDomains = getDomains;

@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.logout = exports.login = exports.hello = void 0;
 const config_1 = __importDefault(require("config"));
 let clientId = config_1.default.get("cocca.auth.client");
 let password = config_1.default.get("cocca.auth.password");
@@ -14,6 +15,7 @@ const hello = () => {
         <hello/>
     </epp>`;
 };
+exports.hello = hello;
 const login = () => {
     return `<?xml version='1.0' encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -41,6 +43,7 @@ const login = () => {
         </command>
     </epp>`;
 };
+exports.login = login;
 const logout = () => {
     return `<?xml version='1.0' encoding='UTF-8' standalone='no'?>
     <epp xmlns='urn:ietf:params:xml:ns:epp-1.0'
@@ -51,8 +54,4 @@ const logout = () => {
         </command>
     </epp>`;
 };
-exports.default = {
-    hello,
-    login,
-    logout,
-};
+exports.logout = logout;

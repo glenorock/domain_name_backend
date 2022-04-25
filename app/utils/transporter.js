@@ -26,6 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.close = exports.connect = exports.send = void 0;
 const config_1 = __importDefault(require("config"));
 const Net = __importStar(require("net"));
 const host = String(config_1.default.get("cocca.host"));
@@ -56,6 +57,7 @@ const connect = () => {
         });
     });
 };
+exports.connect = connect;
 const close = () => {
     return new Promise((resolve, reject) => {
         client.end();
@@ -63,6 +65,7 @@ const close = () => {
         resolve("connection ended");
     });
 };
+exports.close = close;
 const send = (message) => {
     return new Promise((resolve) => {
         client.write(message);
@@ -72,8 +75,4 @@ const send = (message) => {
         });
     });
 };
-exports.default = {
-    send,
-    connect,
-    close
-};
+exports.send = send;

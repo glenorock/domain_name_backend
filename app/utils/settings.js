@@ -23,6 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.update = void 0;
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
 const config = require('config');
@@ -57,4 +58,4 @@ const update = (property, value) => {
             return console.log(err);
     });
 };
-exports.default = { update };
+exports.update = update;

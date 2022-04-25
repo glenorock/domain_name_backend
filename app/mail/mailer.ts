@@ -1,4 +1,4 @@
-import Generator from './generator'
+import  * as Generator from './generator'
 import * as mailTransporter from './transporter'
 import { Event } from '../models/event'
 

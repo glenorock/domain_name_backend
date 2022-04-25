@@ -26,6 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.send = void 0;
 const nodemailer = __importStar(require("nodemailer"));
 const config_1 = __importDefault(require("config"));
 var transporter = nodemailer.createTransport(config_1.default.get("email"));
@@ -49,4 +50,4 @@ const send = (mail) => {
         });
     });
 };
-exports.default = { send };
+exports.send = send;

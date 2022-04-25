@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getDomains = exports.update = exports.create = exports.getInfoById = exports.getInfoByEmail = exports.checkById = exports.checkByEmail = void 0;
 const config_1 = __importDefault(require("config"));
 let clTRID = config_1.default.get("cocca.clTRID");
 const checkById = (id) => {
@@ -19,6 +20,7 @@ const checkById = (id) => {
         </command>
     </epp>`;
 };
+exports.checkById = checkById;
 const checkByEmail = (email) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -33,6 +35,7 @@ const checkByEmail = (email) => {
         </command>
     </epp>`;
 };
+exports.checkByEmail = checkByEmail;
 const getInfoById = (id) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -48,6 +51,7 @@ const getInfoById = (id) => {
         </command>
     </epp>`;
 };
+exports.getInfoById = getInfoById;
 const getInfoByEmail = (email) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -63,6 +67,7 @@ const getInfoByEmail = (email) => {
         </command>
     </epp>`;
 };
+exports.getInfoByEmail = getInfoByEmail;
 const getDomains = (id) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -78,6 +83,7 @@ const getDomains = (id) => {
         </command>
     </epp>`;
 };
+exports.getDomains = getDomains;
 const create = (contact) => {
     let streets = contact.postalInfo.addr.street;
     let street = '';
@@ -110,6 +116,7 @@ const create = (contact) => {
         </command>
     </epp>`;
 };
+exports.create = create;
 const update = (contact) => {
     let streets = contact.postalInfo.addr.street;
     let street = '';
@@ -147,12 +154,4 @@ const update = (contact) => {
         </command>
     </epp>`;
 };
-exports.default = {
-    checkByEmail,
-    checkById,
-    getInfoByEmail,
-    getInfoById,
-    create,
-    update,
-    getDomains
-};
+exports.update = update;

@@ -1,5 +1,5 @@
 import express from "express"
-import api from './app'
+import  * as api from './app'
 import config from 'config'
 import * as session from 'express-session'
 

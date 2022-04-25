@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.generator = void 0;
 const event_1 = require("../models/event");
 const generator = (_event, _receivers) => {
     let mail = {
@@ -17,4 +18,4 @@ const generator = (_event, _receivers) => {
     }
     return mail;
 };
-exports.default = { generator };
+exports.generator = generator;

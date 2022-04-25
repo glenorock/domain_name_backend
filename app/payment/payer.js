@@ -23,6 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.pay = void 0;
 const momo = __importStar(require("./Momo/main"));
 const om = __importStar(require("./OM/main"));
 const options = {
@@ -32,4 +33,4 @@ const options = {
 const pay = (number, cost) => {
     return options.PayWithMomo(number, cost);
 };
-exports.default = { pay };
+exports.pay = pay;

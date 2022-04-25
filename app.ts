@@ -5,9 +5,9 @@ import { Domain, DomainContactType, DomainPeriodUnits } from './app/models/domai
 import { Host, IpAddresse, IpAddresseType } from './app/models/hosts'
 import { Contact, PostalInfoType } from './app/models/contact'
 
-import Generator from './app/utils/generator'
-import Controller from './app/controller/controller'
-import controller from './app/controller/controller'
+import * as Generator from './app/utils/generator'
+import * as  Controller from './app/controller/controller'
+import * as  controller from './app/controller/controller'
 
 const whois = (request: Express.Request, response: Express.Response) => {
     let body = request.body
@@ -121,7 +121,7 @@ const getContactDomains = (request:Express.Request,response:Express.Response) =>
     })
 }
 
-export default {
+export {
     whois,
     registerDomain,
     renewDomain,

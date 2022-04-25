@@ -23,6 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.saveToFile = void 0;
 const fs = __importStar(require("fs"));
 const saveToFile = (data, file) => {
     return new Promise((resolve, reject) => {
@@ -36,4 +37,4 @@ const saveToFile = (data, file) => {
         }
     });
 };
-exports.default = { saveToFile };
+exports.saveToFile = saveToFile;

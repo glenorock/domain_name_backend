@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.remAddr = exports.addAddr = exports.info = exports.create = exports.check = void 0;
 const config_1 = __importDefault(require("config"));
 let clTRID = config_1.default.get("cocca.clTRID");
 const check = (names) => {
@@ -22,6 +23,7 @@ const check = (names) => {
         </command>
     </epp>`;
 };
+exports.check = check;
 const info = (names) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -39,6 +41,7 @@ const info = (names) => {
         </command>
     </epp>`;
 };
+exports.info = info;
 const create = (host) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -57,6 +60,7 @@ const create = (host) => {
         </command>
     </epp>`;
 };
+exports.create = create;
 const addAddr = (host, addrs) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -76,6 +80,7 @@ const addAddr = (host, addrs) => {
         </command>
     </epp>`;
 };
+exports.addAddr = addAddr;
 const remAddr = (host, addrs) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -95,10 +100,4 @@ const remAddr = (host, addrs) => {
         </command>
     </epp>`;
 };
-exports.default = {
-    check,
-    create,
-    info,
-    addAddr,
-    remAddr
-};
+exports.remAddr = remAddr;

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.transfer = exports.update = exports.renew = exports.create = exports.info = exports.check = void 0;
 const config = require('config');
 let clTRID = config.get("cocca.clTRID");
 const check = (names) => {
@@ -19,6 +20,7 @@ const check = (names) => {
             </command>
         </epp>`;
 };
+exports.check = check;
 const info = (names) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -36,6 +38,7 @@ const info = (names) => {
         </command>
     </epp>`;
 };
+exports.info = info;
 const create = (domain) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -63,6 +66,7 @@ const create = (domain) => {
         </command>
     </epp>`;
 };
+exports.create = create;
 const renew = (domain, period) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
@@ -80,14 +84,12 @@ const renew = (domain, period) => {
         </command>
     </epp>`;
 };
-
+exports.renew = renew;
 const update = (domain) => {
-    /**
-     *  This functionality is used solely for the  
-     */
     return `update messages for ${domain}`;
 };
-const modifyContact = (domain) => {
+exports.update = update;
+const addProperty = (domain) => {
     return `message`;
 };
 const removeProperty = (domain) => {
@@ -96,11 +98,4 @@ const removeProperty = (domain) => {
 const transfer = (domain) => {
     return `transfer message for ${domain}`;
 };
-exports.default = {
-    check,
-    info,
-    create,
-    renew,
-    update,
-    transfer
-};
+exports.transfer = transfer;

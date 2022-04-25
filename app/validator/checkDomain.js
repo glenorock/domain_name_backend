@@ -26,6 +26,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.checkLength = exports.checkWhiteListed = exports.checkConstitution = void 0;
 const fs_extra_1 = __importDefault(require("fs-extra"));
 const config_1 = __importDefault(require("config"));
 const path = __importStar(require("path"));
@@ -33,10 +34,12 @@ const checkConstitution = (domain) => {
     let reg = RegExp(/^[a-zA-Z][a-zA-Z0-9_][a-zA-Z0-9_]*[a-zA-Z0-9]$/);
     return reg.test(String(domain));
 };
+exports.checkConstitution = checkConstitution;
 const checkLength = (domain) => {
     let reg = RegExp(/^.{2,63}$/);
     return reg.test(String(domain));
 };
+exports.checkLength = checkLength;
 let filePath = path.join(config_1.default.get("path.root"), config_1.default.get("path.blacklist"));
 let data = fs_extra_1.default.readFileSync(filePath, 'utf8');
 const blacklist = String(data).split("\n");
@@ -49,4 +52,4 @@ const checkWhiteListed = (domain) => {
     }
     return true;
 };
-exports.default = { checkConstitution, checkWhiteListed, checkLength };
+exports.checkWhiteListed = checkWhiteListed;

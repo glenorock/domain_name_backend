@@ -1,4 +1,4 @@
-import transporter from '../app/mail/transporter'
+import  * as transporter from '../app/mail/transporter'
 
 let input = {
     "receivers" : [

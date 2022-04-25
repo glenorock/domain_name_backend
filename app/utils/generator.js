@@ -23,6 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.generatePassword = exports.generateContactIdentifier = void 0;
 const generator = __importStar(require("generate-password"));
 const generatePassword = () => {
     let password = generator.generate({
@@ -33,6 +34,7 @@ const generatePassword = () => {
     });
     return password;
 };
+exports.generatePassword = generatePassword;
 const getDate = () => {
     const d = new Date();
     let month = String(d.getMonth() + 1);
@@ -50,7 +52,4 @@ const generateContactIdentifier = (name) => {
     let id = String(name).replace(/ +/g, "").slice(0, 6);
     return id.concat(getDate()).concat('-').concat(generateNumber(5));
 };
-exports.default = {
-    generateContactIdentifier,
-    generatePassword
-};
+exports.generateContactIdentifier = generateContactIdentifier;

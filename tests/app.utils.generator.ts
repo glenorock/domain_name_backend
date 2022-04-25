@@ -1,4 +1,4 @@
-import generator from '../app/utils/generator'
+import  * as generator from '../app/utils/generator'
 
 console.log(generator.generateContactIdentifier("Otang Glen Orock"))
 

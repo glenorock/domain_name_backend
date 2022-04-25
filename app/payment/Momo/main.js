@@ -1,25 +1,48 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.requestToPay = exports.generateAutorisationToken = exports.pay = exports.createSandboxUser = void 0;
-const app_1 = __importDefault(require("./API/app"));
-const constants_1 = __importDefault(require("./API/constants"));
-const json_1 = __importDefault(require("../../utils/json"));
+const api = __importStar(require("./API/app"));
+const constants = __importStar(require("./API/constants"));
+const json = __importStar(require("../../utils/json"));
 const config_1 = __importDefault(require("config"));
 const createSandboxUser = () => {
     let user = {};
     return new Promise((resolve, reject) => {
-        app_1.default.getReferenceId().then((value) => {
+        api.getReferenceId().then((value) => {
             user.reference_id = value;
-            app_1.default.createUser(constants_1.default.URLS.CREATE_USER, value).then(() => {
-                app_1.default.getUser(user.reference_id).then((value) => {
+            api.createUser(constants.URLS.CREATE_USER, value).then(() => {
+                api.getUser(user.reference_id).then((value) => {
                     user.provider_callback_host = value.providerCallbackHost;
                     user.target_environment = value.targetEnvironment;
-                    app_1.default.createAPIKey(user.reference_id).then((value) => {
+                    api.createAPIKey(user.reference_id).then((value) => {
                         user.api_key = value;
-                        json_1.default.saveToFile(user, "./app/payment/Momo/API/user.json").then(() => {
+                        json.saveToFile(user, "./app/payment/Momo/API/user.json").then(() => {
                             resolve(user);
                         }).catch((err) => {
                             reject(err);
@@ -40,11 +63,11 @@ exports.createSandboxUser = createSandboxUser;
 const generateAutorisationToken = () => {
     return new Promise((resolve, reject) => {
         let token = {};
-        app_1.default.generateAuthentificationToken().then((value) => {
+        api.generateAuthentificationToken().then((value) => {
             token.access_token = value.access_token;
             token.token_type = value.token_type;
             token.expires_in = value.expires_in;
-            json_1.default.saveToFile(token, './app/payment/Momo/API/token.json').then(() => {
+            json.saveToFile(token, './app/payment/Momo/API/token.json').then(() => {
                 resolve(token);
             }).catch((err) => { reject(err); });
         }).catch((err) => reject(err));
@@ -65,12 +88,12 @@ const requestToPay = (number) => {
         payeeNote: `${config_1.default.get("payment.payee_note")}`,
     };
     return new Promise((resolve, reject) => {
-        app_1.default.getReferenceId().then((id) => {
+        api.getReferenceId().then((id) => {
             data.reference_id = id;
-            app_1.default.requestToPay(id, data).then(() => {
-                app_1.default.getrequestToPayStatus(id).then((res) => {
+            api.requestToPay(id, data).then(() => {
+                api.getrequestToPayStatus(id).then((res) => {
                     out.request_status = res;
-                    app_1.default.requestToPayDeliveryNotification(id, "Message").then((res) => {
+                    api.requestToPayDeliveryNotification(id, "Message").then((res) => {
                         resolve(res);
                     }).catch((err) => { reject(err); });
                 }).catch((err) => { reject(err); });
