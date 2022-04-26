@@ -1,4 +1,4 @@
-import  * as mailer from '../../mail/mailer'
+import  * as mailer from '../../mail'
 import * as payer from '../../payment/payer'
 import * as eppSession from '../../client/session/session'
 import * as eppContact  from "../../client/object/contact/contact"

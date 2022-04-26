@@ -1,4 +1,4 @@
-import  * as transporter from '../app/mail/transporter'
+import  {Transporter} from '../app/utils/index'
 
 let input = {
     "receivers" : [
@@ -7,4 +7,4 @@ let input = {
     ]
 }
 
-transporter.send({subject:"subject",message:"message",receivers:input.receivers});
+Transporter.sendMail({subject:"subject",message:"message",receivers:input.receivers});

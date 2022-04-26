@@ -1,4 +1,4 @@
-import * as mailer from '../../mail/mailer'
+import * as mailer from '../../mail'
 import * as eppSession from '../../client/session/session'
 import * as eppContact  from "../../client/object/contact/contact"
 import { EventTypes, Event ,Contact} from '../../models/index'
@@ -13,7 +13,7 @@ const createContactIfNotExists = (contact: Contact) => {
                     if (res.exists) {
                         eppContact.create(contact).then((res: any) => {
                             eppSession.logout().then(() => {
-                                mailer.sendMail({type:EventTypes.ContactCreation,data:""}, [contact.email])
+                                // mailer.sendMail({type:EventTypes.ContactCreation,data:""}, [contact.email])
                                 resolve(res)
                             }).catch((err: any) => {
                                 reject(err)

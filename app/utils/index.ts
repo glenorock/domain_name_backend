@@ -34,6 +34,13 @@ export namespace Generator {
      * @returns a string of lenght 10
      */
     export const generatePassword = _generator.generatePassword
+
+    /**
+     * @description generates a mail based on an event
+     * @param event the event which trigered the  mail
+     * @param receivers the email addresses of the mail's receivers
+     */
+    export const generateMesage = _generator.generateMessage
 }
 
 export namespace JSON {
@@ -46,7 +53,8 @@ export namespace JSON {
 }
 
 export namespace Logger {
-    export const Logger = _logger.Logger.prototype
+    export const Logger = _logger.Logger
+    Logger.prototype = Object.create(_logger.Logger.prototype)
 }
 
 export namespace Settings {
@@ -80,6 +88,12 @@ export namespace Transporter {
      * @description disconnects from the epp server
      */
     export const close = _transporter.close
+
+    /**
+     * @description sends an email passed as parameters
+     * @param mail the mail to be sent
+     */
+    export const sendMail = _transporter.sendMail
 }
 
 export namespace XML {
