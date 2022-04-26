@@ -5,7 +5,7 @@ import * as eppContact  from "../../client/object/contact/contact"
 
 import * as eppHost from '../../client/object/host/host'
 import  * as eppDomain from '../../client/object/domain/domain'
-import { Domain } from "../../models/domain"
+import { Domain } from "../../models/index"
 import * as Utils from '../../utils/index'
 
 const register = (data:Domain,payerNumber:string) => {

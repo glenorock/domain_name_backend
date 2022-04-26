@@ -2,7 +2,7 @@ import * as eppSession from '../../client/session/session'
 import * as eppContact  from "../../client/object/contact/contact"
 import * as Utils from '../../utils/index'
 
-import { Contact } from "../../models/contact"
+import { Contact } from "../../models/index"
 
 const getContacts = (contacts:Contact[]) => {
     return new Promise((resolve, reject) => {

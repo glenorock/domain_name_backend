@@ -1,5 +1,5 @@
 import config from 'config'
-import { Contact } from "../../../models/contact"
+import { Contact } from "../../../models/index"
 
 let clTRID = config.get("cocca.clTRID")
 

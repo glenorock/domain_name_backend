@@ -1,5 +1,5 @@
 import * as Messages from './messages'
-import { Contact } from "../../../models/contact"
+import { Contact } from "../../../models/index"
 import * as Utils from '../../../utils/index'
 const transporter = Utils.Transporter
 

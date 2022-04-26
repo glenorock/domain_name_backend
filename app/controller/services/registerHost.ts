@@ -1,6 +1,6 @@
 import * as eppSession from '../../client/session/session'
 import * as eppHost from '../../client/object/host/host'
-import { Host } from "../../models/hosts"
+import { Host } from "../../models/index"
 import * as Utils from '../../utils/index'
 
 const registerOne = (host:Host) => {

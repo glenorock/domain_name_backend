@@ -2,7 +2,7 @@ import * as eppSession from '../../client/session/session'
 import * as eppDomain from '../../client/object/domain/domain'
 import * as Utils from '../../utils/index'
 
-import { Domain, DomainPeriodUnits } from '../../models/domain'
+import { Domain, DomainPeriodUnits } from '../../models/index'
 
 const renew = (domain: Domain, period:{unit:DomainPeriodUnits,value:number}) => {
     return new Promise((resolve, reject) => {

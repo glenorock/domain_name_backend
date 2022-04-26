@@ -1,4 +1,4 @@
-import { Domain, DomainPeriodUnits } from "../../../models/domain"
+import { Domain, DomainPeriodUnits } from "../../../models/index"
 const config = require('config')
 
 let clTRID = config.get("cocca.clTRID")

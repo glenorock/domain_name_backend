@@ -1,5 +1,4 @@
-import { Event, EventTypes } from "../models/event"
-import { Mail } from "../models/mail"
+import { Event, EventTypes, Mail  } from "../models/index"
 
 const generator = (_event:Event,_receivers:string[]) =>{
     let mail:Mail = {

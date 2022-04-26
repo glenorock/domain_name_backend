@@ -1,6 +1,6 @@
 import * as nodemailer from 'nodemailer'
 import config from 'config' 
-import { Mail } from '../models/mail';
+import { Mail } from '../models/index';
 
 var transporter = nodemailer.createTransport(config.get("email"));
 

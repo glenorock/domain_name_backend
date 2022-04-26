@@ -1,4 +1,4 @@
-import {Domain, DomainPeriodUnits} from "../../../models/domain"
+import {Domain, DomainPeriodUnits} from "../../../models/index"
 import * as  Messages from './messages'
 import * as Utils from '../../../utils/index'
 const transporter = Utils.Transporter

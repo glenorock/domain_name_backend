@@ -1,12 +1,17 @@
 import Express from 'express'
 import Config from 'config'
 
-import { Domain, DomainContactType, DomainPeriodUnits } from './app/models/domain'
-import { Host, IpAddresse, IpAddresseType } from './app/models/hosts'
-import { Contact, PostalInfoType } from './app/models/contact'
-
-import * as Utils from './app/utils/index'
-const Generator = Utils.Generator
+import {
+    Domain,
+    DomainContactType,
+    DomainPeriodUnits,
+    Host,
+    IpAddresse,
+    IpAddresseType,
+    Contact,
+    PostalInfoType
+} from './app/models/index'
+import { Generator } from './app/utils'
 import * as  Controller from './app/controller/controller'
 import * as  controller from './app/controller/controller'
 
@@ -25,10 +30,10 @@ const registerDomain = (request: Express.Request, response: Express.Response) =>
     let hosts: Host[] = []
     body.ns.forEach((ns: any) => {
         let addr: IpAddresse[] = []
-        ns.addr.forEach((a:any) => {
+        ns.addr.forEach((a: any) => {
             addr.push({
-                type:(a.isV4)?IpAddresseType.IPV4:IpAddresseType.IPV6,
-                addresse:a.value
+                type: (a.isV4) ? IpAddresseType.IPV4 : IpAddresseType.IPV6,
+                addresse: a.value
             })
         })
         hosts.push(
@@ -38,53 +43,52 @@ const registerDomain = (request: Express.Request, response: Express.Response) =>
             }
         )
     })
-    let contacts:{type:string,value:Contact}[] = []
-    body.contact.forEach((contact:any) =>{
+    let contacts: { type: string, value: Contact }[] = []
+    body.contact.forEach((contact: any) => {
         contacts.push({
-            type:(contact.isAdmin)?DomainContactType.ADMIN:DomainContactType.TECH,
+            type: (contact.isAdmin) ? DomainContactType.ADMIN : DomainContactType.TECH,
             value: {
-                // id:Generator.generateContactIdentifier(contact.name),
-                id:"dc",
-                postalInfo:{
-                    type:(contact.type === "int")?PostalInfoType.INT:PostalInfoType.LOC,
-                    name:contact.name,
-                    org:contact.org,
-                    addr:{
-                        street:contact.addr.streets,
-                        city:contact.addr.city,
-                        sp:contact.addr.sp,
-                        pc:contact.addr.pc,
-                        cc:contact.addr.cc
+                id:Generator.generateContactIdentifier(contact.name),
+                postalInfo: {
+                    type: (contact.type === "int") ? PostalInfoType.INT : PostalInfoType.LOC,
+                    name: contact.name,
+                    org: contact.org,
+                    addr: {
+                        street: contact.addr.streets,
+                        city: contact.addr.city,
+                        sp: contact.addr.sp,
+                        pc: contact.addr.pc,
+                        cc: contact.addr.cc
                     }
                 },
-                voice:contact.voice,
+                voice: contact.voice,
                 fax: contact.fax,
-                email:contact.email
+                email: contact.email
             }
         })
     })
     let domain: Domain = {
         name: body.name,
         period: {
-            unit: (body.period.unit === 'y' || body.period.unit === "Y" ) ? DomainPeriodUnits.YEARS : DomainPeriodUnits.MONTHS,
+            unit: (body.period.unit === 'y' || body.period.unit === "Y") ? DomainPeriodUnits.YEARS : DomainPeriodUnits.MONTHS,
             value: body.period.value
         },
         ns: hosts,
         registrant: Config.get("cocca.auth.client"),
         contact: contacts,
-        authInfo:{
+        authInfo: {
             pw: body.authInfo.pw,
         }
     }
-    controller.registerDomain(domain,body.payer).then((result) =>{
-        response.status(200).json({domain:domain,payer:body.payer})
-    }).catch((err) =>{
+    controller.registerDomain(domain, body.payer).then((result) => {
+        response.status(200).json({ domain: domain, payer: body.payer })
+    }).catch((err) => {
         response.send(err)
     })
-    
+
 }
 
-const renewDomain = (request:Express.Request, response: Express.Response)  =>{
+const renewDomain = (request: Express.Request, response: Express.Response) => {
     let body = request.body
     let domain: Domain = {
         name: body.domain.name,
@@ -95,30 +99,30 @@ const renewDomain = (request:Express.Request, response: Express.Response)  =>{
         ns: [],
         registrant: Config.get("cocca.auth.client"),
         contact: [],
-        authInfo:{
+        authInfo: {
             pw: "",
         },
         curExpDate: body.domain.curExpDate
     }
 
     let period = {
-        unit: (body.period.unit === 'y' || body.period.unit === "Y" ) ? DomainPeriodUnits.YEARS : DomainPeriodUnits.MONTHS,
+        unit: (body.period.unit === 'y' || body.period.unit === "Y") ? DomainPeriodUnits.YEARS : DomainPeriodUnits.MONTHS,
         value: body.period.value
     }
-    
-    controller.renewDomain(domain,period).then((res) =>{
-        response.send({domain:domain,period:period})
-    }).catch(err =>{
+
+    controller.renewDomain(domain, period).then((res) => {
+        response.send({ domain: domain, period: period })
+    }).catch(err => {
         response.send(err)
     })
-    
+
 }
 
-const getContactDomains = (request:Express.Request,response:Express.Response) =>{
-    let id  = request.params.id
-    controller.getContactDomains(id).then((res) =>{
-        response.send({input:id,res:res})
-    }).catch((err) =>{
+const getContactDomains = (request: Express.Request, response: Express.Response) => {
+    let id = request.params.id
+    controller.getContactDomains(id).then((res) => {
+        response.send({ input: id, res: res })
+    }).catch((err) => {
         response.send(err)
     })
 }

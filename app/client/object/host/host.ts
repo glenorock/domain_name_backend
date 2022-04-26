@@ -1,4 +1,4 @@
-import { Host, IpAddresse, } from "../../../models/hosts"
+import { Host, IpAddresse, } from "../../../models/index"
 import * as Messages from './messages'
 import * as Utils from '../../../utils/index'
 const transporter = Utils.Transporter
