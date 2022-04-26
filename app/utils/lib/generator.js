@@ -23,8 +23,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generatePassword = exports.generateContactIdentifier = void 0;
+exports.generatePassword = exports.generateContactIdentifier = exports.generateNumber = exports.generateDate = void 0;
 const generator = __importStar(require("generate-password"));
+/**
+ * @description generates a random string of lenght 10
+ * @returns a string of lenght 10
+ */
 const generatePassword = () => {
     let password = generator.generate({
         length: 10,
@@ -35,7 +39,11 @@ const generatePassword = () => {
     return password;
 };
 exports.generatePassword = generatePassword;
-const getDate = () => {
+/**
+ * @description generates the date in the format {month}{year}
+ * @returns the date in the said format
+ */
+const generateDate = () => {
     const d = new Date();
     let month = String(d.getMonth() + 1);
     if (month.length === 1) {
@@ -45,11 +53,23 @@ const getDate = () => {
     let year = String(d.getFullYear());
     return month.concat(year.charAt(2)).concat(year.charAt(3));
 };
+exports.generateDate = generateDate;
+/**
+ * @description generates a random string of numbers of a given length
+ * @param length the length of the to be generated string
+ * @returns a string of length <b> length </b>
+ */
 const generateNumber = (length) => {
     return "x".repeat(length).replace(/x/g, x => String(Math.random() * 10 | 0));
 };
+exports.generateNumber = generateNumber;
+/**
+ * @description generates a contact id for a contact from his name.
+ * @param name the contact's name
+ * @returns a contact id
+ */
 const generateContactIdentifier = (name) => {
     let id = String(name).replace(/ +/g, "").slice(0, 6);
-    return id.concat(getDate()).concat('-').concat(generateNumber(5));
+    return id.concat(generateDate()).concat('-').concat(generateNumber(5));
 };
 exports.generateContactIdentifier = generateContactIdentifier;

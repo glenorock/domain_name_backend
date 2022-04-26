@@ -31,7 +31,8 @@ const config_1 = __importDefault(require("config"));
 const domain_1 = require("./app/models/domain");
 const hosts_1 = require("./app/models/hosts");
 const contact_1 = require("./app/models/contact");
-const Generator = __importStar(require("./app/utils/generator"));
+const Utils = __importStar(require("./app/utils/index"));
+const Generator = Utils.Generator;
 const Controller = __importStar(require("./app/controller/controller"));
 const controller = __importStar(require("./app/controller/controller"));
 const whois = (request, response) => {
@@ -65,7 +66,8 @@ const registerDomain = (request, response) => {
         contacts.push({
             type: (contact.isAdmin) ? domain_1.DomainContactType.ADMIN : domain_1.DomainContactType.TECH,
             value: {
-                id: Generator.generateContactIdentifier(contact.name),
+                // id:Generator.generateContactIdentifier(contact.name),
+                id: "dc",
                 postalInfo: {
                     type: (contact.type === "int") ? contact_1.PostalInfoType.INT : contact_1.PostalInfoType.LOC,
                     name: contact.name,

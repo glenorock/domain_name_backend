@@ -24,8 +24,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const epp_session = __importStar(require("../app/client/session/session"));
-const transporter = __importStar(require("../app/utils/transporter"));
-transporter.connect().then(() => {
+const index_1 = require("../app/utils/index");
+index_1.Transporter.connect().then(() => {
     epp_session.hello().then((res) => {
         console.log("res");
         epp_session.login().then((res) => {
@@ -35,6 +35,6 @@ transporter.connect().then(() => {
             });
         });
     }).then(() => {
-        transporter.close();
+        index_1.Transporter.close();
     });
 });

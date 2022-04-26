@@ -25,7 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.hello = exports.logout = exports.login = void 0;
 const Messages = __importStar(require("./messages"));
-const transporter = __importStar(require("../../utils/transporter"));
+const Utils = __importStar(require("../../utils/index"));
+const transporter = Utils.Transporter;
 let login = () => {
     return transporter.send(Messages.login());
 };

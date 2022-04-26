@@ -2,8 +2,6 @@
 /**
  * @module Validator.Domain
  * @description This module has as goal to validate the format of the domain name
- * @param domain a string representing the name of the domain
- *
  */
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;

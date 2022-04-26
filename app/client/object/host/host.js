@@ -25,7 +25,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.remAddr = exports.addAddr = exports.create = exports.info = exports.check = void 0;
 const Messages = __importStar(require("./messages"));
-const transporter = __importStar(require("../../../utils/transporter"));
+const Utils = __importStar(require("../../../utils/index"));
+const transporter = Utils.Transporter;
 let check = (names) => { return transporter.send(Messages.check(names)); };
 exports.check = check;
 let info = (names) => { return transporter.send(Messages.check(names)); };
