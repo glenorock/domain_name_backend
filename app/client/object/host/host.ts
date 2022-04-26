@@ -1,6 +1,7 @@
 import { Host, IpAddresse, } from "../../../models/hosts"
 import * as Messages from './messages'
-import * as transporter from "../../../utils/transporter"
+import * as Utils from '../../../utils/index'
+const transporter = Utils.Transporter
 
 let check = (names:String[]) =>{return transporter.send(Messages.check(names))}
 let info = (names:String[]) =>{return transporter.send(Messages.check(names))}

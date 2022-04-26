@@ -1,16 +1,16 @@
 import  * as epp_session from '../app/client/session/session'
-import  * as transporter from '../app/utils/transporter'
+import  {Transporter} from '../app/utils/index'
 
-transporter.connect().then(() =>{
-    epp_session.hello().then((res) =>{
+Transporter.connect().then(() =>{
+    epp_session.hello().then((res:any) =>{
         console.log("res")
-        epp_session.login().then((res) =>{
+        epp_session.login().then((res:any) =>{
             console.log("res")
-            epp_session.logout().then((res) =>{
+            epp_session.logout().then((res:any) =>{
                 console.log("res")
             })
         })
     }).then(() =>{
-        transporter.close()
+        Transporter.close()
     })
 })

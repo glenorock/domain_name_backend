@@ -1,5 +1,6 @@
 import * as Messages from './messages'
-import * as  transporter from "../../utils/transporter"
+import * as Utils from '../../utils/index'
+const transporter = Utils.Transporter
 
 let login =  () => {
     return transporter.send(Messages.login())

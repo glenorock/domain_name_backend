@@ -1,6 +1,7 @@
 import * as eppSession from '../../client/session/session'
 import * as eppContact from '../../client/object/contact/contact'
-import * as xml from '../../utils/xml'
+import * as Utils from '../../utils/index'
+
 
 const getDomains = (id:string) =>{
     return new Promise((resolve,reject) =>{

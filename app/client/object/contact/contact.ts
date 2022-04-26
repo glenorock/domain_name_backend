@@ -1,6 +1,7 @@
 import * as Messages from './messages'
 import { Contact } from "../../../models/contact"
-import * as transporter from '../../../utils/transporter'
+import * as Utils from '../../../utils/index'
+const transporter = Utils.Transporter
 
 let checkById = (id:string) => {
     return transporter.send(Messages.checkById(id))

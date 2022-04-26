@@ -1,6 +1,7 @@
 import {Domain, DomainPeriodUnits} from "../../../models/domain"
-import * as transporter from "../../../utils/transporter"
 import * as  Messages from './messages'
+import * as Utils from '../../../utils/index'
+const transporter = Utils.Transporter
 
 let check = (names:String[]) => {return transporter.send(Messages.check(names))}
 let info = (names:String[]) => {return transporter.send(Messages.info(names))}

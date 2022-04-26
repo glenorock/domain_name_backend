@@ -5,7 +5,8 @@ import { Domain, DomainContactType, DomainPeriodUnits } from './app/models/domai
 import { Host, IpAddresse, IpAddresseType } from './app/models/hosts'
 import { Contact, PostalInfoType } from './app/models/contact'
 
-import * as Generator from './app/utils/generator'
+import * as Utils from './app/utils/index'
+const Generator = Utils.Generator
 import * as  Controller from './app/controller/controller'
 import * as  controller from './app/controller/controller'
 
@@ -42,7 +43,8 @@ const registerDomain = (request: Express.Request, response: Express.Response) =>
         contacts.push({
             type:(contact.isAdmin)?DomainContactType.ADMIN:DomainContactType.TECH,
             value: {
-                id:Generator.generateContactIdentifier(contact.name),
+                // id:Generator.generateContactIdentifier(contact.name),
+                id:"dc",
                 postalInfo:{
                     type:(contact.type === "int")?PostalInfoType.INT:PostalInfoType.LOC,
                     name:contact.name,
