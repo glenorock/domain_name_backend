@@ -4,11 +4,11 @@ let clientId = config.get("cocca.auth.client")
 let password = config.get("cocca.auth.password")
 let clTRID = config.get("cocca.clTRID")
 
-const hello = () => {
+export const hello = () => {
     return `<hello/>`
 }
 
-const login = () => {
+export const login = () => {
     return `<command>
             <login>
                 <clID>${clientId}</clID>
@@ -32,15 +32,9 @@ const login = () => {
         </command>`
 }
 
-const logout = () => {
+export const logout = () => {
     return `<command>
             <logout/>
             <clTRID>${clTRID}</clTRID>
         </command>`
-}
-
-export {
-    hello,
-    login,
-    logout,
 }

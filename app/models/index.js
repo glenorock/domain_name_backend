@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @module Models
+ * @module Model
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DomainContactType = exports.DomainPeriodUnits = exports.EventTypes = exports.IpAddresseType = exports.PostalInfoType = void 0;
