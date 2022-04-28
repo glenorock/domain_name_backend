@@ -10,8 +10,8 @@ import {
     IpAddresseType,
     Contact,
     PostalInfoType
-} from './app/models/index'
-import { Generator } from './app/utils'
+} from './models/index'
+import { Generator } from './utils'
 // import * as  Controller from './app/controller/controller'
 // import * as  controller from './app/controller/controller'
 

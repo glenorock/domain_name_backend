@@ -1,12 +1,10 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDomains = exports.update = exports.create = exports.getInfoById = exports.getInfoByEmail = exports.checkById = exports.checkByEmail = void 0;
-const config_1 = __importDefault(require("config"));
-let clTRID = config_1.default.get("cocca.clTRID");
-const checkById = (id) => {
+import config from 'config'
+import { Contact } from "../../../../../models/index"
+
+let clTRID = config.get("cocca.clTRID")
+
+
+export const checkById = (id: String) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -18,10 +16,10 @@ const checkById = (id) => {
             </check>
             <clTRID>${clTRID}</clTRID>
         </command>
-    </epp>`;
-};
-exports.checkById = checkById;
-const checkByEmail = (email) => {
+    </epp>`
+}
+
+export const checkByEmail = (email: String) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -33,10 +31,10 @@ const checkByEmail = (email) => {
             </check>
             <clTRID>${clTRID}</clTRID>
         </command>
-    </epp>`;
-};
-exports.checkByEmail = checkByEmail;
-const getInfoById = (id) => {
+    </epp>`
+}
+
+export const getInfoById = (id: String) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -49,10 +47,10 @@ const getInfoById = (id) => {
             </info>
             <clTRID>${clTRID}</clTRID>
         </command>
-    </epp>`;
-};
-exports.getInfoById = getInfoById;
-const getInfoByEmail = (email) => {
+    </epp>`
+}
+
+export const getInfoByEmail = (email: string) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -65,10 +63,10 @@ const getInfoByEmail = (email) => {
             </info>
             <clTRID>${clTRID}</clTRID>
         </command>
-    </epp>`;
-};
-exports.getInfoByEmail = getInfoByEmail;
-const getDomains = (id) => {
+    </epp>`
+}
+
+export const getDomains = (id: string) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -82,14 +80,14 @@ const getDomains = (id) => {
             <clTRID>${clTRID}</clTRID>
         </command>
     </epp>`;
-};
-exports.getDomains = getDomains;
-const create = (contact) => {
-    let streets = contact.postalInfo.addr.street;
-    let street = '';
+}
+
+export const create = (contact: Contact) => {
+    let streets = contact.postalInfo.addr.street
+    let street = ''
     streets.forEach((ele) => {
-        street.concat(`<contact:street>${ele}</contact:street> \n`);
-    });
+        street.concat(`<contact:street>${ele}</contact:street> \n`)
+    })
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -114,15 +112,17 @@ const create = (contact) => {
             </create>
             <clTRID>${clTRID}</clTRID>
         </command>
-    </epp>`;
-};
-exports.create = create;
-const update = (contact) => {
-    let streets = contact.postalInfo.addr.street;
-    let street = '';
+    </epp>`
+
+}
+
+
+export const update = (contact: Contact) => {
+    let streets = contact.postalInfo.addr.street
+    let street = ''
     streets.forEach((ele) => {
-        street.concat(`<contact:street>${ele}</contact:street> \n`);
-    });
+        street.concat(`<contact:street>${ele}</contact:street> \n`)
+    })
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -152,6 +152,5 @@ const update = (contact) => {
             </update>
             <clTRID>${clTRID}</clTRID>
         </command>
-    </epp>`;
-};
-exports.update = update;
+    </epp>`
+}

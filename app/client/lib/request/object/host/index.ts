@@ -3,7 +3,7 @@ import { Host, IpAddresse } from '../../../../../models/index'
 
 let clTRID = config.get("cocca.clTRID")
 
-const check = (names:String[]) =>{
+export const check = (names:String[]) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -23,7 +23,7 @@ const check = (names:String[]) =>{
     </epp>`
 }
 
-const info = (names:String[]) =>{
+export const info = (names:String[]) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -43,7 +43,7 @@ const info = (names:String[]) =>{
     </epp>`
 }
 
-const create = (host:Host) =>{
+export const create = (host:Host) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -64,7 +64,7 @@ const create = (host:Host) =>{
     </epp>`
 }
 
-const addAddr = (host:Host,addrs:IpAddresse[]) =>{
+export const addAddr = (host:Host,addrs:IpAddresse[]) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -86,7 +86,7 @@ const addAddr = (host:Host,addrs:IpAddresse[]) =>{
     </epp>`
 }
 
-const remAddr = (host:Host,addrs:IpAddresse[]) =>{
+export const remAddr = (host:Host,addrs:IpAddresse[]) =>{
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -106,13 +106,4 @@ const remAddr = (host:Host,addrs:IpAddresse[]) =>{
             <clTRID>${clTRID}</clTRID>
         </command>
     </epp>`
-}
-
-
-export {
-    check,
-    create,
-    info,
-    addAddr,
-    remAddr
 }
