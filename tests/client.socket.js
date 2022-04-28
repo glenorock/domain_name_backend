@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const connection_1 = require("../app/client/lib/connection");
+const connection_1 = require("../app/lib/client/lib/connection");
 const config_1 = __importDefault(require("config"));
 let host = String(config_1.default.get("cocca.host"));
 let port = Number(config_1.default.get("cocca.port"));

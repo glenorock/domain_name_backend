@@ -1,13 +1,16 @@
-import { Domain, DomainPeriodUnits } from "../../../../../models/index"
-import config from 'config'
-
-let clTRID = config.get("cocca.clTRID")
-
-export const check = (names:string[]) =>{
-    let domain_name:string = ""
-    names.forEach((name) =>{
-        domain_name = domain_name + `<domain:name>${name}</domain:name> \n `
-    })
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.transfer = exports.removeProperty = exports.addProperty = exports.update = exports.renew = exports.create = exports.info = exports.check = void 0;
+const config_1 = __importDefault(require("config"));
+let clTRID = config_1.default.get("cocca.clTRID");
+const check = (names) => {
+    let domain_name = "";
+    names.forEach((name) => {
+        domain_name = domain_name + `<domain:name>${name}</domain:name> \n `;
+    });
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
         <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -15,21 +18,19 @@ export const check = (names:string[]) =>{
                 <check>
                     <domain:check xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
         domain-1.0.xsd">
-                        ${  
-                            domain_name
-                        }
+                        ${domain_name}
                     </domain:check>
                 </check>
                 <clTRID>${clTRID}</clTRID>
             </command>
-        </epp>`
-}
-
-export const info = (names:string[]) =>{
-    let domain_name:string = ""
-    names.forEach((name) =>{
-        domain_name = domain_name + `<domain:name>${name}</domain:name> \n `
-    })
+        </epp>`;
+};
+exports.check = check;
+const info = (names) => {
+    let domain_name = "";
+    names.forEach((name) => {
+        domain_name = domain_name + `<domain:name>${name}</domain:name> \n `;
+    });
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -37,17 +38,15 @@ export const info = (names:string[]) =>{
             <info>
                 <domain:info xmlns:domain="urn:ietf:params:xml:ns:domain-1.0" xsi:schemaLocation="urn:ietf:params:xml:ns:domain-1.0
     domain-1.0.xsd">
-                    ${
-                        domain_name
-                    }
+                    ${domain_name}
                 </domain:info>
             </info>
             <clTRID>${clTRID}</clTRID>
         </command>
-    </epp>`
-}
-
-export const create = (domain: Domain) =>{
+    </epp>`;
+};
+exports.info = info;
+const create = (domain) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -57,18 +56,14 @@ export const create = (domain: Domain) =>{
                     <domain:name>${domain.name}</domain:name>
                     <domain:period unit="y">${domain.period}</domain:period>
                     <domain:ns>
-                        ${
-                            domain.ns.forEach((host) =>{
-                                return `<domain:hostObj>${host.name}</domain:hostObj>`
-                            })
-                        }
+                        ${domain.ns.forEach((host) => {
+        return `<domain:hostObj>${host.name}</domain:hostObj>`;
+    })}
                     </domain:ns>
                     <domain:registrant>${domain.registrant}</domain:registrant>
-                    ${
-                        domain.contact.forEach((contact) =>{
-                            return `<domain:contact type="${contact.type}">${contact.value}</domain:contact>`
-                        })
-                    }
+                    ${domain.contact.forEach((contact) => {
+        return `<domain:contact type="${contact.type}">${contact.value}</domain:contact>`;
+    })}
                     <domain:authInfo>
                         <domain:pw>${domain.authInfo.pw}</domain:pw>
                     </domain:authInfo>
@@ -76,10 +71,10 @@ export const create = (domain: Domain) =>{
             </create>
             <clTRID>${clTRID}</clTRID>
         </command>
-    </epp>`
-}
-
-export const renew = (domain:Domain,period:{unit:DomainPeriodUnits,value:number}) =>{
+    </epp>`;
+};
+exports.create = create;
+const renew = (domain, period) => {
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -94,22 +89,22 @@ export const renew = (domain:Domain,period:{unit:DomainPeriodUnits,value:number}
             </renew>
             <clTRID>${clTRID}</clTRID>
         </command>
-    </epp>`
-}
-
-export const update = (domain:Domain) =>{
-    return `update messages for ${domain}`
-}
-
-export const addProperty  = (domain:Domain) =>{
-    return `message`
-}
-
-
-export const removeProperty  = (domain:Domain) =>{
-    return `message`
-}
-
-export const transfer = (domain:Domain) =>{
-    return `transfer message for ${domain}`
-}
+    </epp>`;
+};
+exports.renew = renew;
+const update = (domain) => {
+    return `update messages for ${domain}`;
+};
+exports.update = update;
+const addProperty = (domain) => {
+    return `message`;
+};
+exports.addProperty = addProperty;
+const removeProperty = (domain) => {
+    return `message`;
+};
+exports.removeProperty = removeProperty;
+const transfer = (domain) => {
+    return `transfer message for ${domain}`;
+};
+exports.transfer = transfer;
