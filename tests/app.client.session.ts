@@ -1,4 +1,4 @@
-import  * as epp_session from '../app/client/session/session'
+import  * as epp_session from '../app/client/Request/lib/session/session'
 import  {Transporter} from '../app/utils/index'
 
 Transporter.connect().then(() =>{

@@ -1,5 +1,5 @@
-import * as eppSession from '../../client/session/session'
-import * as eppDomain from '../../client/object/domain/domain'
+import * as eppSession from '../../client/Request/lib/session/session'
+import * as eppDomain from '../../client/Request/lib/object/domain/domain'
 import * as Utils from '../../utils/index'
 
 const whois = (names:string[]) => {

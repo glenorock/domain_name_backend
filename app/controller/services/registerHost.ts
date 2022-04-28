@@ -1,5 +1,5 @@
-import * as eppSession from '../../client/session/session'
-import * as eppHost from '../../client/object/host/host'
+import * as eppSession from '../../client/Request/lib/session/session'
+import * as eppHost from '../../client/Request/lib/object/host/host'
 import { Host } from "../../models/index"
 import * as Utils from '../../utils/index'
 
