@@ -1,4 +1,4 @@
-import  * as validator from '../app/validator/index'
+import  * as validator from '../app/lib/validator/index'
 
 let ping = validator.IpValidator.prototype.isAlive
 
