@@ -12,17 +12,17 @@ import {
     PostalInfoType
 } from './app/models/index'
 import { Generator } from './app/utils'
-import * as  Controller from './app/controller/controller'
-import * as  controller from './app/controller/controller'
+// import * as  Controller from './app/controller/controller'
+// import * as  controller from './app/controller/controller'
 
 const whois = (request: Express.Request, response: Express.Response) => {
     let body = request.body
     let names = body.names
-    Controller.whois(names).then((out) => {
-        response.status(200).send(out)
-    }).catch((err) => {
-        response.status(400).send(err)
-    })
+    // Controller.whois(names).then((out) => {
+    //     response.status(200).send(out)
+    // }).catch((err) => {
+    //     response.status(400).send(err)
+    // })
 }
 
 const registerDomain = (request: Express.Request, response: Express.Response) => {
@@ -80,11 +80,11 @@ const registerDomain = (request: Express.Request, response: Express.Response) =>
             pw: body.authInfo.pw,
         }
     }
-    controller.registerDomain(domain, body.payer).then((result) => {
-        response.status(200).json({ domain: domain, payer: body.payer })
-    }).catch((err) => {
-        response.send(err)
-    })
+    // controller.registerDomain(domain, body.payer).then((result) => {
+    //     response.status(200).json({ domain: domain, payer: body.payer })
+    // }).catch((err) => {
+    //     response.send(err)
+    // })
 
 }
 
@@ -110,21 +110,21 @@ const renewDomain = (request: Express.Request, response: Express.Response) => {
         value: body.period.value
     }
 
-    controller.renewDomain(domain, period).then((res) => {
-        response.send({ domain: domain, period: period })
-    }).catch(err => {
-        response.send(err)
-    })
+    // controller.renewDomain(domain, period).then((res) => {
+    //     response.send({ domain: domain, period: period })
+    // }).catch(err => {
+    //     response.send(err)
+    // })
 
 }
 
 const getContactDomains = (request: Express.Request, response: Express.Response) => {
     let id = request.params.id
-    controller.getContactDomains(id).then((res) => {
-        response.send({ input: id, res: res })
-    }).catch((err) => {
-        response.send(err)
-    })
+    // controller.getContactDomains(id).then((res) => {
+    //     response.send({ input: id, res: res })
+    // }).catch((err) => {
+    //     response.send(err)
+    // })
 }
 
 export {

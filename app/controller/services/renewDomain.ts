@@ -1,35 +1,35 @@
-import * as eppSession from '../../client/lib/Request/lib/session/session'
-import * as eppDomain from '../../client/lib/Request/lib/object/domain/domain'
-import * as Utils from '../../utils/index'
+// import * as eppSession from '../../client/lib/request/lib/session/session'
+// import * as eppDomain from '../../client/lib/request/lib/object/domain/domain'
+// import * as Utils from '../../utils/index'
 
-import { Domain, DomainPeriodUnits } from '../../models/index'
+// import { Domain, DomainPeriodUnits } from '../../models/index'
 
-const renew = (domain: Domain, period:{unit:DomainPeriodUnits,value:number}) => {
-    return new Promise((resolve, reject) => {
-        eppSession.hello().then(() => {
-            eppSession.login().then(() => {
-                eppSession.hello().then(() =>{
+// const renew = (domain: Domain, period:{unit:DomainPeriodUnits,value:number}) => {
+//     return new Promise((resolve, reject) => {
+//         eppSession.hello().then(() => {
+//             eppSession.login().then(() => {
+//                 eppSession.hello().then(() =>{
 
-                }).then(() =>{
-                    eppDomain.renew(domain,period).then((res) =>{
-                        eppSession.logout().then(() =>{
-                            resolve(res)
-                        }).catch(err =>{
-                            reject(err)
-                        })
-                    }).catch(err =>{
-                        reject(err)
-                    })
-                }).catch(err =>{
-                    reject(err)
-                })
-            }).catch(err => {
-                reject(err)
-            })
-        }).catch(err => {
-            reject(err)
-        })
-    })
-}
+//                 }).then(() =>{
+//                     eppDomain.renew(domain,period).then((res) =>{
+//                         eppSession.logout().then(() =>{
+//                             resolve(res)
+//                         }).catch(err =>{
+//                             reject(err)
+//                         })
+//                     }).catch(err =>{
+//                         reject(err)
+//                     })
+//                 }).catch(err =>{
+//                     reject(err)
+//                 })
+//             }).catch(err => {
+//                 reject(err)
+//             })
+//         }).catch(err => {
+//             reject(err)
+//         })
+//     })
+// }
 
-export {renew}
+// export {renew}

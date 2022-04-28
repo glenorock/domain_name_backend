@@ -1,6 +1,6 @@
 import * as mailer from '../../mail'
-import * as eppSession from '../../client/lib/Request/lib/session/session'
-import * as eppContact  from "../../client/lib/Request/lib/object/contact/contact"
+import * as eppSession from '../../client/lib/request/session/session'
+import * as eppContact  from "../../client/lib/request/object/contact/contact"
 import { EventTypes, Event ,Contact} from '../../models/index'
 import * as Utils from '../../utils/index'
 
