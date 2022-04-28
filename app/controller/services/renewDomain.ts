@@ -1,5 +1,5 @@
-import * as eppSession from '../../client/Request/lib/session/session'
-import * as eppDomain from '../../client/Request/lib/object/domain/domain'
+import * as eppSession from '../../client/lib/Request/lib/session/session'
+import * as eppDomain from '../../client/lib/Request/lib/object/domain/domain'
 import * as Utils from '../../utils/index'
 
 import { Domain, DomainPeriodUnits } from '../../models/index'

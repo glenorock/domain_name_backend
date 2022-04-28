@@ -1,5 +1,5 @@
-import * as eppSession from '../../client/Request/lib/session/session'
-import * as eppContact  from "../../client/Request/lib/object/contact/contact"
+import * as eppSession from '../../client/lib/Request/lib/session/session'
+import * as eppContact  from "../../client/lib/Request/lib/object/contact/contact"
 import * as Utils from '../../utils/index'
 
 import { Contact } from "../../models/index"
