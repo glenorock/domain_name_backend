@@ -1,24 +1,50 @@
 import * as net from 'net'
-import config from 'config'
 
+/**
+ * @description A socket connecting the epp client and the server
+ */
 export class EppSocket {
+    /**
+     * @description The socket to be created
+     */
     private client: net.Socket
+
+    /**
+     * @description server's host's ip address
+     */
     private host: string
+
+    /**
+     * @description the port on which the server is listenning
+     */
     private port: number
+
+    /**
+     * @description the different responses from the server
+     */
     private responses: string[]
+    
+    /**
+     * @description indicates if the client is connected to the server or not
+     */
     private connected: boolean = false
 
-    public constructor() {
+    /**
+     * 
+     * @param host server's host's ip address
+     * @param port the port on which the server is listenning
+     */
+    public constructor(host:string,port:number) {
         this.client = new net.Socket()
-        this.host = String(config.get("cocca.host"))
-        this.port = Number(config.get("cocca.port"))
+        this.host = host
+        this.port = port
         this.responses = []
     }
 
-    public static getInstance(): EppSocket {
-        return new EppSocket()
-    }
-
+    /**
+     * 
+     * @description initiates the connection between the client and the server
+     */
     private connect() {
         return new Promise((resolve) => {
             this.client = new net.Socket()
@@ -33,6 +59,10 @@ export class EppSocket {
         })
     }
 
+    /**
+     * 
+     * @description destroys the socket
+     */
     private destroy() {
         return new Promise((resolve) => {
             this.client.end()
@@ -42,23 +72,43 @@ export class EppSocket {
             })
         })
     }
-
+    /**
+     * 
+     * @returns this.reponses 
+     */
     public getResponse(): string[] {
         return this.responses
     }
 
+    /**
+     * 
+     * @returns this.host
+     */
     public getHost(): string {
         return this.host
     }
 
+    /**
+     * 
+     * @returns this.port
+     */
     public getPort(): number {
         return this.port
     }
 
+    /**
+     * 
+     * @returns this.connected
+     */
     public isConnected(): boolean {
         return this.connected
     }
 
+    /**
+     * 
+     * @param message a message to be sent to the server
+     * @description writes the message on the socket
+     */
     private write(message: string) {
         return new Promise((resolve) => {
             this.client.write(message)
@@ -71,6 +121,11 @@ export class EppSocket {
         })
     }
 
+    /**
+     * 
+     * @param message a message to be sent to the server
+     * @description sends the message to the server by connecting the later, writing on the server, and upon reception of the data, destroys the connection
+     */
     public send(message:string){
         return new Promise((resolve) =>{
             this.connect().then(() =>{

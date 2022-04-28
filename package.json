@@ -7,7 +7,7 @@
     "test": "jasmine --config=./spec/support/jasmine.json",
     "start": "nodemon ./index.js",
     "build": "tsc --project ./",
-    "documentation": "npx typedoc --out docs --pretty --entryPointStrategy expand ./app ./app.ts ./index.ts "
+    "docs": "npx typedoc --out docs --pretty --entryPointStrategy expand ./app ./app.ts ./index.ts "
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,5 @@
 /**
- * @module Models
+ * @module Model
  */
 
 export enum PostalInfoType {
