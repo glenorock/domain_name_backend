@@ -26,9 +26,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.close = exports.connect = exports.send = void 0;
+exports.sendMail = exports.close = exports.connect = exports.send = void 0;
 const config_1 = __importDefault(require("config"));
 const Net = __importStar(require("net"));
+const nodemailer = __importStar(require("nodemailer"));
+var mailTransporter = nodemailer.createTransport(config_1.default.get("email"));
 const host = String(config_1.default.get("cocca.host"));
 const port = Number(config_1.default.get("cocca.port"));
 // const send = (message: string) => {
@@ -47,7 +49,7 @@ const port = Number(config_1.default.get("cocca.port"));
 // }
 const client = new Net.Socket();
 const connect = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         client.connect(port, host, () => {
             console.log('TCP connection established with the server.');
             resolve('TCP connection established with the server.');
@@ -59,7 +61,7 @@ const connect = () => {
 };
 exports.connect = connect;
 const close = () => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         client.end();
         console.log("connection ended");
         resolve("connection ended");
@@ -76,3 +78,24 @@ const send = (message) => {
     });
 };
 exports.send = send;
+const sendMail = (mail) => {
+    return new Promise((resolve, reject) => {
+        var mailOptions = {
+            from: config_1.default.get("email.auth.user"),
+            to: mail.receivers.join(","),
+            subject: mail.subject,
+            html: mail.message
+        };
+        mailTransporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+                console.log(error);
+                resolve(undefined);
+            }
+            else {
+                console.log('Email sent: ' + info.response);
+                reject(info.response);
+            }
+        });
+    });
+};
+exports.sendMail = sendMail;

@@ -27,7 +27,7 @@ const port = Number(config.get("cocca.port"))
 const client = new Net.Socket()
     
 const connect = () => {
-    return new Promise((resolve,reject)  =>{
+    return new Promise((resolve)  =>{
         client.connect(port, host, () => {
             console.log('TCP connection established with the server.');
             resolve('TCP connection established with the server.');
@@ -39,7 +39,7 @@ const connect = () => {
 }
 
 const close = () => {
-    return new Promise((resolve,reject) =>{
+    return new Promise((resolve) =>{
         client.end()
         console.log("connection ended")
         resolve("connection ended")

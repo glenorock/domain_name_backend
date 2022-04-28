@@ -57,6 +57,12 @@ var Generator;
      * @returns a string of lenght 10
      */
     Generator.generatePassword = _generator.generatePassword;
+    /**
+     * @description generates a mail based on an event
+     * @param event the event which trigered the  mail
+     * @param receivers the email addresses of the mail's receivers
+     */
+    Generator.generateMesage = _generator.generateMessage;
 })(Generator = exports.Generator || (exports.Generator = {}));
 var JSON;
 (function (JSON) {
@@ -69,7 +75,8 @@ var JSON;
 })(JSON = exports.JSON || (exports.JSON = {}));
 var Logger;
 (function (Logger_1) {
-    Logger_1.Logger = _logger.Logger.prototype;
+    Logger_1.Logger = _logger.Logger;
+    Logger_1.Logger.prototype = Object.create(_logger.Logger.prototype);
 })(Logger = exports.Logger || (exports.Logger = {}));
 var Settings;
 (function (Settings) {
@@ -100,6 +107,11 @@ var Transporter;
      * @description disconnects from the epp server
      */
     Transporter.close = _transporter.close;
+    /**
+     * @description sends an email passed as parameters
+     * @param mail the mail to be sent
+     */
+    Transporter.sendMail = _transporter.sendMail;
 })(Transporter = exports.Transporter || (exports.Transporter = {}));
 var XML;
 (function (XML) {

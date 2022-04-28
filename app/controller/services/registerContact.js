@@ -24,10 +24,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createContacts = void 0;
-const mailer = __importStar(require("../../mail/mailer"));
-const eppSession = __importStar(require("../../client/session/session"));
-const eppContact = __importStar(require("../../client/object/contact/contact"));
-const event_1 = require("../../models/event");
+const eppSession = __importStar(require("../../client/lib/request/session/session"));
+const eppContact = __importStar(require("../../client/lib/request/object/contact/contact"));
 const createContactIfNotExists = (contact) => {
     return new Promise((resolve, reject) => {
         eppSession.hello().then(() => {
@@ -37,7 +35,7 @@ const createContactIfNotExists = (contact) => {
                     if (res.exists) {
                         eppContact.create(contact).then((res) => {
                             eppSession.logout().then(() => {
-                                mailer.sendMail({ type: event_1.EventTypes.ContactCreation, data: "" }, [contact.email]);
+                                // mailer.sendMail({type:EventTypes.ContactCreation,data:""}, [contact.email])
                                 resolve(res);
                             }).catch((err) => {
                                 reject(err);

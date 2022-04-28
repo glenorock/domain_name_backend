@@ -23,11 +23,13 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const transporter = __importStar(require("../app/mail/transporter"));
-let input = {
-    "receivers": [
-        "glen19.og@gmail.com",
-        "gotang.megasoft@gmail.com"
-    ]
-};
-transporter.send({ subject: "subject", message: "message", receivers: input.receivers });
+const validator = __importStar(require("../app/validator/index"));
+let ping = validator.IpValidator.prototype.isAlive;
+let truthy = ["142.250.75.238", "176.32.103.205", "151.101.129.67"];
+truthy.forEach((ele) => {
+    ping(ele);
+});
+let falsy = ["154.72.150.48", "169.254.52.230", " 192.168.168.225"];
+falsy.forEach((ele) => {
+    ping(ele);
+});

@@ -22,14 +22,26 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const validator = __importStar(require("../app/validator/checkIpAddresse"));
-let ping = validator.IpValidator.prototype.isAlive;
-let truthy = ["142.250.75.238", "176.32.103.205", "151.101.129.67"];
-truthy.forEach((ele) => {
-    ping(ele);
-});
-let falsy = ["154.72.150.48", "169.254.52.230", " 192.168.168.225"];
-falsy.forEach((ele) => {
-    ping(ele);
-});
+exports.generateReferenceId = void 0;
+const uuid = __importStar(require("uuid"));
+const generateReferenceId = () => {
+    return new Promise((resolve, reject) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            resolve(uuid.v4());
+        }
+        catch (error) {
+            reject(error);
+        }
+    }));
+};
+exports.generateReferenceId = generateReferenceId;
