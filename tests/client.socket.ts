@@ -1,4 +1,4 @@
-import { EppSocket } from "../app/lib/client/lib/connection";
+import { EppSocket } from "../app/client/lib/connection";
 import config from 'config'
 
 

@@ -1,4 +1,4 @@
-import *  as mtn from '../app/lib/payment/Momo/main'
+import *  as mtn from '../app/payment/Momo/main'
 
 // mtn.createSandboxUser().then((out) =>{console.log(out)})
 

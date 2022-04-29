@@ -1,4 +1,4 @@
-import  {Transporter} from '../app/lib/utils/index'
+import  {Transporter} from '../app/utils/index'
 
 let input = {
     "receivers" : [

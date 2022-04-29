@@ -1,7 +1,7 @@
 import Express from 'express'
 import Config from 'config'
-import * as Models from './lib/models'
-import * as Utils from './lib/utils'
+import * as Models from './models'
+import * as Utils from './utils'
 // import * as  Controller from './app/controller/controller'
 // import * as  controller from './app/controller/controller'
 

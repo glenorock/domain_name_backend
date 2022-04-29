@@ -1,5 +1,5 @@
-import { Command } from "../app/lib/controller/lib/command";
-import * as whois from '../app/lib/controller/lib/domain'
+import { Command } from "../app/controller/lib/command";
+import * as whois from '../app/controller/lib/domain'
 
 
 

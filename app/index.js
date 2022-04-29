@@ -28,8 +28,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getContactDomains = exports.renewDomain = exports.registerDomain = exports.whois = void 0;
 const config_1 = __importDefault(require("config"));
-const Models = __importStar(require("./lib/models"));
-const Utils = __importStar(require("./lib/utils"));
+const Models = __importStar(require("./models"));
+const Utils = __importStar(require("./utils"));
 // import * as  Controller from './app/controller/controller'
 // import * as  controller from './app/controller/controller'
 const whois = (request, response) => {

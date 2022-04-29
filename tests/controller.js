@@ -23,8 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const command_1 = require("../app/lib/controller/lib/command");
-const whois = __importStar(require("../app/lib/controller/lib/domain"));
+const command_1 = require("../app/controller/lib/command");
+const whois = __importStar(require("../app/controller/lib/domain"));
 command_1.Command.run(new command_1.Command(whois.whois, "name", "tests", "fchgvjh")).then((res) => {
     console.log(res);
 });

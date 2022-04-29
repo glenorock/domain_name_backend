@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const validator = __importStar(require("../app/lib/validator/index"));
+const validator = __importStar(require("../app/validator/index"));
 let ping = validator.IpValidator.prototype.isAlive;
 let truthy = ["142.250.75.238", "176.32.103.205", "151.101.129.67"];
 truthy.forEach((ele) => {

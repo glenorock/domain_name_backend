@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mtn = __importStar(require("../app/lib/payment/Momo/main"));
+const mtn = __importStar(require("../app/payment/Momo/main"));
 // mtn.createSandboxUser().then((out) =>{console.log(out)})
 // mtn.generateAutorisationToken().then((out) =>{
 //     console.log(out)
