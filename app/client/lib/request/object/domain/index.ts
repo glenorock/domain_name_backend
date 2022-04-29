@@ -1,4 +1,4 @@
-import { Domain, DomainPeriodUnits } from "../../../../../models/index"
+import { Domain, DomainPeriodUnits } from "../../../../../models"
 import config from 'config'
 
 let clTRID = config.get("cocca.clTRID")

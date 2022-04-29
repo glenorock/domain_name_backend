@@ -23,9 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateMessage = exports.generatePassword = exports.generateContactIdentifier = exports.generateNumber = exports.generateDate = void 0;
+exports.generatePassword = exports.generateContactIdentifier = exports.generateNumber = exports.generateDate = void 0;
 const generator = __importStar(require("generate-password"));
-const index_1 = require("../../models/index");
 /**
  * @description generates a random string of lenght 10
  * @returns a string of lenght 10
@@ -74,20 +73,3 @@ const generateContactIdentifier = (name) => {
     return id.concat(generateDate()).concat('-').concat(generateNumber(5));
 };
 exports.generateContactIdentifier = generateContactIdentifier;
-const generateMessage = (event, receivers) => {
-    let mail = {
-        subject: "",
-        message: "",
-        receivers: receivers
-    };
-    switch (event.type) {
-        case index_1.EventTypes.AccountCreation:
-            break;
-        case index_1.EventTypes.DomainCreation:
-            break;
-        default:
-            break;
-    }
-    return mail;
-};
-exports.generateMessage = generateMessage;

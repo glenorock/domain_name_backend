@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.XML = exports.Transporter = exports.Settings = exports.Logger = exports.JSON = exports.Generator = void 0;
+exports.XML = exports.Settings = exports.Logger = exports.JSON = exports.Generator = void 0;
 /**
  * @module Utils
  */
@@ -31,7 +31,6 @@ const _generator = __importStar(require("./lib/generator"));
 const _json = __importStar(require("./lib/json"));
 const _logger = __importStar(require("./lib/logger"));
 const _settings = __importStar(require("./lib/settings"));
-const _transporter = __importStar(require("./lib/transporter"));
 const _xml = __importStar(require("./lib/xml"));
 var Generator;
 (function (Generator) {
@@ -57,12 +56,6 @@ var Generator;
      * @returns a string of lenght 10
      */
     Generator.generatePassword = _generator.generatePassword;
-    /**
-     * @description generates a mail based on an event
-     * @param event the event which trigered the  mail
-     * @param receivers the email addresses of the mail's receivers
-     */
-    Generator.generateMesage = _generator.generateMessage;
 })(Generator = exports.Generator || (exports.Generator = {}));
 var JSON;
 (function (JSON) {
@@ -92,27 +85,6 @@ var Settings;
      */
     Settings.addBlacklist = _settings.addBlacklist;
 })(Settings = exports.Settings || (exports.Settings = {}));
-var Transporter;
-(function (Transporter) {
-    /**
-     * @description sends a message to the epp server
-     * @param message
-     */
-    Transporter.send = _transporter.send;
-    /**
-     * @description connects to the epp server
-     */
-    Transporter.connect = _transporter.connect;
-    /**
-     * @description disconnects from the epp server
-     */
-    Transporter.close = _transporter.close;
-    /**
-     * @description sends an email passed as parameters
-     * @param mail the mail to be sent
-     */
-    Transporter.sendMail = _transporter.sendMail;
-})(Transporter = exports.Transporter || (exports.Transporter = {}));
 var XML;
 (function (XML) {
     /**
