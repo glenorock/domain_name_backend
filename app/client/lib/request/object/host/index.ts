@@ -1,6 +1,5 @@
 import config from 'config'
-import { Host, IpAddresse } from '../../../../../models/index'
-
+import { Host, IpAddresse } from '../../../../../models'
 let clTRID = config.get("cocca.clTRID")
 
 export const check = (names:String[]) =>{
