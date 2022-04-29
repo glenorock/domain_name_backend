@@ -29,7 +29,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.requestToPay = exports.generateAutorisationToken = exports.pay = exports.createSandboxUser = void 0;
 const api = __importStar(require("./API/app"));
 const constants = __importStar(require("./API/constants"));
-const json = __importStar(require("../../utils/json"));
+const Utils = __importStar(require("../../utils/index"));
+const json = Utils.JSON;
 const config_1 = __importDefault(require("config"));
 const createSandboxUser = () => {
     let user = {};
