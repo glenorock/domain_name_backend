@@ -22,11 +22,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 const command_1 = require("../app/lib/controller/lib/command");
 const whois = __importStar(require("../app/lib/controller/lib/domain"));
-let s = new command_1.Command(whois.whois);
-(_a = s.run("name", "tests", "fchgvjh")) === null || _a === void 0 ? void 0 : _a.then((res) => {
+command_1.Command.run(new command_1.Command(whois.whois, "name", "tests", "fchgvjh")).then((res) => {
     console.log(res);
 });

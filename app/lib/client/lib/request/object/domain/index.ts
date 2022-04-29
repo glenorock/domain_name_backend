@@ -48,6 +48,14 @@ export const info = (names:string[]) =>{
 }
 
 export const create = (domain: Domain) =>{
+    let domain_contact:string = ""
+    let domain_ns: string = ""
+    domain.ns.forEach((host) =>{
+        domain_ns = domain_ns + `<domain:hostObj>${host.name}</domain:hostObj>`
+    })
+    domain.contact.forEach((contact) =>{
+        domain_contact = domain_contact +  `<domain:contact type="${contact.type}">${contact.value}</domain:contact>`
+    })
     return `<?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <epp xmlns="urn:ietf:params:xml:ns:epp-1.0"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:ietf:params:xml:ns:epp-1.0 epp-1.0.xsd">
@@ -58,16 +66,12 @@ export const create = (domain: Domain) =>{
                     <domain:period unit="y">${domain.period}</domain:period>
                     <domain:ns>
                         ${
-                            domain.ns.forEach((host) =>{
-                                return `<domain:hostObj>${host.name}</domain:hostObj>`
-                            })
+                            domain_ns
                         }
                     </domain:ns>
                     <domain:registrant>${domain.registrant}</domain:registrant>
                     ${
-                        domain.contact.forEach((contact) =>{
-                            return `<domain:contact type="${contact.type}">${contact.value}</domain:contact>`
-                        })
+                        domain_contact
                     }
                     <domain:authInfo>
                         <domain:pw>${domain.authInfo.pw}</domain:pw>
