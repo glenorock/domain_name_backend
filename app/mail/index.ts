@@ -1,30 +1,13 @@
 /**
- * @module Mailing
+ * @module Mailer
  */
-import { Event, Mail } from '../models/index'
-import { Generator, Transporter } from '../utils'
+import { Event} from '../models/index'
+import { Mailer } from './lib/mailer'
 
+export const  getInstance = (event:Event,recievers:string[]):Mailer =>{
+    return new Mailer(event,recievers)
+}
 
-export class Mailer{
-    /**
-     * @description the mail to be sent
-     */
-    mail:Mail
-    
-    /**
-     * 
-     * @param event the event which triggered the mail
-     * @param recievers the recievers of the mail
-     */
-    constructor(event:Event,recievers:string[]){
-        this.mail = Generator.generateMesage(event,recievers)
-    }
-    
-    /**
-     * @description sends the mail
-     */
-    sendMail = () =>{
-        Transporter.sendMail(this.mail)
-    }
-
+export const sendMail = (event:Event,recievers:string[]) =>{
+    (new Mailer(event,recievers)).sendMail()
 }

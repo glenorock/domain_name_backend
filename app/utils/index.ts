@@ -5,7 +5,6 @@ import * as _generator from './lib/generator'
 import * as _json from './lib/json'
 import * as _logger from './lib/logger'
 import * as _settings from './lib/settings'
-import * as _transporter from './lib/transporter'
 import * as _xml from './lib/xml'
 
 export namespace Generator {
@@ -35,12 +34,6 @@ export namespace Generator {
      */
     export const generatePassword = _generator.generatePassword
 
-    /**
-     * @description generates a mail based on an event
-     * @param event the event which trigered the  mail
-     * @param receivers the email addresses of the mail's receivers
-     */
-    export const generateMesage = _generator.generateMessage
 }
 
 export namespace JSON {
@@ -72,29 +65,6 @@ export namespace Settings {
     export const addBlacklist = _settings.addBlacklist
 }
 
-export namespace Transporter {
-    /**
-     * @description sends a message to the epp server
-     * @param message
-     */
-    export const send  = _transporter.send
-    
-    /**
-     * @description connects to the epp server
-     */
-    export const connect = _transporter.connect
-    
-    /**
-     * @description disconnects from the epp server
-     */
-    export const close = _transporter.close
-
-    /**
-     * @description sends an email passed as parameters
-     * @param mail the mail to be sent
-     */
-    export const sendMail = _transporter.sendMail
-}
 
 export namespace XML {
     /**
