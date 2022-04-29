@@ -68,8 +68,7 @@ var JSON;
 })(JSON = exports.JSON || (exports.JSON = {}));
 var Logger;
 (function (Logger_1) {
-    Logger_1.Logger = _logger.Logger;
-    Logger_1.Logger.prototype = Object.create(_logger.Logger.prototype);
+    Logger_1.Logger = new _logger.Logger();
 })(Logger = exports.Logger || (exports.Logger = {}));
 var Settings;
 (function (Settings) {

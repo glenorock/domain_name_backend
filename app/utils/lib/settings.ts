@@ -1,8 +1,8 @@
 import * as fs from 'fs'
 import * as path from 'path'
 
-const config = require('config')
-const file = require('../config/default.json')
+import config from 'config'
+const file = require('../../../config/default.json')
 const backlist = "blacklist"
 
 let fileName = path.join(config.get("path.root"),config.get("path.conf"))

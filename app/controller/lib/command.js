@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Command = void 0;
 const client_1 = require("../../client");
+const utils_1 = require("../../utils");
 class Command {
     constructor(exec, ...params) {
         /**
@@ -40,7 +41,9 @@ Command.run = (command) => {
                 var _a;
                 (_a = command.execute()) === null || _a === void 0 ? void 0 : _a.then((res) => {
                     client.send(client_1.Request.Session.logout()).then(() => {
-                        resolve(res);
+                        let string_json = utils_1.XML.toJson(String(res));
+                        let json = JSON.parse(string_json);
+                        resolve(json.epp);
                     }).catch((err) => {
                         reject(err);
                     });

@@ -22,14 +22,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addBlacklist = exports.update = void 0;
 const fs = __importStar(require("fs"));
 const path = __importStar(require("path"));
-const config = require('config');
-const file = require('../config/default.json');
+const config_1 = __importDefault(require("config"));
+const file = require('../../../config/default.json');
 const backlist = "blacklist";
-let fileName = path.join(config.get("path.root"), config.get("path.conf"));
+let fileName = path.join(config_1.default.get("path.root"), config_1.default.get("path.conf"));
 const update = (property, value) => {
     let props = String(property).split(".");
     let f = file;

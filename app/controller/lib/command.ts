@@ -1,4 +1,5 @@
 import { Socket, Request } from '../../client'
+import { XML } from '../../utils'
 
 export class Command {
     /**
@@ -50,7 +51,9 @@ export class Command {
                 client.send(Request.Session.login()).then(() => {
                     command.execute()?.then((res) => {
                         client.send(Request.Session.logout()).then(() =>{
-                            resolve(res)
+                            let string_json = XML.toJson(String(res))
+                            let json = JSON.parse(string_json)
+                            resolve(json.epp)
                         }).catch((err) =>{
                             reject(err)
                         })

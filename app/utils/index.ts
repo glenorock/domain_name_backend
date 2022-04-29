@@ -46,8 +46,7 @@ export namespace JSON {
 }
 
 export namespace Logger {
-    export const Logger = _logger.Logger
-    Logger.prototype = Object.create(_logger.Logger.prototype)
+    export const Logger = new _logger.Logger()
 }
 
 export namespace Settings {
