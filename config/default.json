@@ -1,24 +1,7 @@
 {
   "server": {
     "host": "localhost",
-    "port": 3000
-  },
-  "session": {
-    "secret": "keyboard cat",
-    "resave": false,
-    "saveUninitialized": true,
-    "cookie": {
-      "secure": true
-    }
-  },
-  "cocca": {
-    "port": 7070,
-    "host": "127.0.0.1",
-    "clTRID": "ABC-12345",
-    "auth": {
-      "client": "admin",
-      "password": "Admin2022"
-    }
+    "port": 3001
   },
   "path": {
     "root": "E:\\STAGE ANTIC\\code\\backend",
@@ -33,9 +16,8 @@
       "pass": "Glen1999"
     }
   },
-  "payment": {
-    "cost": 107.87,
-    "payer_message": "Payer Message",
-    "payee_note" : "Payee Note"
+  "epp": {
+    "host": "localhost",
+    "port": 3000
   }
 }
