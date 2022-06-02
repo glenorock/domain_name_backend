@@ -1,7 +1,6 @@
 import express from "express"
-import  * as api from './app/index'
+import  * as api from './src/index'
 import config from 'config'
-import * as session from 'express-session'
 
 
 const app = express()
