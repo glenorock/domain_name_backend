@@ -1,9 +1,9 @@
-import config from 'config'
+import { Mail } from "../../types/mail.type";
+import config from 'config';
 import * as nodemailer from 'nodemailer'
-import { Mail } from '../../models/index';
-var mailTransporter = nodemailer.createTransport(config.get("email"));
 
 export const sendMail = (mail:Mail) => {
+    var mailTransporter = nodemailer.createTransport(config.get("email"));
     return new Promise((resolve, reject) => {
       var mailOptions:any = {
         from: config.get("email.auth.user"),
