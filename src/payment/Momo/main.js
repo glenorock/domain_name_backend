@@ -29,8 +29,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.requestToPay = exports.generateAutorisationToken = exports.pay = exports.createSandboxUser = void 0;
 const api = __importStar(require("./API/app"));
 const constants = __importStar(require("./API/constants"));
-const Utils = __importStar(require("../../utils/index"));
-const json = Utils.JSON;
+// import * as Utils from '../../utils/index'
+// const json = Utils.JSON
 const config_1 = __importDefault(require("config"));
 const createSandboxUser = () => {
     let user = {};
@@ -43,11 +43,11 @@ const createSandboxUser = () => {
                     user.target_environment = value.targetEnvironment;
                     api.createAPIKey(user.reference_id).then((value) => {
                         user.api_key = value;
-                        json.saveToFile(user, "./app/payment/Momo/API/user.json").then(() => {
-                            resolve(user);
-                        }).catch((err) => {
-                            reject(err);
-                        });
+                        // json.saveToFile(user, "./app/payment/Momo/API/user.json").then(() => {
+                        //   resolve(user)
+                        // }).catch((err:any) => {
+                        //   reject(err)
+                        // })
                     }).catch((err) => reject(err));
                 }).catch((err) => {
                     reject(err);
@@ -68,9 +68,9 @@ const generateAutorisationToken = () => {
             token.access_token = value.access_token;
             token.token_type = value.token_type;
             token.expires_in = value.expires_in;
-            json.saveToFile(token, './app/payment/Momo/API/token.json').then(() => {
-                resolve(token);
-            }).catch((err) => { reject(err); });
+            // json.saveToFile(token, './app/payment/Momo/API/token.json').then(() => {
+            //   resolve(token)
+            // }).catch((err:any) => {reject(err)})
         }).catch((err) => reject(err));
     });
 };

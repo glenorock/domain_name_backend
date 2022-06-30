@@ -1,7 +1,7 @@
 import axios from 'axios';
 import config from 'config';
 
-const baseURL: string = `http://${config.get("epp.host")}:${config.get("epp.port")}`;
+const baseURL: string = `http://${config.get("payment.host")}:${config.get("payment.port")}`;
 
 export default function (method: string, url: string, data?: any) {
     let config: any = {

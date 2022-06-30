@@ -1,7 +1,7 @@
 import * as api from './API/app'
 import * as constants from './API/constants'
-import * as Utils from '../../utils/index'
-const json = Utils.JSON
+// import * as Utils from '../../utils/index'
+// const json = Utils.JSON
 import config from 'config'
 
 const createSandboxUser = () => {
@@ -15,11 +15,11 @@ const createSandboxUser = () => {
           user.target_environment = value.targetEnvironment
           api.createAPIKey(user.reference_id).then((value:any) => {
             user.api_key = value
-            json.saveToFile(user, "./app/payment/Momo/API/user.json").then(() => {
-              resolve(user)
-            }).catch((err:any) => {
-              reject(err)
-            })
+            // json.saveToFile(user, "./app/payment/Momo/API/user.json").then(() => {
+            //   resolve(user)
+            // }).catch((err:any) => {
+            //   reject(err)
+            // })
           }).catch(
             (err:any) => reject(err)
           )
@@ -42,9 +42,9 @@ const generateAutorisationToken = () => {
       token.access_token = value.access_token
       token.token_type = value.token_type
       token.expires_in = value.expires_in
-      json.saveToFile(token, './app/payment/Momo/API/token.json').then(() => {
-        resolve(token)
-      }).catch((err:any) => {reject(err)})
+      // json.saveToFile(token, './app/payment/Momo/API/token.json').then(() => {
+      //   resolve(token)
+      // }).catch((err:any) => {reject(err)})
     }).catch((err:any) => reject(err))
   })
 }

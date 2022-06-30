@@ -1,5 +1,6 @@
 import request from '../../config/eppRequest';
 import { RestMethod } from '../types/enums/restMethod.enum';
+import { Host } from '../types/host.type';
 
 export async function check(name:string){
     let route:string = `/check/host/${name}`
@@ -11,8 +12,8 @@ export async function info(name:string){
     return request(RestMethod.GET,route)
 }
 
-export async function create(){
-    let data:any = {}
+export async function create(host:Host){
+    let data:any = host
     let route:string = `/host`
     return request(RestMethod.POST,route,data)
 }
