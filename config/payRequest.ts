@@ -14,7 +14,13 @@ export default function (method: string, url: string, data?: any) {
         },
     };
     if (data) {
-        config["data"] = data;
+        config["data"] = JSON.stringify(data);
     }
     return axios(config)
+}
+
+export const campayPaymentRoutes = {
+    token:"/campay/token",
+    requestPayment:"/campay/request/payment",
+    status:"/campay/transaction/status"
 }

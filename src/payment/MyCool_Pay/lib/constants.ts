@@ -1,1 +1,0 @@
-export const PAYLINK = `https://my-coolpay.com/api/{public_key}/paylink`

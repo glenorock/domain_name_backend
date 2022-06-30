@@ -20,8 +20,12 @@
     "host": "localhost",
     "port": 3002
   },
-  "payment":{
-    "host":"localhost",
-    "port":3002
+  "payment": {
+    "host": "localhost",
+    "port": 3002,
+    "campay": {
+      "username": "v5AuyQ74PqZinjxcePH7ssRvA36iItPrX56YVUCWibpWilnkFbrbZssA1j5ooJMwvBS4Dqk1GDXkfJU62VlO2Q",
+      "password": "b9GlZzPMb3ZXdPPE05vLCPC5NMt3fnXUKSEjPqjviJvGIsJ6uMZWcsZbmX5h-6OEZ6D5LzlTsL7JhHp747vCcQ"
+    }
   }
 }
