@@ -4,8 +4,8 @@ import config from 'config';
 
 
 const checkStatus = async (token:string, ref:string) => {
-    const res = await request(RestMethod.POST,campayPaymentRoutes.status);
-    return res
+    const res = await request(RestMethod.POST,campayPaymentRoutes.status,{token,ref});
+    return res.data
 }
 
 export async function pay(body:any){
@@ -14,8 +14,8 @@ export async function pay(body:any){
     const req = await request(RestMethod.POST,campayPaymentRoutes.requestPayment,{token:token.data,body})
     const ref =  req.data?.reference;
     let status = await checkStatus(token.data,ref);
-    while (status.data.status === 'PENDING'){
+    while (status.status == "PENDING"){
         status = await checkStatus(token.data,ref);
     }
-    return status.data;
+    return status;
 }
