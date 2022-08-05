@@ -18,7 +18,7 @@
   },
   "epp": {
     "host": "localhost",
-    "port": 3002
+    "port": 3003
   },
   "payment": {
     "host": "localhost",

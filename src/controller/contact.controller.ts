@@ -11,14 +11,12 @@ export async function info(name:string){
     return request(RestMethod.GET,route)
 }
 
-export async function create(){
-    let data:any = {}
+export async function create(data:any){
     let route:string = `/contact`
     return request(RestMethod.POST,route,data)
 }
 
-export async function update(){
-    let data:any = {}
+export async function update(data:any){
     let route:string = `/contact`
     return request(RestMethod.PUT,route,data)
 }

@@ -61,6 +61,7 @@
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/jasmine": "^4.0.3",
     "jasmine": "^4.1.0"
   }
