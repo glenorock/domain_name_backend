@@ -1,7 +1,7 @@
 import { Router } from "express";
-import * as ContactController from '../controller/contact.controller';
-import * as DomainController from '../controller/domain.controller';
-import * as HostController from '../controller/host.controller';
+import * as ContactController from '../controller/contact.cocca.controller';
+import * as DomainController from '../controller/domain.cocca.controller';
+import * as HostController from '../controller/host.cocca.controller';
 
 const router = Router();
 

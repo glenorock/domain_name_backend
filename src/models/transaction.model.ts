@@ -8,6 +8,9 @@ export default function Transaction(sequelize:Sequelize){
         period: {
             type: DataTypes.INTEGER
         },
+        date: {
+            type: DataTypes.DATE
+        }
     });
     return model
 }

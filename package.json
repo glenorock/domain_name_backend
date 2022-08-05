@@ -55,6 +55,7 @@
     "request": "^2.88.2",
     "safe-regex": "^2.1.1",
     "sequelize": "^6.21.3",
+    "sequelize-query": "^1.0.3",
     "smtp": "^0.1.4",
     "tls": "0.0.1",
     "ts-node": "^10.7.0",
