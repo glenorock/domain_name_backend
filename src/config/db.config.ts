@@ -2,7 +2,6 @@ import { Sequelize } from 'sequelize';
 import Contact from '../models/contact.model';
 import Domain from '../models/domain.model';
 import Host from '../models/host.model';
-import Ipaddress from '../models/ipaddress.model';
 import Transaction from '../models/transaction.model';
 import User from '../models/user.model';
 
@@ -20,7 +19,6 @@ const db = {
     contact: Contact(sequelize),
     domain: Domain(sequelize),
     host: Host(sequelize),
-    ipaddress: Ipaddress(sequelize),
     transaction: Transaction(sequelize),
     user: User(sequelize),
     sequelize: sequelize,
