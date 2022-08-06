@@ -8,6 +8,13 @@ export default function Domain(sequelize:Sequelize){
         },
         goal: {
             type: DataTypes.TEXT
+        },
+        password: {
+            type: DataTypes.STRING,
+        },
+        role: {
+            type: DataTypes.INTEGER,
+            defaultValue: 1
         }
     });
     return model

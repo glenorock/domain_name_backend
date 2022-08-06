@@ -27,5 +27,14 @@
       "username": "v5AuyQ74PqZinjxcePH7ssRvA36iItPrX56YVUCWibpWilnkFbrbZssA1j5ooJMwvBS4Dqk1GDXkfJU62VlO2Q",
       "password": "b9GlZzPMb3ZXdPPE05vLCPC5NMt3fnXUKSEjPqjviJvGIsJ6uMZWcsZbmX5h-6OEZ6D5LzlTsL7JhHp747vCcQ"
     }
+  },
+  "db": {
+    "DB_HOST": "127.0.0.1",
+    "DB_PORT":3306,
+    "DB_USER": "root",
+    "DB_PASSWORD": "Admin@2022",
+    "DB": "cocca",
+    "DIALECT": "mysql",
+    "SECRET": "fbet5hb5y"
   }
 }
