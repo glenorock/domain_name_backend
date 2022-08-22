@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jasmine --config=./spec/support/jasmine.json",
-    "start": "nodemon ./index.js",
+    "dev": "nodemon ./index.js",
     "build": "tsc --project ./",
     "docs": "npx typedoc --out docs --pretty --entryPointStrategy expand ./app ./index.ts "
   },
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/glenorock/domain_name_backend#readme",
   "dependencies": {
     "@types/config": "0.0.41",
+    "@types/cookie-parser": "^1.4.3",
     "@types/express": "^4.17.13",
     "@types/express-session": "^1.17.4",
     "@types/fs-extra": "^9.0.13",
@@ -29,10 +30,13 @@
     "@types/ping": "^0.4.1",
     "@types/uuid": "^8.3.4",
     "@types/xml-js": "^1.0.0",
+    "@types/xml2json": "^0.11.4",
     "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
+    "carrier": "^0.3.0",
     "child_process": "^1.0.2",
     "config": "^3.3.7",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
@@ -43,12 +47,16 @@
     "jasmine-node": "^3.0.0",
     "jsonwebtoken": "^8.5.1",
     "mailjet": "0.0.1",
+    "mongoose": "^6.3.5",
+    "mysql2": "^2.3.3",
     "net": "^1.0.2",
     "node-fetch": "^3.2.3",
     "nodemailer": "^6.7.3",
     "ping": "^0.4.1",
     "request": "^2.88.2",
     "safe-regex": "^2.1.1",
+    "sequelize": "^6.21.3",
+    "sequelize-query": "^1.0.3",
     "smtp": "^0.1.4",
     "tls": "0.0.1",
     "ts-node": "^10.7.0",
@@ -58,6 +66,7 @@
     "xml-js": "^1.6.11"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/jasmine": "^4.0.3",
     "jasmine": "^4.1.0"
   }

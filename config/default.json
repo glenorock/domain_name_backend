@@ -1,24 +1,7 @@
 {
   "server": {
     "host": "localhost",
-    "port": 3000
-  },
-  "session": {
-    "secret": "keyboard cat",
-    "resave": false,
-    "saveUninitialized": true,
-    "cookie": {
-      "secure": true
-    }
-  },
-  "cocca": {
-    "port": 7070,
-    "host": "127.0.0.1",
-    "clTRID": "ABC-12345",
-    "auth": {
-      "client": "admin",
-      "password": "Admin2022"
-    }
+    "port": 3001
   },
   "path": {
     "root": "E:\\STAGE ANTIC\\code\\backend",
@@ -33,9 +16,25 @@
       "pass": "Glen1999"
     }
   },
+  "epp": {
+    "host": "localhost",
+    "port": 3003
+  },
   "payment": {
-    "cost": 107.87,
-    "payer_message": "Payer Message",
-    "payee_note" : "Payee Note"
+    "host": "localhost",
+    "port": 3002,
+    "campay": {
+      "username": "v5AuyQ74PqZinjxcePH7ssRvA36iItPrX56YVUCWibpWilnkFbrbZssA1j5ooJMwvBS4Dqk1GDXkfJU62VlO2Q",
+      "password": "b9GlZzPMb3ZXdPPE05vLCPC5NMt3fnXUKSEjPqjviJvGIsJ6uMZWcsZbmX5h-6OEZ6D5LzlTsL7JhHp747vCcQ"
+    }
+  },
+  "db": {
+    "DB_HOST": "127.0.0.1",
+    "DB_PORT":3306,
+    "DB_USER": "root",
+    "DB_PASSWORD": "Admin@2022",
+    "DB": "cocca",
+    "DIALECT": "mysql",
+    "SECRET": "fbet5hb5y"
   }
 }
