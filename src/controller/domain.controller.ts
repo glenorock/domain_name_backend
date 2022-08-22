@@ -6,6 +6,9 @@ const Host = db.host
 const Contact = db.contact
 
 export async function createDomain(req:Request, res:Response) {
+    /**
+     * Format: 
+     */
     try{
         
     }catch(err:any){
@@ -15,7 +18,9 @@ export async function createDomain(req:Request, res:Response) {
 
 export async function getAllDomains(req:Request, res:Response) {
     try{
-        
+        const data = await Domain.findAll();
+        const count = await Domain.count();
+        return res.json({data, count})
     }catch(err:any){
         return res.status(500).json({message:err.message})
     }
@@ -23,7 +28,13 @@ export async function getAllDomains(req:Request, res:Response) {
 
 export async function getDomain(req:Request, res:Response) {
     try{
-        
+        const { id } = req.params
+        const data = await Domain.findOne({
+            where: {
+                id
+            }
+        })
+        return res.json({data})
     }catch(err:any){
         return res.status(500).json({message:err.message})
     }

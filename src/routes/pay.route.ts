@@ -1,9 +1,9 @@
 import { Express, Router } from "express";
-import * as CampayController from '../controller/campay.controller';
 const router = Router();
+import * as PaymentController from '../controller/payment.controller';
 
 router.post('/pay', async function(req:any, res:any) {
-    const results = await CampayController.pay(req.body)
+    const results = await PaymentController.pay(req.body)
     res.send(results)
 });
 
