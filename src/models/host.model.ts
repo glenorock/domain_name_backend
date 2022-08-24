@@ -6,12 +6,6 @@ export default function Host(sequelize:Sequelize){
             type: DataTypes.STRING,
             unique: true
         },
-        address:{
-            type: DataTypes.STRING
-        },
-        ver:{
-            type: DataTypes.STRING,
-        }
     });
     return model
 }

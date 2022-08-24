@@ -3,6 +3,7 @@ import Contact from '../models/contact.model';
 import Domain from '../models/domain.model';
 import Host from '../models/host.model';
 import Transaction from '../models/transaction.model';
+import Address from '../models/address.model';
 import config from 'config';
 
 const conf = {
@@ -19,31 +20,32 @@ const db = {
     contact: Contact(sequelize),
     domain: Domain(sequelize),
     host: Host(sequelize),
+    address: Address(sequelize),
     transaction: Transaction(sequelize),
     sequelize,
 }
 
-db.transaction.belongsTo(db.domain,{
-    foreignKey: "domainId"
-})
+db.transaction.belongsTo(db.domain)
 
 db.domain.belongsToMany(db.host,{through: "DomainHost"})
 db.host.belongsToMany(db.domain,{through: "DomainHost"})
 
-db.domain.belongsTo(db.contact,{
-    foreignKey: "registrantId"
-})
+db.host.belongsToMany(db.address,{through: "HostAddress"})
+db.address.belongsToMany(db.host,{through: "HostAddress"})
+
+
 
 db.domain.belongsTo(db.contact,{
-    foreignKey: "adminId"
+    as: "registrant"
 })
-
 db.domain.belongsTo(db.contact,{
-    foreignKey: "techId"
+    as: "admin"
 })
-
 db.domain.belongsTo(db.contact,{
-    foreignKey: "billId"
+    as: "tech"
+})
+db.domain.belongsTo(db.contact,{
+    as: "bill"
 })
 
 export default db;
