@@ -20,7 +20,7 @@ export async function getContact(req: Request, res: Response) {
                 id: id
             }
         })
-        return res.json({data})
+        return res.json(data)
     } catch (err: any) {
         return res.status(500).json({ message: err.message });
     }
@@ -44,15 +44,21 @@ export async function bulkCreateContacts(req:Request, res: Response) {
         return res.status(500).json({message: err.message})
     }
 }
+
 export async function updateContact(req: Request, res:Response){
     try{
         const {id} = req.params
-        const data = Contact.update(req.body,{
+        await Contact.update(req.body,{
             where: {
                 id: id
             }
         })
-        return res.json({data})
+        const data = await Contact.findOne({
+            where: {
+                id: id
+            }
+        })
+        return res.json(data)
     }catch (err:any) {
         return res.status(500).json({message: err.message})
     }
