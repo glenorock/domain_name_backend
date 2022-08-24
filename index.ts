@@ -13,7 +13,8 @@ import TransactionRouter from './src/routes/transaction.route';
 import db from './src/config/db.config';
 
 const app = express()
-db.sequelize.sync({force: true})
+// db.sequelize.sync({force: true})
+db.sequelize.sync()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
