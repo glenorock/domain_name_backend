@@ -27,13 +27,11 @@ const db = {
 
 db.transaction.belongsTo(db.domain)
 
-db.domain.belongsToMany(db.host,{through: "DomainHost"})
-db.host.belongsToMany(db.domain,{through: "DomainHost"})
+db.domain.belongsToMany(db.host,{through: "Domain_Host"})
+db.host.belongsToMany(db.domain,{through: "Domain_Host"})
 
-db.host.belongsToMany(db.address,{through: "HostAddress"})
-db.address.belongsToMany(db.host,{through: "HostAddress"})
-
-
+db.host.belongsToMany(db.address,{through: "Host_Address"})
+db.address.belongsToMany(db.host,{through: "Host_Address"})
 
 db.domain.belongsTo(db.contact,{
     as: "registrant"
