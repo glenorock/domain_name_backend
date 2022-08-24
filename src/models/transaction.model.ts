@@ -1,7 +1,7 @@
 import {  DataTypes, Sequelize } from 'sequelize';
 
 export default function Transaction(sequelize:Sequelize){
-    const model = sequelize.define("transaction",{
+    const model = sequelize.define("Transaction",{
         motif: {
             type: DataTypes.STRING
         },

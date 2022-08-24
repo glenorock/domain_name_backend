@@ -1,7 +1,7 @@
 import {  DataTypes, Sequelize } from 'sequelize';
 
 export default function Address(sequelize:Sequelize){
-    const model = sequelize.define("address",{
+    const model = sequelize.define("Address",{
         address:{
             type: DataTypes.STRING
         },
