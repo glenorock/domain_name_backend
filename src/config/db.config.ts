@@ -15,12 +15,12 @@ const conf = {
 
 const sequelize = new Sequelize(`mysql://${conf.USER}:${conf.PASSWORD}@${conf.HOST}:${conf.PORT}/${conf.DB}`);
 const db = {
-    Sequelize: Sequelize,
+    Sequelize,
     contact: Contact(sequelize),
     domain: Domain(sequelize),
     host: Host(sequelize),
     transaction: Transaction(sequelize),
-    sequelize: sequelize,
+    sequelize,
 }
 
 db.transaction.belongsTo(db.domain,{

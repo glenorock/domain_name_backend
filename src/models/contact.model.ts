@@ -30,7 +30,7 @@ export default function Contact(sequelize:Sequelize){
             type: DataTypes.STRING,
             unique: true
         },
-        
+
     });
     return model
 }

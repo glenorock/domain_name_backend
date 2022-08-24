@@ -7,10 +7,10 @@ const Contact = db.contact
 
 export async function createDomain(req:Request, res:Response) {
     /**
-     * Format: 
+     * Format:
      */
     try{
-        
+        return res.json({out:true})
     }catch(err:any){
         return res.status(500).json({message:err.message})
     }
@@ -42,7 +42,7 @@ export async function getDomain(req:Request, res:Response) {
 
 export async function updateDomain(req:Request, res:Response) {
     try{
-        
+        return res.json({out:true})
     }catch(err:any){
         return res.status(500).json({message:err.message})
     }

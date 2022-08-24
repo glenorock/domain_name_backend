@@ -17,7 +17,7 @@ export async function getContact(req: Request, res: Response) {
         const {id} = req.params
         const data = await Contact.findOne({
             where: {
-                id: id
+                id
             }
         })
         return res.json(data)
@@ -50,12 +50,12 @@ export async function updateContact(req: Request, res:Response){
         const {id} = req.params
         await Contact.update(req.body,{
             where: {
-                id: id
+                id
             }
         })
         const data = await Contact.findOne({
             where: {
-                id: id
+                id
             }
         })
         return res.json(data)

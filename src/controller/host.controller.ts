@@ -27,7 +27,7 @@ export async function getHost(req: Request, res: Response) {
         const { id } = req.params
         const data = await Host.findOne({
             where: {
-                id: id
+                id
             }
         })
         return res.json(data)
@@ -41,12 +41,12 @@ export async function updateHost(req: Request, res: Response) {
         const { id } = req.params
         await Host.update(req.body, {
             where: {
-                id: id
+                id
             }
         })
         const data = await Host.findOne({
             where: {
-                id: id
+                id
             }
         })
         return res.json(data)

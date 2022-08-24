@@ -3,10 +3,10 @@ import config from 'config'
 import cookieParser from 'cookie-parser'
 import cors from 'cors';
 
-import PayMentRouter from './src/routes/pay.route';
 import EppRouter from './src/routes/epp.route';
 import ContactRouter from './src/routes/contact.route';
 import DomainRouter from './src/routes/domain.route';
+import PayMentRouter from './src/routes/pay.route';
 import HostRouter from'./src/routes/host.route';
 import TransactionRouter from './src/routes/transaction.route';
 

@@ -2,12 +2,15 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "The backend of the e-commerce site for the sale of domain names online",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "prebuild": "tslint -c tslint.json -p tsconfig.json --fix",
+    "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node .",
     "test": "jasmine --config=./spec/support/jasmine.json",
-    "dev": "nodemon ./index.js",
-    "build": "tsc --project ./",
-    "docs": "npx typedoc --out docs --pretty --entryPointStrategy expand ./app ./index.ts "
+    "docs": "npx typedoc --out docs --pretty --entryPointStrategy expand ./app ./index.ts ",
+    "dev": "npx nodemon index.ts"
   },
   "repository": {
     "type": "git",
@@ -22,10 +25,8 @@
   "dependencies": {
     "@types/config": "0.0.41",
     "@types/cookie-parser": "^1.4.3",
-    "@types/express": "^4.17.13",
     "@types/express-session": "^1.17.4",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^17.0.25",
     "@types/nodemailer": "^6.4.4",
     "@types/ping": "^0.4.1",
     "@types/uuid": "^8.3.4",
@@ -67,7 +68,10 @@
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
     "@types/jasmine": "^4.0.3",
-    "jasmine": "^4.1.0"
+    "@types/node": "^16.11.56",
+    "jasmine": "^4.1.0",
+    "tslint": "^6.1.3"
   }
 }
