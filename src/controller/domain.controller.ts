@@ -4,6 +4,7 @@ import { Request, Response } from 'express'
 const Domain = db.domain
 const Host = db.host
 const Contact = db.contact
+const Address = db.address
 
 export async function createDomain(req: Request, res: Response) {
     try {
@@ -49,7 +50,7 @@ export async function createDomain(req: Request, res: Response) {
             tech: tech.getDataValue('id'),
             bill: bill.getDataValue('id')
         }
-        let data = await Domain.create({
+        let data: any = await Domain.create({
             name: domain.name,
             goal: domain.goal,
             password: domain.password,
@@ -59,7 +60,26 @@ export async function createDomain(req: Request, res: Response) {
         data.setDataValue("techId", domain.tech)
         data.setDataValue("billId", domain.bill)
         data = await data.save()
-        return res.json(data)
+        let ns: any[] = req.body.ns
+        for (let n of ns) {
+            let host: any = await Host.create({ name: n.name })
+            let addrs: any[] = n.addrs
+            for (let a of addrs) {
+                let tmp = await Address.create(a)
+                await host.addAddress(tmp)
+            }
+            await data.addHost(host)
+        }
+        const result = await Domain.findOne({
+            where: {
+                id: data.getDataValue('id')
+            },
+            include: {
+                all: true,
+                nested: true,
+            }
+        })
+        return res.json(result)
     } catch (err: any) {
         return res.status(500).json({ message: err.message })
     }
@@ -67,7 +87,14 @@ export async function createDomain(req: Request, res: Response) {
 
 export async function getAllDomains(req: Request, res: Response) {
     try {
-        const data = await Domain.findAll();
+        const data = await Domain.findAll(
+            {
+                include: {
+                    all: true,
+                    nested: true,
+                }
+            }
+        );
         const count = await Domain.count();
         return res.json({ count, data })
     } catch (err: any) {
@@ -82,24 +109,10 @@ export async function getDomain(req: Request, res: Response) {
             where: {
                 id
             },
-            include: [
-                {
-                    model: Contact,
-                    as:"registrant"
-                },
-                {
-                    model: Contact,
-                    as:'admin'
-                },
-                {
-                    model: Contact,
-                    as:"tech"
-                },
-                {
-                    model: Contact,
-                    as:"bill"
-                }
-            ]
+            include: {
+                all: true,
+                nested: true,
+            }
         })
         return res.json(data)
     } catch (err: any) {
