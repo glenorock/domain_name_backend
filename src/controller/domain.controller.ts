@@ -5,6 +5,7 @@ const Domain = db.domain
 const Host = db.host
 const Contact = db.contact
 const Address = db.address
+const DomainRequest = db.request
 
 export async function createDomain(req: Request, res: Response) {
     try {
@@ -62,7 +63,14 @@ export async function createDomain(req: Request, res: Response) {
         data = await data.save()
         let ns: any[] = req.body.ns
         for (let n of ns) {
-            let host: any = await Host.create({ name: n.name })
+            let host: any = await Host.findOne({
+                where: {
+                    name: n.name
+                }
+            })
+            if (host === null || host === undefined) {
+                host = await Host.create({ name: n.name })
+            }
             let addrs: any[] = n.addrs
             for (let a of addrs) {
                 let tmp = await Address.create(a)
@@ -78,6 +86,10 @@ export async function createDomain(req: Request, res: Response) {
                 all: true,
                 nested: true,
             }
+        })
+        await DomainRequest.create({
+            status: "PENDING",
+            DomainId: result.getDataValue("id")
         })
         return res.json(result)
     } catch (err: any) {

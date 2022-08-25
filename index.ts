@@ -9,6 +9,7 @@ import DomainRouter from './src/routes/domain.route';
 import PayMentRouter from './src/routes/pay.route';
 import HostRouter from'./src/routes/host.route';
 import TransactionRouter from './src/routes/transaction.route';
+import RequestRouter from './src/routes/request.route';
 
 import db from './src/config/db.config';
 
@@ -28,4 +29,5 @@ app.use('/contact/',ContactRouter)
 app.use('/domain/',DomainRouter)
 app.use('/host/',HostRouter)
 app.use('/transaction/',TransactionRouter)
+app.use('/request/',RequestRouter)
 app.listen(config.get("server.port"))

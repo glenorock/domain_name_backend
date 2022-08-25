@@ -4,6 +4,7 @@ import Domain from '../models/domain.model';
 import Host from '../models/host.model';
 import Transaction from '../models/transaction.model';
 import Address from '../models/address.model';
+import Request from '../models/request.model';
 import config from 'config';
 
 const conf = {
@@ -22,11 +23,12 @@ const db = {
     host: Host(sequelize),
     address: Address(sequelize),
     transaction: Transaction(sequelize),
+    request: Request(sequelize),
     sequelize,
 }
 
 db.transaction.belongsTo(db.domain)
-
+db.request.belongsTo(db.domain)
 db.domain.belongsToMany(db.host,{through: "Domain_Host"})
 db.host.belongsToMany(db.domain,{through: "Domain_Host"})
 
