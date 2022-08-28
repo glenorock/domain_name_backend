@@ -1,11 +1,13 @@
 import db from '../config/db.config'
 import { Request, Response } from 'express'
+import bcrypt from 'bcrypt'
 
 const Domain = db.domain
 const Host = db.host
 const Contact = db.contact
 const Address = db.address
 const DomainRequest = db.request
+const User = db.user
 
 export async function createDomain(req: Request, res: Response) {
     try {
@@ -91,6 +93,13 @@ export async function createDomain(req: Request, res: Response) {
             status: "PENDING",
             DomainId: result.getDataValue("id")
         })
+        const user = await User.create({
+            username: result.getDataValue('name'),
+            password: await bcrypt.hash(req.body.password,10),
+            email: registrant.getDataValue('email')
+        })
+        await user.setDataValue('DomainId',result.getDataValue('id'))
+        await user.save()
         return res.json(result)
     } catch (err: any) {
         return res.status(500).json({ message: err.message })

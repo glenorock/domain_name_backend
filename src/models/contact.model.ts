@@ -28,7 +28,6 @@ export default function Contact(sequelize:Sequelize){
         },
         email:{
             type: DataTypes.STRING,
-            unique: true
         },
 
     });
