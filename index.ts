@@ -2,7 +2,6 @@ import express from "express"
 import config from 'config'
 import cookieParser from 'cookie-parser'
 import cors from 'cors';
-
 import EppRouter from './src/routes/epp.route';
 import ContactRouter from './src/routes/contact.route';
 import DomainRouter from './src/routes/domain.route';
@@ -15,8 +14,8 @@ import UserRouter from './src/routes/user.route';
 import db from './src/config/db.config';
 
 const app = express()
-db.sequelize.sync({force: true})
-// db.sequelize.sync()
+// db.sequelize.sync({force: true})
+db.sequelize.sync()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));

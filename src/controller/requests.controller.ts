@@ -6,7 +6,7 @@ const DomainRequest = db.request
 export async function getAllRequest(req: Request, res: Response) {
     try {
         const {status} = req.query;
-        let data,count;
+        let data;
         if ((status === undefined) || (status === 'ALL')){
             data = await DomainRequest.findAll({
                 include: {
@@ -17,7 +17,6 @@ export async function getAllRequest(req: Request, res: Response) {
                     ["createdAt","DESC"]
                 ]
             });
-            count = await DomainRequest.count()
         }else{
             data = await DomainRequest.findAll({
                 include: {
@@ -31,14 +30,9 @@ export async function getAllRequest(req: Request, res: Response) {
                     ["createdAt","DESC"]
                 ]
             });
-            count = DomainRequest.count({
-                where: {
-                    status:status
-                }
-            })
         }
         
-        return res.json({count, data})
+        return res.json(data)
     } catch (err: any) {
         return res.status(500).json({ message: err.message })
     }

@@ -8,5 +8,4 @@ router.get("/:id",RequestController.getRequest);
 router.put("/accept/:id",RequestController.acceptRequest);
 router.put("/reject/:id",RequestController.rejectRequest);
 
-
 export default router;
