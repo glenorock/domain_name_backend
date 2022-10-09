@@ -6,8 +6,10 @@
   "scripts": {
     "test": "jasmine --config=./spec/support/jasmine.json",
     "dev": "nodemon ./index.js",
-    "build": "tsc --project ./",
-    "docs": "npx typedoc --out docs --pretty --entryPointStrategy expand ./app ./index.ts "
+    "build": "rimraf ./build && tsc",
+    "docs": "npx typedoc --out docs --pretty --entryPointStrategy expand ./app ./index.ts ",
+    "start:dev": "nodemon",
+    "start": "npm run build && node build/index.js"
   },
   "repository": {
     "type": "git",
@@ -25,7 +27,6 @@
     "@types/express": "^4.17.13",
     "@types/express-session": "^1.17.4",
     "@types/fs-extra": "^9.0.13",
-    "@types/node": "^17.0.25",
     "@types/nodemailer": "^6.4.4",
     "@types/ping": "^0.4.1",
     "@types/uuid": "^8.3.4",
@@ -59,8 +60,6 @@
     "sequelize-query": "^1.0.3",
     "smtp": "^0.1.4",
     "tls": "0.0.1",
-    "ts-node": "^10.7.0",
-    "typescript": "^4.6.3",
     "util": "^0.12.4",
     "uuid": "^8.3.2",
     "xml-js": "^1.6.11"
@@ -68,6 +67,11 @@
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/jasmine": "^4.0.3",
-    "jasmine": "^4.1.0"
+    "@types/node": "^18.8.3",
+    "jasmine": "^4.1.0",
+    "nodemon": "^2.0.20",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
   }
 }
