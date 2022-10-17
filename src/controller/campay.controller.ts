@@ -14,7 +14,7 @@ export async function pay(body:any){
     const req = await request(RestMethod.POST,campayPaymentRoutes.requestPayment,{token:token.data,body})
     const ref =  req.data?.reference;
     let status = await checkStatus(token.data,ref);
-    while (status.status == "PENDING"){
+    while (status.status === "PENDING"){
         status = await checkStatus(token.data,ref);
     }
     return status;

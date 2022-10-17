@@ -1,8 +1,8 @@
 import {  DataTypes, Sequelize } from 'sequelize';
 
-export default function Host(sequelize:Sequelize){
-    const model = sequelize.define("Host",{
-        name:{
+export default function Request(sequelize:Sequelize){
+    const model = sequelize.define("Request",{
+        status:{
             type: DataTypes.STRING,
         },
     });

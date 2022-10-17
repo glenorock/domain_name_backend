@@ -3,12 +3,12 @@ import config from 'config';
 import axios from 'axios';
 
 export const getToken = (user: any) => {
-    let headers = {
+    const headers = {
         'Content-Type': 'application/json',
     }
-    let data = user
-    let options = {
-        headers: headers,
+    const data = user
+    const options = {
+        headers,
     }
     return new Promise((resolve, reject) => {
         axios.post(URLS.GETTOKEN, data, options)
@@ -22,7 +22,7 @@ export const getToken = (user: any) => {
 }
 
 export const balance = (token: string) => {
-    var config: any = {
+    const conf: any = {
         method: 'get',
         url: URLS.GETBALANCE,
         headers: {
@@ -31,7 +31,7 @@ export const balance = (token: string) => {
         },
     };
     return new Promise((resolve, reject) => {
-        axios(config)
+        axios(conf)
             .then(res => {
                 resolve(res.data)
             })
@@ -42,7 +42,7 @@ export const balance = (token: string) => {
 }
 
 export const getTransactionStatus = (token: string, ref: string) => {
-    var config: any = {
+    const conf: any = {
         method: 'get',
         url: URLS.TRANSACTIONSTATUS(ref),
         headers: {
@@ -51,7 +51,7 @@ export const getTransactionStatus = (token: string, ref: string) => {
         },
     };
     return new Promise((resolve, reject) => {
-        axios(config)
+        axios(conf)
             .then(res => {
                 resolve(res.data)
             })
@@ -62,7 +62,7 @@ export const getTransactionStatus = (token: string, ref: string) => {
 }
 
 export const getHistory = (token: string, body: any) => {
-    var config: any = {
+    const conf: any = {
         method: 'post',
         url: URLS.HISTORY,
         headers: {
@@ -72,7 +72,7 @@ export const getHistory = (token: string, body: any) => {
         data: body
     };
     return new Promise((resolve, reject) => {
-        axios(config)
+        axios(conf)
             .then(res => {
                 resolve(res.data)
             })
@@ -83,7 +83,7 @@ export const getHistory = (token: string, body: any) => {
 }
 
 export const requestPayment = (token: string, body: any) => {
-    var config: any = {
+    const conf: any = {
         method: 'post',
         url: URLS.REQUESTPAYMENT,
         headers: {
@@ -93,7 +93,7 @@ export const requestPayment = (token: string, body: any) => {
         data: body
     };
     return new Promise((resolve, reject) => {
-        axios(config)
+        axios(conf)
             .then(res => {
                 resolve(res.data)
             })
@@ -104,7 +104,7 @@ export const requestPayment = (token: string, body: any) => {
 }
 
 export const requestWithdrawal = (token: string, body: any) => {
-    var config: any = {
+    const conf: any = {
         method: 'post',
         url: URLS.WITHDRAW,
         headers: {
@@ -114,7 +114,7 @@ export const requestWithdrawal = (token: string, body: any) => {
         data: body
     };
     return new Promise((resolve, reject) => {
-        axios(config)
+        axios(conf)
             .then(res => {
                 resolve(res.data)
             })
@@ -130,7 +130,7 @@ export const pay = async (body: any) => {
     const req: any = await requestPayment(String(token), body)
     const ref: string = req?.reference;
     let status: any = await getTransactionStatus(String(token), ref)
-    while (status.status == "PENDING") {
+    while (status.status === "PENDING") {
         status = await getTransactionStatus(String(token), ref);
     }
     return status;

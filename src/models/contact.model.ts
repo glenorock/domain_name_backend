@@ -1,7 +1,7 @@
 import {  DataTypes, Sequelize } from 'sequelize';
 
 export default function Contact(sequelize:Sequelize){
-    const model = sequelize.define("contact",{
+    const model = sequelize.define("Contact",{
         name:{
             type: DataTypes.STRING
         },
@@ -28,9 +28,8 @@ export default function Contact(sequelize:Sequelize){
         },
         email:{
             type: DataTypes.STRING,
-            unique: true
         },
-        
+
     });
     return model
 }
